@@ -8106,19 +8106,19 @@
 		1F3EC5E11C6C4D62003D7461 /* SETUP */ = {
 			isa = PBXGroup;
 			children = (
-				1F3EC5E21C6C4D62003D7461 /* availability.pl */,
+				1F3EC6DD1C6C4D63003D7461 /* xcodescripts */,
 				1F3EC5E31C6C4D62003D7461 /* config */,
 				1F3EC5F21C6C4D62003D7461 /* decomment */,
 				1F3EC5F51C6C4D62003D7461 /* dtrace */,
 				1F3EC6CB1C6C4D63003D7461 /* installfile */,
 				1F3EC6CE1C6C4D63003D7461 /* json_compilation_db */,
 				1F3EC6D11C6C4D63003D7461 /* kextsymboltool */,
-				1F3EC6D41C6C4D63003D7461 /* Makefile */,
-				1F3EC6D51C6C4D63003D7461 /* newvers */,
 				1F3EC6D61C6C4D63003D7461 /* replacecontents */,
 				1F3EC6D91C6C4D63003D7461 /* setsegname */,
+				1F3EC5E21C6C4D62003D7461 /* availability.pl */,
+				1F3EC6D41C6C4D63003D7461 /* Makefile */,
+				1F3EC6D51C6C4D63003D7461 /* newvers */,
 				1F3EC6DC1C6C4D63003D7461 /* setup.sh */,
-				1F3EC6DD1C6C4D63003D7461 /* xcodescripts */,
 			);
 			path = SETUP;
 			sourceTree = "<group>";
