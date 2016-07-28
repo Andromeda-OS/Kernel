@@ -25,6 +25,7 @@
  */
 
 #pragma ident	"@(#)xlate64.m4	1.20	08/05/31 SMI"
+#pragma clang diagnostic ignored "-Wunreachable-code"
 
 #if !defined(__APPLE__)
 #include <memory.h>
