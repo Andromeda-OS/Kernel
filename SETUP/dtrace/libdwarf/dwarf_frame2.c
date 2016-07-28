@@ -1301,7 +1301,7 @@ get_gcc_eh_augmentation(Dwarf_Debug dbg, Dwarf_Small * frame_ptr,
 		 apparently. */
 		suffix = augmentation + 2;
 	}
-	for (; *suffix; ++suffix) {
+	if (*suffix != 0) {
 		/* We have no idea what this is as yet. Some extensions beyond
 		 dwarf exist which we do not yet handle. */
 		return DW_DLV_ERROR;
