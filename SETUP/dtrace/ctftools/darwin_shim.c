@@ -93,11 +93,11 @@ gmatch(const char *s, const char *p)
 long
 sysinfo(int command, char *buf, long count)
 {
+	int mib[2];
+	size_t len;
+
 	switch (command)
 	{
-			int mib[2];
-			size_t len;
-
 		case SI_RELEASE:
 			mib[0] = CTL_KERN;
 			mib[1] = KERN_OSRELEASE;
