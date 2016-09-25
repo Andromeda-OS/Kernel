@@ -25,6 +25,7 @@
  */
 
 #pragma ident	"@(#)xlate64.m4	1.20	08/05/31 SMI"
+#pragma clang diagnostic ignored "-Wunreachable-code"
 
 #if !defined(__APPLE__)
 #include <memory.h>
@@ -1832,7 +1833,7 @@ rela_2L11_tof(Byte *dst, Elf64_Rela *src, size_t cnt)
 		(dst)[RA1_info_L6] = (Byte)(_t_>>48),
 		(dst)[RA1_info_L7] = (Byte)(_t_>>56); };
 		/*CONSTANTCONDITION*/
-		if (~(Elf64_Xword)0 == -(Elf64_Sxword)1) {	/* 2s comp */
+		if (~(Elf64_Xword)0 == /* DISABLES CODE */ (-(Elf64_Sxword)1)) {	/* 2s comp */
 			{ Elf64_Xword _t_ = src->r_addend;
 		(dst)[RA1_addend_L0] = (Byte)_t_,
 		(dst)[RA1_addend_L1] = (Byte)(_t_>>8),
@@ -1889,7 +1890,7 @@ rela_2M11_tof(Byte *dst, Elf64_Rela *src, size_t cnt)
 		(dst)[RA1_info_M6] = (Byte)(_t_>>48),
 		(dst)[RA1_info_M7] = (Byte)(_t_>>56); };
 		/*CONSTANTCONDITION*/
-		if (~(Elf64_Xword)0 == -(Elf64_Sxword)1) {	/* 2s comp */
+		if (~(Elf64_Xword)0 == /* DISABLES CODE */ (-(Elf64_Sxword)1)) {	/* 2s comp */
 			{ Elf64_Xword _t_ = src->r_addend;
 		(dst)[RA1_addend_M0] = (Byte)_t_,
 		(dst)[RA1_addend_M1] = (Byte)(_t_>>8),
@@ -2104,7 +2105,7 @@ sword_2L_tof(Byte *dst, Elf64_Sword *src, size_t cnt)
 
 	do {
 		/*CONSTANTCONDITION*/
-		if (~(Elf64_Word)0 == -(Elf64_Sword)1) {	/* 2s comp */
+		if (~(Elf64_Word)0 == /* DISABLES CODE */ (-(Elf64_Sword)1)) {	/* 2s comp */
 			{ Elf64_Word _t_ = *src;
 		(dst)[W_L0] = (Byte)_t_,
 		(dst)[W_L1] = (Byte)(_t_>>8),
@@ -2135,7 +2136,7 @@ sword_2M_tof(Byte *dst, Elf64_Sword *src, size_t cnt)
 
 	do {
 		/*CONSTANTCONDITION*/
-		if (~(Elf64_Word)0 == -(Elf64_Sword)1) {	/* 2s comp */
+		if (~(Elf64_Word)0 == /* DISABLES CODE */ (-(Elf64_Sword)1)) {	/* 2s comp */
 			{ Elf64_Word _t_ = *src;
 		(dst)[W_M0] = (Byte)_t_,
 		(dst)[W_M1] = (Byte)(_t_>>8),
@@ -2749,7 +2750,7 @@ sxword_2L_tof(Byte *dst, Elf64_Sxword *src, size_t cnt)
 
 	do {
 		/*CONSTANTCONDITION*/
-		if (~(Elf64_Xword)0 == -(Elf64_Sxword)1) {	/* 2s comp */
+		if (~(Elf64_Xword)0 == /* DISABLES CODE */ (-(Elf64_Sxword)1)) {	/* 2s comp */
 			{ Elf64_Xword _t_ = *src;
 		(dst)[X_L0] = (Byte)_t_,
 		(dst)[X_L1] = (Byte)(_t_>>8),
@@ -2789,7 +2790,7 @@ sxword_2M_tof(Byte *dst, Elf64_Sxword *src, size_t cnt)
 
 	do {
 		/*CONSTANTCONDITION*/
-		if (~(Elf64_Xword)0 == -(Elf64_Sxword)1) {	/* 2s comp */
+		if (~(Elf64_Xword)0 == /* DISABLES CODE */ (-(Elf64_Sxword)1)) {	/* 2s comp */
 			{ Elf64_Xword _t_ = *src;
 		(dst)[X_M0] = (Byte)_t_,
 		(dst)[X_M1] = (Byte)(_t_>>8),

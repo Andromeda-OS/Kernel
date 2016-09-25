@@ -611,44 +611,44 @@ enum
  */
 
 static void	addr_2L_tof(), addr_2L_tom(),
-		addr_2M_tof(), addr_2M_tom(),
-		byte_to(),
-		dyn_2L11_tof(), dyn_2L11_tom(),
-		dyn_2M11_tof(), dyn_2M11_tom(),
-		ehdr_2L11_tof(), ehdr_2L11_tom(),
-		ehdr_2M11_tof(), ehdr_2M11_tom(),
-		half_2L_tof(), half_2L_tom(),
-		half_2M_tof(), half_2M_tom(),
-		move_2L11_tof(), move_2L11_tom(),
-		move_2M11_tof(), move_2M11_tom(),
-		movep_2L11_tof(), movep_2L11_tom(),
-		movep_2M11_tof(), movep_2M11_tom(),
-		off_2L_tof(), off_2L_tom(),
-		off_2M_tof(), off_2M_tom(),
-		note_2L11_tof(), note_2L11_tom(),
-		note_2M11_tof(), note_2M11_tom(),
-		phdr_2L11_tof(), phdr_2L11_tom(),
-		phdr_2M11_tof(), phdr_2M11_tom(),
-		rel_2L11_tof(), rel_2L11_tom(),
-		rel_2M11_tof(), rel_2M11_tom(),
-		rela_2L11_tof(), rela_2L11_tom(),
-		rela_2M11_tof(), rela_2M11_tom(),
-		shdr_2L11_tof(), shdr_2L11_tom(),
-		shdr_2M11_tof(), shdr_2M11_tom(),
-		sword_2L_tof(), sword_2L_tom(),
-		sword_2M_tof(), sword_2M_tom(),
-		sym_2L11_tof(), sym_2L11_tom(),
-		sym_2M11_tof(), sym_2M11_tom(),
-		syminfo_2L11_tof(), syminfo_2L11_tom(),
-		syminfo_2M11_tof(), syminfo_2M11_tom(),
-		word_2L_tof(), word_2L_tom(),
-		word_2M_tof(), word_2M_tom(),
-		verdef_2L11_tof(), verdef_2L11_tom(),
-		verdef_2M11_tof(), verdef_2M11_tom(),
-		verneed_2L11_tof(), verneed_2L11_tom(),
-		verneed_2M11_tof(), verneed_2M11_tom(),
-		cap_2L11_tof(), cap_2L11_tom(),
-		cap_2M11_tof(), cap_2M11_tom();
+addr_2M_tof(), addr_2M_tom(),
+byte_to(),
+dyn_2L11_tof(), dyn_2L11_tom(),
+dyn_2M11_tof(), dyn_2M11_tom(),
+ehdr_2L11_tof(), ehdr_2L11_tom(),
+ehdr_2M11_tof(), ehdr_2M11_tom(),
+half_2L_tof(), half_2L_tom(),
+half_2M_tof(), half_2M_tom(),
+move_2L11_tof(), move_2L11_tom(),
+move_2M11_tof(), move_2M11_tom(),
+movep_2L11_tof(), movep_2L11_tom(),
+movep_2M11_tof(), movep_2M11_tom(),
+off_2L_tof(), off_2L_tom(),
+off_2M_tof(), off_2M_tom(),
+note_2L11_tof(), note_2L11_tom(),
+note_2M11_tof(), note_2M11_tom(),
+phdr_2L11_tof(), phdr_2L11_tom(),
+phdr_2M11_tof(), phdr_2M11_tom(),
+rel_2L11_tof(), rel_2L11_tom(),
+rel_2M11_tof(), rel_2M11_tom(),
+rela_2L11_tof(), rela_2L11_tom(),
+rela_2M11_tof(), rela_2M11_tom(),
+shdr_2L11_tof(), shdr_2L11_tom(),
+shdr_2M11_tof(), shdr_2M11_tom(),
+sword_2L_tof(), sword_2L_tom(),
+sword_2M_tof(), sword_2M_tom(),
+sym_2L11_tof(), sym_2L11_tom(),
+sym_2M11_tof(), sym_2M11_tom(),
+syminfo_2L11_tof(), syminfo_2L11_tom(),
+syminfo_2M11_tof(), syminfo_2M11_tom(),
+word_2L_tof(), word_2L_tom(),
+word_2M_tof(), word_2M_tom(),
+verdef_2L11_tof(), verdef_2L11_tom(),
+verdef_2M11_tof(), verdef_2M11_tom(),
+verneed_2L11_tof(), verneed_2L11_tom(),
+verneed_2M11_tof(), verneed_2M11_tom(),
+cap_2L11_tof(), cap_2L11_tom(),
+cap_2M11_tof(), cap_2M11_tom();
 
 
 /*	x32 [dst_version - 1] [src_version - 1] [encode - 1] [type]
@@ -656,58 +656,58 @@ static void	addr_2L_tof(), addr_2L_tom(),
 
 static struct {
 	void	(*x_tof)(),
-		(*x_tom)();
+	(*x_tom)();
 } x32 [EV_CURRENT] [EV_CURRENT] [ELFDATANUM - 1] [ELF_T_NUM] =
 {
 	{
 		{
 			{			/* [1-1][1-1][2LSB-1][.] */
-/* BYTE */			{ byte_to, byte_to },
-/* ADDR */			{ addr_2L_tof, addr_2L_tom },
-/* DYN */			{ dyn_2L11_tof, dyn_2L11_tom },
-/* EHDR */			{ ehdr_2L11_tof, ehdr_2L11_tom },
-/* HALF */			{ half_2L_tof, half_2L_tom },
-/* OFF */			{ off_2L_tof, off_2L_tom },
-/* PHDR */			{ phdr_2L11_tof, phdr_2L11_tom },
-/* RELA */			{ rela_2L11_tof, rela_2L11_tom },
-/* REL */			{ rel_2L11_tof, rel_2L11_tom },
-/* SHDR */			{ shdr_2L11_tof, shdr_2L11_tom },
-/* SWORD */			{ sword_2L_tof, sword_2L_tom },
-/* SYM */			{ sym_2L11_tof, sym_2L11_tom },
-/* WORD */			{ word_2L_tof, word_2L_tom },
-/* VERDEF */			{ verdef_2L11_tof, verdef_2L11_tom},
-/* VERNEED */			{ verneed_2L11_tof, verneed_2L11_tom},
-/* SXWORD */			{ 0, 0 },	/* illegal 32-bit op */
-/* XWORD */			{ 0, 0 },	/* illegal 32-bit op */
-/* SYMINFO */			{ syminfo_2L11_tof, syminfo_2L11_tom },
-/* NOTE */			{ note_2L11_tof, note_2L11_tom },
-/* MOVE */			{ move_2L11_tof, move_2L11_tom },
-/* MOVEP */			{ movep_2L11_tof, movep_2L11_tom },
-/* CAP */			{ cap_2L11_tof, cap_2L11_tom },
+				/* BYTE */			{ byte_to, byte_to },
+				/* ADDR */			{ addr_2L_tof, addr_2L_tom },
+				/* DYN */			{ dyn_2L11_tof, dyn_2L11_tom },
+				/* EHDR */			{ ehdr_2L11_tof, ehdr_2L11_tom },
+				/* HALF */			{ half_2L_tof, half_2L_tom },
+				/* OFF */			{ off_2L_tof, off_2L_tom },
+				/* PHDR */			{ phdr_2L11_tof, phdr_2L11_tom },
+				/* RELA */			{ rela_2L11_tof, rela_2L11_tom },
+				/* REL */			{ rel_2L11_tof, rel_2L11_tom },
+				/* SHDR */			{ shdr_2L11_tof, shdr_2L11_tom },
+				/* SWORD */			{ sword_2L_tof, sword_2L_tom },
+				/* SYM */			{ sym_2L11_tof, sym_2L11_tom },
+				/* WORD */			{ word_2L_tof, word_2L_tom },
+				/* VERDEF */			{ verdef_2L11_tof, verdef_2L11_tom},
+				/* VERNEED */			{ verneed_2L11_tof, verneed_2L11_tom},
+				/* SXWORD */			{ 0, 0 },	/* illegal 32-bit op */
+				/* XWORD */			{ 0, 0 },	/* illegal 32-bit op */
+				/* SYMINFO */			{ syminfo_2L11_tof, syminfo_2L11_tom },
+				/* NOTE */			{ note_2L11_tof, note_2L11_tom },
+				/* MOVE */			{ move_2L11_tof, move_2L11_tom },
+				/* MOVEP */			{ movep_2L11_tof, movep_2L11_tom },
+				/* CAP */			{ cap_2L11_tof, cap_2L11_tom },
 			},
 			{			/* [1-1][1-1][2MSB-1][.] */
-/* BYTE */			{ byte_to, byte_to },
-/* ADDR */			{ addr_2M_tof, addr_2M_tom },
-/* DYN */			{ dyn_2M11_tof, dyn_2M11_tom },
-/* EHDR */			{ ehdr_2M11_tof, ehdr_2M11_tom },
-/* HALF */			{ half_2M_tof, half_2M_tom },
-/* OFF */			{ off_2M_tof, off_2M_tom },
-/* PHDR */			{ phdr_2M11_tof, phdr_2M11_tom },
-/* RELA */			{ rela_2M11_tof, rela_2M11_tom },
-/* REL */			{ rel_2M11_tof, rel_2M11_tom },
-/* SHDR */			{ shdr_2M11_tof, shdr_2M11_tom },
-/* SWORD */			{ sword_2M_tof, sword_2M_tom },
-/* SYM */			{ sym_2M11_tof, sym_2M11_tom },
-/* WORD */			{ word_2M_tof, word_2M_tom },
-/* VERDEF */			{ verdef_2M11_tof, verdef_2M11_tom},
-/* VERNEED */			{ verneed_2M11_tof, verneed_2M11_tom},
-/* SXWORD */			{ 0, 0 },	/* illegal 32-bit op */
-/* XWORD */			{ 0, 0 },	/* illegal 32-bit op */
-/* SYMINFO */			{ syminfo_2M11_tof, syminfo_2M11_tom },
-/* NOTE */			{ note_2M11_tof, note_2M11_tom },
-/* MOVE */			{ move_2M11_tof, move_2M11_tom },
-/* MOVEP */			{ movep_2M11_tof, movep_2M11_tom },
-/* CAP */			{ cap_2M11_tof, cap_2M11_tom },
+				/* BYTE */			{ byte_to, byte_to },
+				/* ADDR */			{ addr_2M_tof, addr_2M_tom },
+				/* DYN */			{ dyn_2M11_tof, dyn_2M11_tom },
+				/* EHDR */			{ ehdr_2M11_tof, ehdr_2M11_tom },
+				/* HALF */			{ half_2M_tof, half_2M_tom },
+				/* OFF */			{ off_2M_tof, off_2M_tom },
+				/* PHDR */			{ phdr_2M11_tof, phdr_2M11_tom },
+				/* RELA */			{ rela_2M11_tof, rela_2M11_tom },
+				/* REL */			{ rel_2M11_tof, rel_2M11_tom },
+				/* SHDR */			{ shdr_2M11_tof, shdr_2M11_tom },
+				/* SWORD */			{ sword_2M_tof, sword_2M_tom },
+				/* SYM */			{ sym_2M11_tof, sym_2M11_tom },
+				/* WORD */			{ word_2M_tof, word_2M_tom },
+				/* VERDEF */			{ verdef_2M11_tof, verdef_2M11_tom},
+				/* VERNEED */			{ verneed_2M11_tof, verneed_2M11_tom},
+				/* SXWORD */			{ 0, 0 },	/* illegal 32-bit op */
+				/* XWORD */			{ 0, 0 },	/* illegal 32-bit op */
+				/* SYMINFO */			{ syminfo_2M11_tof, syminfo_2M11_tom },
+				/* NOTE */			{ note_2M11_tof, note_2M11_tom },
+				/* MOVE */			{ move_2M11_tof, move_2M11_tom },
+				/* MOVEP */			{ movep_2M11_tof, movep_2M11_tom },
+				/* CAP */			{ cap_2M11_tof, cap_2M11_tom },
 			},
 		},
 	},
@@ -720,34 +720,34 @@ static struct {
 
 static const struct {
 	size_t	s_filesz,
-		s_memsz;
+	s_memsz;
 } fmsize [EV_CURRENT] [ELF_T_NUM] =
 {
 	{					/* [1-1][.] */
-/* BYTE */	{ 1, 1 },
-/* ADDR */	{ A_sizeof, sizeof (Elf32_Addr) },
-/* DYN */	{ D1_sizeof, sizeof (Elf32_Dyn) },
-/* EHDR */	{ E1_sizeof, sizeof (Elf32_Ehdr) },
-/* HALF */	{ H_sizeof, sizeof (Elf32_Half) },
-/* OFF */	{ O_sizeof, sizeof (Elf32_Off) },
-/* PHDR */	{ P1_sizeof, sizeof (Elf32_Phdr) },
-/* RELA */	{ RA1_sizeof, sizeof (Elf32_Rela) },
-/* REL */	{ R1_sizeof, sizeof (Elf32_Rel) },
-/* SHDR */	{ SH1_sizeof, sizeof (Elf32_Shdr) },
-/* SWORD */	{ W_sizeof, sizeof (Elf32_Sword) },
-/* SYM */	{ ST1_sizeof, sizeof (Elf32_Sym) },
-/* WORD */	{ W_sizeof, sizeof (Elf32_Word) },
-/* VERDEF */	{ 1, 1},	/* because bot VERDEF & VERNEED have varying */
-/* VERNEED */	{ 1, 1},	/* sized structures we set their sizes */
-				/* to 1 byte */
-/* SXWORD */			{ 0, 0 },	/* illegal 32-bit op */
-/* XWORD */			{ 0, 0 },	/* illegal 32-bit op */
-/* SYMINFO */	{ SI1_sizeof, sizeof (Elf32_Syminfo) },
-/* NOTE */	{ 1, 1},	/* NOTE has varying sized data we can't */
-				/*  use the usual table magic. */
-/* MOVE */	{ M1_sizeof, sizeof (Elf32_Move) },
-/* MOVEP */	{ MP1_sizeof, sizeof (Elf32_Move) },
-/* CAP */	{ C1_sizeof, sizeof (Elf32_Cap) },
+		/* BYTE */	{ 1, 1 },
+		/* ADDR */	{ A_sizeof, sizeof (Elf32_Addr) },
+		/* DYN */	{ D1_sizeof, sizeof (Elf32_Dyn) },
+		/* EHDR */	{ E1_sizeof, sizeof (Elf32_Ehdr) },
+		/* HALF */	{ H_sizeof, sizeof (Elf32_Half) },
+		/* OFF */	{ O_sizeof, sizeof (Elf32_Off) },
+		/* PHDR */	{ P1_sizeof, sizeof (Elf32_Phdr) },
+		/* RELA */	{ RA1_sizeof, sizeof (Elf32_Rela) },
+		/* REL */	{ R1_sizeof, sizeof (Elf32_Rel) },
+		/* SHDR */	{ SH1_sizeof, sizeof (Elf32_Shdr) },
+		/* SWORD */	{ W_sizeof, sizeof (Elf32_Sword) },
+		/* SYM */	{ ST1_sizeof, sizeof (Elf32_Sym) },
+		/* WORD */	{ W_sizeof, sizeof (Elf32_Word) },
+		/* VERDEF */	{ 1, 1},	/* because bot VERDEF & VERNEED have varying */
+		/* VERNEED */	{ 1, 1},	/* sized structures we set their sizes */
+		/* to 1 byte */
+		/* SXWORD */			{ 0, 0 },	/* illegal 32-bit op */
+		/* XWORD */			{ 0, 0 },	/* illegal 32-bit op */
+		/* SYMINFO */	{ SI1_sizeof, sizeof (Elf32_Syminfo) },
+		/* NOTE */	{ 1, 1},	/* NOTE has varying sized data we can't */
+		/*  use the usual table magic. */
+		/* MOVE */	{ M1_sizeof, sizeof (Elf32_Move) },
+		/* MOVEP */	{ MP1_sizeof, sizeof (Elf32_Move) },
+		/* CAP */	{ C1_sizeof, sizeof (Elf32_Cap) },
 	},
 };
 
@@ -757,27 +757,27 @@ static const struct {
  */
 
 static const Elf_Type	mtype[EV_CURRENT][SHT_NUM] =
-{ 
+{
 	{			/* [1-1][.] */
-/* NULL */		ELF_T_BYTE,
-/* PROGBITS */		ELF_T_BYTE,
-/* SYMTAB */		ELF_T_SYM,
-/* STRTAB */		ELF_T_BYTE,
-/* RELA */		ELF_T_RELA,
-/* HASH */		ELF_T_WORD,
-/* DYNAMIC */		ELF_T_DYN,
-/* NOTE */		ELF_T_NOTE,
-/* NOBITS */		ELF_T_BYTE,
-/* REL */		ELF_T_REL,
-/* SHLIB */		ELF_T_BYTE,
-/* DYNSYM */		ELF_T_SYM,
-/* UNKNOWN12 */		ELF_T_BYTE,
-/* UNKNOWN13 */		ELF_T_BYTE,
-/* INIT_ARRAY */	ELF_T_ADDR,
-/* FINI_ARRAY */	ELF_T_ADDR,
-/* PREINIT_ARRAY */	ELF_T_ADDR,
-/* GROUP */		ELF_T_WORD,
-/* SYMTAB_SHNDX */	ELF_T_WORD
+		/* NULL */		ELF_T_BYTE,
+		/* PROGBITS */		ELF_T_BYTE,
+		/* SYMTAB */		ELF_T_SYM,
+		/* STRTAB */		ELF_T_BYTE,
+		/* RELA */		ELF_T_RELA,
+		/* HASH */		ELF_T_WORD,
+		/* DYNAMIC */		ELF_T_DYN,
+		/* NOTE */		ELF_T_NOTE,
+		/* NOBITS */		ELF_T_BYTE,
+		/* REL */		ELF_T_REL,
+		/* SHLIB */		ELF_T_BYTE,
+		/* DYNSYM */		ELF_T_SYM,
+		/* UNKNOWN12 */		ELF_T_BYTE,
+		/* UNKNOWN13 */		ELF_T_BYTE,
+		/* INIT_ARRAY */	ELF_T_ADDR,
+		/* FINI_ARRAY */	ELF_T_ADDR,
+		/* PREINIT_ARRAY */	ELF_T_ADDR,
+		/* GROUP */		ELF_T_WORD,
+		/* SYMTAB_SHNDX */	ELF_T_WORD
 	},
 };
 
@@ -813,45 +813,45 @@ _elf32_mtype(Elf * elf, Elf32_Word shtype, unsigned ver)
 		return (mtype[ver - 1][shtype]);
 
 	switch (shtype) {
-	case SHT_SUNW_symsort:
-	case SHT_SUNW_tlssort:
-		return (ELF_T_WORD);
-	case SHT_SUNW_LDYNSYM:
-		return (ELF_T_SYM);
-	case SHT_SUNW_dof:
-		return (ELF_T_BYTE);
-	case SHT_SUNW_cap:
-		return (ELF_T_CAP);
-	case SHT_SUNW_SIGNATURE:
-		return (ELF_T_BYTE);
-	case SHT_SUNW_ANNOTATE:
-		return (ELF_T_BYTE);
-	case SHT_SUNW_DEBUGSTR:
-		return (ELF_T_BYTE);
-	case SHT_SUNW_DEBUG:
-		return (ELF_T_BYTE);
-	case SHT_SUNW_move:
-		/*
-		 * 32bit sparc binaries have a padded
-		 * MOVE structure.  So - return the
-		 * appropriate type.
-		 */
-		if ((ehdr->e_machine == EM_SPARC) ||
-		    (ehdr->e_machine == EM_SPARC32PLUS)) {
-			return (ELF_T_MOVEP);
-		}
+		case SHT_SUNW_symsort:
+		case SHT_SUNW_tlssort:
+			return (ELF_T_WORD);
+		case SHT_SUNW_LDYNSYM:
+			return (ELF_T_SYM);
+		case SHT_SUNW_dof:
+			return (ELF_T_BYTE);
+		case SHT_SUNW_cap:
+			return (ELF_T_CAP);
+		case SHT_SUNW_SIGNATURE:
+			return (ELF_T_BYTE);
+		case SHT_SUNW_ANNOTATE:
+			return (ELF_T_BYTE);
+		case SHT_SUNW_DEBUGSTR:
+			return (ELF_T_BYTE);
+		case SHT_SUNW_DEBUG:
+			return (ELF_T_BYTE);
+		case SHT_SUNW_move:
+			/*
+			 * 32bit sparc binaries have a padded
+			 * MOVE structure.  So - return the
+			 * appropriate type.
+			 */
+			if ((ehdr->e_machine == EM_SPARC) ||
+				(ehdr->e_machine == EM_SPARC32PLUS)) {
+				return (ELF_T_MOVEP);
+			}
 
-		return (ELF_T_MOVE);
-	case SHT_SUNW_COMDAT:
-		return (ELF_T_BYTE);
-	case SHT_SUNW_syminfo:
-		return (ELF_T_SYMINFO);
-	case SHT_SUNW_verdef:
-		return (ELF_T_VDEF);
-	case SHT_SUNW_verneed:
-		return (ELF_T_VNEED);
-	case SHT_SUNW_versym:
-		return (ELF_T_HALF);
+			return (ELF_T_MOVE);
+		case SHT_SUNW_COMDAT:
+			return (ELF_T_BYTE);
+		case SHT_SUNW_syminfo:
+			return (ELF_T_SYMINFO);
+		case SHT_SUNW_verdef:
+			return (ELF_T_VDEF);
+		case SHT_SUNW_verneed:
+			return (ELF_T_VNEED);
+		case SHT_SUNW_versym:
+			return (ELF_T_HALF);
 	};
 
 	/*
@@ -859,9 +859,9 @@ _elf32_mtype(Elf * elf, Elf32_Word shtype, unsigned ver)
 	 * below.
 	 */
 	if (((ehdr->e_machine == EM_SPARC) ||
-	    (ehdr->e_machine == EM_SPARC32PLUS) ||
-	    (ehdr->e_machine == EM_SPARCV9)) &&
-	    (shtype == SHT_SPARC_GOTDATA))
+		 (ehdr->e_machine == EM_SPARC32PLUS) ||
+		 (ehdr->e_machine == EM_SPARCV9)) &&
+		(shtype == SHT_SPARC_GOTDATA))
 		return (ELF_T_BYTE);
 
 	/*
@@ -869,7 +869,7 @@ _elf32_mtype(Elf * elf, Elf32_Word shtype, unsigned ver)
 	 * below.
 	 */
 	if ((ehdr->e_machine == EM_AMD64) &&
-	    (shtype == SHT_AMD64_UNWIND))
+		(shtype == SHT_AMD64_UNWIND))
 		return (ELF_T_BYTE);
 
 	/*
@@ -887,7 +887,7 @@ _elf32_entsz(Elf *elf, Elf32_Word shtype, unsigned ver)
 	Elf_Type	ttype;
 
 	ttype = _elf32_mtype(elf, shtype, ver);
-	return ((ttype == ELF_T_BYTE) ? 0 : fmsize[ver - 1][ttype].s_filesz); 
+	return ((ttype == ELF_T_BYTE) ? 0 : fmsize[ver - 1][ttype].s_filesz);
 }
 
 
@@ -905,16 +905,16 @@ _elf_sys_encoding(void)
 	u.w = 0x10203;
 	/*CONSTANTCONDITION*/
 	if (~(Elf32_Word)0 == -(Elf32_Sword)1 && (((((((Elf32_Word)(u.c)[W_L3]<<8)
-		+(u.c)[W_L2])<<8)
-		+(u.c)[W_L1])<<8)
-		+(u.c)[W_L0]) == 0x10203)
+												  +(u.c)[W_L2])<<8)
+												+(u.c)[W_L1])<<8)
+											  +(u.c)[W_L0]) == 0x10203)
 		return (ELFDATA2LSB);
 
 	/*CONSTANTCONDITION*/
 	if (~(Elf32_Word)0 == -(Elf32_Sword)1 && (((((((Elf32_Word)(u.c)[W_M3]<<8)
-		+(u.c)[W_M2])<<8)
-		+(u.c)[W_M1])<<8)
-		+(u.c)[W_M0]) == 0x10203)
+												  +(u.c)[W_M2])<<8)
+												+(u.c)[W_M1])<<8)
+											  +(u.c)[W_M0]) == 0x10203)
 		return (ELFDATA2MSB);
 
 	/* Not expected to occur */
@@ -960,7 +960,7 @@ elf_version(unsigned ver)
 
 static Elf_Data *
 xlate(Elf_Data *dst, const Elf_Data *src, unsigned encode, int tof)
-						/* tof !0 -> xlatetof */
+/* tof !0 -> xlatetof */
 {
 	size_t		cnt, dsz, ssz;
 	unsigned	type;
@@ -975,7 +975,7 @@ xlate(Elf_Data *dst, const Elf_Data *src, unsigned encode, int tof)
 		return (0);
 	}
 	if ((dver = dst->d_version - 1) >= EV_CURRENT ||
-	    (sver = src->d_version - 1) >= EV_CURRENT) {
+		(sver = src->d_version - 1) >= EV_CURRENT) {
 		_elf_seterr(EREQ_VER, 0);
 		return (0);
 	}
@@ -1057,10 +1057,10 @@ addr_2L_tof(unsigned char *dst, Elf32_Addr *src, size_t cnt)
 
 	do {
 		{ register Elf32_Addr _t_ = *src;
-		(dst)[A_L0] = (unsigned char)_t_,
-		(dst)[A_L1] = (unsigned char)(_t_>>8),
-		(dst)[A_L2] = (unsigned char)(_t_>>16),
-		(dst)[A_L3] = (unsigned char)(_t_>>24); };
+			(dst)[A_L0] = (unsigned char)_t_,
+			(dst)[A_L1] = (unsigned char)(_t_>>8),
+			(dst)[A_L2] = (unsigned char)(_t_>>16),
+			(dst)[A_L3] = (unsigned char)(_t_>>24); };
 		dst += A_sizeof;
 	} while (++src < end);
 }
@@ -1072,10 +1072,10 @@ addr_2M_tof(unsigned char *dst, Elf32_Addr *src, size_t cnt)
 
 	do {
 		{ register Elf32_Addr _t_ = *src;
-		(dst)[A_M0] = (unsigned char)_t_,
-		(dst)[A_M1] = (unsigned char)(_t_>>8),
-		(dst)[A_M2] = (unsigned char)(_t_>>16),
-		(dst)[A_M3] = (unsigned char)(_t_>>24); };
+			(dst)[A_M0] = (unsigned char)_t_,
+			(dst)[A_M1] = (unsigned char)(_t_>>8),
+			(dst)[A_M2] = (unsigned char)(_t_>>16),
+			(dst)[A_M3] = (unsigned char)(_t_>>24); };
 		dst += A_sizeof;
 	} while (++src < end);
 }
@@ -1099,15 +1099,15 @@ dyn_2L11_tof(unsigned char *dst, Elf32_Dyn *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->d_tag;
-		(dst)[D1_tag_L0] = (unsigned char)_t_,
-		(dst)[D1_tag_L1] = (unsigned char)(_t_>>8),
-		(dst)[D1_tag_L2] = (unsigned char)(_t_>>16),
-		(dst)[D1_tag_L3] = (unsigned char)(_t_>>24); };
+			(dst)[D1_tag_L0] = (unsigned char)_t_,
+			(dst)[D1_tag_L1] = (unsigned char)(_t_>>8),
+			(dst)[D1_tag_L2] = (unsigned char)(_t_>>16),
+			(dst)[D1_tag_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->d_un.d_val;
-		(dst)[D1_val_L0] = (unsigned char)_t_,
-		(dst)[D1_val_L1] = (unsigned char)(_t_>>8),
-		(dst)[D1_val_L2] = (unsigned char)(_t_>>16),
-		(dst)[D1_val_L3] = (unsigned char)(_t_>>24); };
+			(dst)[D1_val_L0] = (unsigned char)_t_,
+			(dst)[D1_val_L1] = (unsigned char)(_t_>>8),
+			(dst)[D1_val_L2] = (unsigned char)(_t_>>16),
+			(dst)[D1_val_L3] = (unsigned char)(_t_>>24); };
 		dst += D1_sizeof;
 	} while (++src < end);
 }
@@ -1119,15 +1119,15 @@ dyn_2M11_tof(unsigned char *dst, Elf32_Dyn *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->d_tag;
-		(dst)[D1_tag_M0] = (unsigned char)_t_,
-		(dst)[D1_tag_M1] = (unsigned char)(_t_>>8),
-		(dst)[D1_tag_M2] = (unsigned char)(_t_>>16),
-		(dst)[D1_tag_M3] = (unsigned char)(_t_>>24); };
+			(dst)[D1_tag_M0] = (unsigned char)_t_,
+			(dst)[D1_tag_M1] = (unsigned char)(_t_>>8),
+			(dst)[D1_tag_M2] = (unsigned char)(_t_>>16),
+			(dst)[D1_tag_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->d_un.d_val;
-		(dst)[D1_val_M0] = (unsigned char)_t_,
-		(dst)[D1_val_M1] = (unsigned char)(_t_>>8),
-		(dst)[D1_val_M2] = (unsigned char)(_t_>>16),
-		(dst)[D1_val_M3] = (unsigned char)(_t_>>24); };
+			(dst)[D1_val_M0] = (unsigned char)_t_,
+			(dst)[D1_val_M1] = (unsigned char)(_t_>>8),
+			(dst)[D1_val_M2] = (unsigned char)(_t_>>16),
+			(dst)[D1_val_M3] = (unsigned char)(_t_>>24); };
 		dst += D1_sizeof;
 	} while (++src < end);
 }
@@ -1145,54 +1145,54 @@ ehdr_2L11_tof(unsigned char *dst, Elf32_Ehdr *src, size_t cnt)
 		if (&dst[E1_ident] != src->e_ident)
 			(void) memcpy(&dst[E1_ident], src->e_ident, E1_Nident);
 		{ register Elf32_Half _t_ = src->e_type;
-		(dst)[E1_type_L0] = (unsigned char)_t_,
-		(dst)[E1_type_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_type_L0] = (unsigned char)_t_,
+			(dst)[E1_type_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_machine;
-		(dst)[E1_machine_L0] = (unsigned char)_t_,
-		(dst)[E1_machine_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_machine_L0] = (unsigned char)_t_,
+			(dst)[E1_machine_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Word _t_ = src->e_version;
-		(dst)[E1_version_L0] = (unsigned char)_t_,
-		(dst)[E1_version_L1] = (unsigned char)(_t_>>8),
-		(dst)[E1_version_L2] = (unsigned char)(_t_>>16),
-		(dst)[E1_version_L3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_version_L0] = (unsigned char)_t_,
+			(dst)[E1_version_L1] = (unsigned char)(_t_>>8),
+			(dst)[E1_version_L2] = (unsigned char)(_t_>>16),
+			(dst)[E1_version_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->e_entry;
-		(dst)[E1_entry_L0] = (unsigned char)_t_,
-		(dst)[E1_entry_L1] = (unsigned char)(_t_>>8),
-		(dst)[E1_entry_L2] = (unsigned char)(_t_>>16),
-		(dst)[E1_entry_L3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_entry_L0] = (unsigned char)_t_,
+			(dst)[E1_entry_L1] = (unsigned char)(_t_>>8),
+			(dst)[E1_entry_L2] = (unsigned char)(_t_>>16),
+			(dst)[E1_entry_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->e_phoff;
-		(dst)[E1_phoff_L0] = (unsigned char)_t_,
-		(dst)[E1_phoff_L1] = (unsigned char)(_t_>>8),
-		(dst)[E1_phoff_L2] = (unsigned char)(_t_>>16),
-		(dst)[E1_phoff_L3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_phoff_L0] = (unsigned char)_t_,
+			(dst)[E1_phoff_L1] = (unsigned char)(_t_>>8),
+			(dst)[E1_phoff_L2] = (unsigned char)(_t_>>16),
+			(dst)[E1_phoff_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->e_shoff;
-		(dst)[E1_shoff_L0] = (unsigned char)_t_,
-		(dst)[E1_shoff_L1] = (unsigned char)(_t_>>8),
-		(dst)[E1_shoff_L2] = (unsigned char)(_t_>>16),
-		(dst)[E1_shoff_L3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_shoff_L0] = (unsigned char)_t_,
+			(dst)[E1_shoff_L1] = (unsigned char)(_t_>>8),
+			(dst)[E1_shoff_L2] = (unsigned char)(_t_>>16),
+			(dst)[E1_shoff_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->e_flags;
-		(dst)[E1_flags_L0] = (unsigned char)_t_,
-		(dst)[E1_flags_L1] = (unsigned char)(_t_>>8),
-		(dst)[E1_flags_L2] = (unsigned char)(_t_>>16),
-		(dst)[E1_flags_L3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_flags_L0] = (unsigned char)_t_,
+			(dst)[E1_flags_L1] = (unsigned char)(_t_>>8),
+			(dst)[E1_flags_L2] = (unsigned char)(_t_>>16),
+			(dst)[E1_flags_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Half _t_ = src->e_ehsize;
-		(dst)[E1_ehsize_L0] = (unsigned char)_t_,
-		(dst)[E1_ehsize_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_ehsize_L0] = (unsigned char)_t_,
+			(dst)[E1_ehsize_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_phentsize;
-		(dst)[E1_phentsize_L0] = (unsigned char)_t_,
-		(dst)[E1_phentsize_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_phentsize_L0] = (unsigned char)_t_,
+			(dst)[E1_phentsize_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_phnum;
-		(dst)[E1_phnum_L0] = (unsigned char)_t_,
-		(dst)[E1_phnum_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_phnum_L0] = (unsigned char)_t_,
+			(dst)[E1_phnum_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_shentsize;
-		(dst)[E1_shentsize_L0] = (unsigned char)_t_,
-		(dst)[E1_shentsize_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_shentsize_L0] = (unsigned char)_t_,
+			(dst)[E1_shentsize_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_shnum;
-		(dst)[E1_shnum_L0] = (unsigned char)_t_,
-		(dst)[E1_shnum_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_shnum_L0] = (unsigned char)_t_,
+			(dst)[E1_shnum_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_shstrndx;
-		(dst)[E1_shstrndx_L0] = (unsigned char)_t_,
-		(dst)[E1_shstrndx_L1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_shstrndx_L0] = (unsigned char)_t_,
+			(dst)[E1_shstrndx_L1] = (unsigned char)(_t_>>8); };
 		dst += E1_sizeof;
 	} while (++src < end);
 }
@@ -1206,54 +1206,54 @@ ehdr_2M11_tof(unsigned char *dst, Elf32_Ehdr *src, size_t cnt)
 		if (&dst[E1_ident] != src->e_ident)
 			(void) memcpy(&dst[E1_ident], src->e_ident, E1_Nident);
 		{ register Elf32_Half _t_ = src->e_type;
-		(dst)[E1_type_M0] = (unsigned char)_t_,
-		(dst)[E1_type_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_type_M0] = (unsigned char)_t_,
+			(dst)[E1_type_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_machine;
-		(dst)[E1_machine_M0] = (unsigned char)_t_,
-		(dst)[E1_machine_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_machine_M0] = (unsigned char)_t_,
+			(dst)[E1_machine_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Word _t_ = src->e_version;
-		(dst)[E1_version_M0] = (unsigned char)_t_,
-		(dst)[E1_version_M1] = (unsigned char)(_t_>>8),
-		(dst)[E1_version_M2] = (unsigned char)(_t_>>16),
-		(dst)[E1_version_M3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_version_M0] = (unsigned char)_t_,
+			(dst)[E1_version_M1] = (unsigned char)(_t_>>8),
+			(dst)[E1_version_M2] = (unsigned char)(_t_>>16),
+			(dst)[E1_version_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->e_entry;
-		(dst)[E1_entry_M0] = (unsigned char)_t_,
-		(dst)[E1_entry_M1] = (unsigned char)(_t_>>8),
-		(dst)[E1_entry_M2] = (unsigned char)(_t_>>16),
-		(dst)[E1_entry_M3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_entry_M0] = (unsigned char)_t_,
+			(dst)[E1_entry_M1] = (unsigned char)(_t_>>8),
+			(dst)[E1_entry_M2] = (unsigned char)(_t_>>16),
+			(dst)[E1_entry_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->e_phoff;
-		(dst)[E1_phoff_M0] = (unsigned char)_t_,
-		(dst)[E1_phoff_M1] = (unsigned char)(_t_>>8),
-		(dst)[E1_phoff_M2] = (unsigned char)(_t_>>16),
-		(dst)[E1_phoff_M3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_phoff_M0] = (unsigned char)_t_,
+			(dst)[E1_phoff_M1] = (unsigned char)(_t_>>8),
+			(dst)[E1_phoff_M2] = (unsigned char)(_t_>>16),
+			(dst)[E1_phoff_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->e_shoff;
-		(dst)[E1_shoff_M0] = (unsigned char)_t_,
-		(dst)[E1_shoff_M1] = (unsigned char)(_t_>>8),
-		(dst)[E1_shoff_M2] = (unsigned char)(_t_>>16),
-		(dst)[E1_shoff_M3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_shoff_M0] = (unsigned char)_t_,
+			(dst)[E1_shoff_M1] = (unsigned char)(_t_>>8),
+			(dst)[E1_shoff_M2] = (unsigned char)(_t_>>16),
+			(dst)[E1_shoff_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->e_flags;
-		(dst)[E1_flags_M0] = (unsigned char)_t_,
-		(dst)[E1_flags_M1] = (unsigned char)(_t_>>8),
-		(dst)[E1_flags_M2] = (unsigned char)(_t_>>16),
-		(dst)[E1_flags_M3] = (unsigned char)(_t_>>24); };
+			(dst)[E1_flags_M0] = (unsigned char)_t_,
+			(dst)[E1_flags_M1] = (unsigned char)(_t_>>8),
+			(dst)[E1_flags_M2] = (unsigned char)(_t_>>16),
+			(dst)[E1_flags_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Half _t_ = src->e_ehsize;
-		(dst)[E1_ehsize_M0] = (unsigned char)_t_,
-		(dst)[E1_ehsize_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_ehsize_M0] = (unsigned char)_t_,
+			(dst)[E1_ehsize_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_phentsize;
-		(dst)[E1_phentsize_M0] = (unsigned char)_t_,
-		(dst)[E1_phentsize_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_phentsize_M0] = (unsigned char)_t_,
+			(dst)[E1_phentsize_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_phnum;
-		(dst)[E1_phnum_M0] = (unsigned char)_t_,
-		(dst)[E1_phnum_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_phnum_M0] = (unsigned char)_t_,
+			(dst)[E1_phnum_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_shentsize;
-		(dst)[E1_shentsize_M0] = (unsigned char)_t_,
-		(dst)[E1_shentsize_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_shentsize_M0] = (unsigned char)_t_,
+			(dst)[E1_shentsize_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_shnum;
-		(dst)[E1_shnum_M0] = (unsigned char)_t_,
-		(dst)[E1_shnum_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_shnum_M0] = (unsigned char)_t_,
+			(dst)[E1_shnum_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->e_shstrndx;
-		(dst)[E1_shstrndx_M0] = (unsigned char)_t_,
-		(dst)[E1_shstrndx_M1] = (unsigned char)(_t_>>8); };
+			(dst)[E1_shstrndx_M0] = (unsigned char)_t_,
+			(dst)[E1_shstrndx_M1] = (unsigned char)(_t_>>8); };
 		dst += E1_sizeof;
 	} while (++src < end);
 }
@@ -1269,8 +1269,8 @@ half_2L_tof(unsigned char *dst, Elf32_Half *src, size_t cnt)
 
 	do {
 		{ register Elf32_Half _t_ = *src;
-		(dst)[H_L0] = (unsigned char)_t_,
-		(dst)[H_L1] = (unsigned char)(_t_>>8); };
+			(dst)[H_L0] = (unsigned char)_t_,
+			(dst)[H_L1] = (unsigned char)(_t_>>8); };
 		dst += H_sizeof;
 	} while (++src < end);
 }
@@ -1282,8 +1282,8 @@ half_2M_tof(unsigned char *dst, Elf32_Half *src, size_t cnt)
 
 	do {
 		{ register Elf32_Half _t_ = *src;
-		(dst)[H_M0] = (unsigned char)_t_,
-		(dst)[H_M1] = (unsigned char)(_t_>>8); };
+			(dst)[H_M0] = (unsigned char)_t_,
+			(dst)[H_M1] = (unsigned char)(_t_>>8); };
 		dst += H_sizeof;
 	} while (++src < end);
 }
@@ -1299,30 +1299,30 @@ move_2L11_tof(unsigned char *dst, Elf32_Move *src, size_t cnt)
 
 	do {
 		{ Elf32_Lword _t_ = src->m_value;
-		(dst)[M1_value_L0] = (Byte)_t_,
-		(dst)[M1_value_L1] = (Byte)(_t_>>8),
-		(dst)[M1_value_L2] = (Byte)(_t_>>16),
-		(dst)[M1_value_L3] = (Byte)(_t_>>24),
-		(dst)[M1_value_L4] = (Byte)(_t_>>32),
-		(dst)[M1_value_L5] = (Byte)(_t_>>40),
-		(dst)[M1_value_L6] = (Byte)(_t_>>48),
-		(dst)[M1_value_L7] = (Byte)(_t_>>56); };
+			(dst)[M1_value_L0] = (Byte)_t_,
+			(dst)[M1_value_L1] = (Byte)(_t_>>8),
+			(dst)[M1_value_L2] = (Byte)(_t_>>16),
+			(dst)[M1_value_L3] = (Byte)(_t_>>24),
+			(dst)[M1_value_L4] = (Byte)(_t_>>32),
+			(dst)[M1_value_L5] = (Byte)(_t_>>40),
+			(dst)[M1_value_L6] = (Byte)(_t_>>48),
+			(dst)[M1_value_L7] = (Byte)(_t_>>56); };
 		{ register Elf32_Word _t_ = src->m_info;
-		(dst)[M1_info_L0] = (unsigned char)_t_,
-		(dst)[M1_info_L1] = (unsigned char)(_t_>>8),
-		(dst)[M1_info_L2] = (unsigned char)(_t_>>16),
-		(dst)[M1_info_L3] = (unsigned char)(_t_>>24); };
+			(dst)[M1_info_L0] = (unsigned char)_t_,
+			(dst)[M1_info_L1] = (unsigned char)(_t_>>8),
+			(dst)[M1_info_L2] = (unsigned char)(_t_>>16),
+			(dst)[M1_info_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->m_poffset;
-		(dst)[M1_poffset_L0] = (unsigned char)_t_,
-		(dst)[M1_poffset_L1] = (unsigned char)(_t_>>8),
-		(dst)[M1_poffset_L2] = (unsigned char)(_t_>>16),
-		(dst)[M1_poffset_L3] = (unsigned char)(_t_>>24); };
+			(dst)[M1_poffset_L0] = (unsigned char)_t_,
+			(dst)[M1_poffset_L1] = (unsigned char)(_t_>>8),
+			(dst)[M1_poffset_L2] = (unsigned char)(_t_>>16),
+			(dst)[M1_poffset_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Half _t_ = src->m_repeat;
-		(dst)[M1_repeat_L0] = (unsigned char)_t_,
-		(dst)[M1_repeat_L1] = (unsigned char)(_t_>>8); };
+			(dst)[M1_repeat_L0] = (unsigned char)_t_,
+			(dst)[M1_repeat_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->m_stride;
-		(dst)[M1_stride_L0] = (unsigned char)_t_,
-		(dst)[M1_stride_L1] = (unsigned char)(_t_>>8); };
+			(dst)[M1_stride_L0] = (unsigned char)_t_,
+			(dst)[M1_stride_L1] = (unsigned char)(_t_>>8); };
 		dst += M1_sizeof;
 	} while (++src < end);
 }
@@ -1334,30 +1334,30 @@ move_2M11_tof(unsigned char *dst, Elf32_Move *src, size_t cnt)
 
 	do {
 		{ Elf32_Lword _t_ = src->m_value;
-		(dst)[M1_value_M0] = (Byte)_t_,
-		(dst)[M1_value_M1] = (Byte)(_t_>>8),
-		(dst)[M1_value_M2] = (Byte)(_t_>>16),
-		(dst)[M1_value_M3] = (Byte)(_t_>>24),
-		(dst)[M1_value_M4] = (Byte)(_t_>>32),
-		(dst)[M1_value_M5] = (Byte)(_t_>>40),
-		(dst)[M1_value_M6] = (Byte)(_t_>>48),
-		(dst)[M1_value_M7] = (Byte)(_t_>>56); };
+			(dst)[M1_value_M0] = (Byte)_t_,
+			(dst)[M1_value_M1] = (Byte)(_t_>>8),
+			(dst)[M1_value_M2] = (Byte)(_t_>>16),
+			(dst)[M1_value_M3] = (Byte)(_t_>>24),
+			(dst)[M1_value_M4] = (Byte)(_t_>>32),
+			(dst)[M1_value_M5] = (Byte)(_t_>>40),
+			(dst)[M1_value_M6] = (Byte)(_t_>>48),
+			(dst)[M1_value_M7] = (Byte)(_t_>>56); };
 		{ register Elf32_Word _t_ = src->m_info;
-		(dst)[M1_info_M0] = (unsigned char)_t_,
-		(dst)[M1_info_M1] = (unsigned char)(_t_>>8),
-		(dst)[M1_info_M2] = (unsigned char)(_t_>>16),
-		(dst)[M1_info_M3] = (unsigned char)(_t_>>24); };
+			(dst)[M1_info_M0] = (unsigned char)_t_,
+			(dst)[M1_info_M1] = (unsigned char)(_t_>>8),
+			(dst)[M1_info_M2] = (unsigned char)(_t_>>16),
+			(dst)[M1_info_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->m_poffset;
-		(dst)[M1_poffset_M0] = (unsigned char)_t_,
-		(dst)[M1_poffset_M1] = (unsigned char)(_t_>>8),
-		(dst)[M1_poffset_M2] = (unsigned char)(_t_>>16),
-		(dst)[M1_poffset_M3] = (unsigned char)(_t_>>24); };
+			(dst)[M1_poffset_M0] = (unsigned char)_t_,
+			(dst)[M1_poffset_M1] = (unsigned char)(_t_>>8),
+			(dst)[M1_poffset_M2] = (unsigned char)(_t_>>16),
+			(dst)[M1_poffset_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Half _t_ = src->m_repeat;
-		(dst)[M1_repeat_M0] = (unsigned char)_t_,
-		(dst)[M1_repeat_M1] = (unsigned char)(_t_>>8); };
+			(dst)[M1_repeat_M0] = (unsigned char)_t_,
+			(dst)[M1_repeat_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->m_stride;
-		(dst)[M1_stride_M0] = (unsigned char)_t_,
-		(dst)[M1_stride_M1] = (unsigned char)(_t_>>8); };
+			(dst)[M1_stride_M0] = (unsigned char)_t_,
+			(dst)[M1_stride_M1] = (unsigned char)(_t_>>8); };
 		dst += M1_sizeof;
 	} while (++src < end);
 }
@@ -1373,30 +1373,30 @@ movep_2L11_tof(unsigned char *dst, Elf32_Move *src, size_t cnt)
 
 	do {
 		{ Elf32_Lword _t_ = src->m_value;
-		(dst)[MP1_value_L0] = (Byte)_t_,
-		(dst)[MP1_value_L1] = (Byte)(_t_>>8),
-		(dst)[MP1_value_L2] = (Byte)(_t_>>16),
-		(dst)[MP1_value_L3] = (Byte)(_t_>>24),
-		(dst)[MP1_value_L4] = (Byte)(_t_>>32),
-		(dst)[MP1_value_L5] = (Byte)(_t_>>40),
-		(dst)[MP1_value_L6] = (Byte)(_t_>>48),
-		(dst)[MP1_value_L7] = (Byte)(_t_>>56); };
+			(dst)[MP1_value_L0] = (Byte)_t_,
+			(dst)[MP1_value_L1] = (Byte)(_t_>>8),
+			(dst)[MP1_value_L2] = (Byte)(_t_>>16),
+			(dst)[MP1_value_L3] = (Byte)(_t_>>24),
+			(dst)[MP1_value_L4] = (Byte)(_t_>>32),
+			(dst)[MP1_value_L5] = (Byte)(_t_>>40),
+			(dst)[MP1_value_L6] = (Byte)(_t_>>48),
+			(dst)[MP1_value_L7] = (Byte)(_t_>>56); };
 		{ register Elf32_Word _t_ = src->m_info;
-		(dst)[MP1_info_L0] = (unsigned char)_t_,
-		(dst)[MP1_info_L1] = (unsigned char)(_t_>>8),
-		(dst)[MP1_info_L2] = (unsigned char)(_t_>>16),
-		(dst)[MP1_info_L3] = (unsigned char)(_t_>>24); };
+			(dst)[MP1_info_L0] = (unsigned char)_t_,
+			(dst)[MP1_info_L1] = (unsigned char)(_t_>>8),
+			(dst)[MP1_info_L2] = (unsigned char)(_t_>>16),
+			(dst)[MP1_info_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->m_poffset;
-		(dst)[MP1_poffset_L0] = (unsigned char)_t_,
-		(dst)[MP1_poffset_L1] = (unsigned char)(_t_>>8),
-		(dst)[MP1_poffset_L2] = (unsigned char)(_t_>>16),
-		(dst)[MP1_poffset_L3] = (unsigned char)(_t_>>24); };
+			(dst)[MP1_poffset_L0] = (unsigned char)_t_,
+			(dst)[MP1_poffset_L1] = (unsigned char)(_t_>>8),
+			(dst)[MP1_poffset_L2] = (unsigned char)(_t_>>16),
+			(dst)[MP1_poffset_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Half _t_ = src->m_repeat;
-		(dst)[MP1_repeat_L0] = (unsigned char)_t_,
-		(dst)[MP1_repeat_L1] = (unsigned char)(_t_>>8); };
+			(dst)[MP1_repeat_L0] = (unsigned char)_t_,
+			(dst)[MP1_repeat_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->m_stride;
-		(dst)[MP1_stride_L0] = (unsigned char)_t_,
-		(dst)[MP1_stride_L1] = (unsigned char)(_t_>>8); };
+			(dst)[MP1_stride_L0] = (unsigned char)_t_,
+			(dst)[MP1_stride_L1] = (unsigned char)(_t_>>8); };
 		dst += MP1_sizeof;
 	} while (++src < end);
 }
@@ -1408,30 +1408,30 @@ movep_2M11_tof(unsigned char *dst, Elf32_Move *src, size_t cnt)
 
 	do {
 		{ Elf32_Lword _t_ = src->m_value;
-		(dst)[MP1_value_M0] = (Byte)_t_,
-		(dst)[MP1_value_M1] = (Byte)(_t_>>8),
-		(dst)[MP1_value_M2] = (Byte)(_t_>>16),
-		(dst)[MP1_value_M3] = (Byte)(_t_>>24),
-		(dst)[MP1_value_M4] = (Byte)(_t_>>32),
-		(dst)[MP1_value_M5] = (Byte)(_t_>>40),
-		(dst)[MP1_value_M6] = (Byte)(_t_>>48),
-		(dst)[MP1_value_M7] = (Byte)(_t_>>56); };
+			(dst)[MP1_value_M0] = (Byte)_t_,
+			(dst)[MP1_value_M1] = (Byte)(_t_>>8),
+			(dst)[MP1_value_M2] = (Byte)(_t_>>16),
+			(dst)[MP1_value_M3] = (Byte)(_t_>>24),
+			(dst)[MP1_value_M4] = (Byte)(_t_>>32),
+			(dst)[MP1_value_M5] = (Byte)(_t_>>40),
+			(dst)[MP1_value_M6] = (Byte)(_t_>>48),
+			(dst)[MP1_value_M7] = (Byte)(_t_>>56); };
 		{ register Elf32_Word _t_ = src->m_info;
-		(dst)[MP1_info_M0] = (unsigned char)_t_,
-		(dst)[MP1_info_M1] = (unsigned char)(_t_>>8),
-		(dst)[MP1_info_M2] = (unsigned char)(_t_>>16),
-		(dst)[MP1_info_M3] = (unsigned char)(_t_>>24); };
+			(dst)[MP1_info_M0] = (unsigned char)_t_,
+			(dst)[MP1_info_M1] = (unsigned char)(_t_>>8),
+			(dst)[MP1_info_M2] = (unsigned char)(_t_>>16),
+			(dst)[MP1_info_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->m_poffset;
-		(dst)[MP1_poffset_M0] = (unsigned char)_t_,
-		(dst)[MP1_poffset_M1] = (unsigned char)(_t_>>8),
-		(dst)[MP1_poffset_M2] = (unsigned char)(_t_>>16),
-		(dst)[MP1_poffset_M3] = (unsigned char)(_t_>>24); };
+			(dst)[MP1_poffset_M0] = (unsigned char)_t_,
+			(dst)[MP1_poffset_M1] = (unsigned char)(_t_>>8),
+			(dst)[MP1_poffset_M2] = (unsigned char)(_t_>>16),
+			(dst)[MP1_poffset_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Half _t_ = src->m_repeat;
-		(dst)[MP1_repeat_M0] = (unsigned char)_t_,
-		(dst)[MP1_repeat_M1] = (unsigned char)(_t_>>8); };
+			(dst)[MP1_repeat_M0] = (unsigned char)_t_,
+			(dst)[MP1_repeat_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->m_stride;
-		(dst)[MP1_stride_M0] = (unsigned char)_t_,
-		(dst)[MP1_stride_M1] = (unsigned char)(_t_>>8); };
+			(dst)[MP1_stride_M0] = (unsigned char)_t_,
+			(dst)[MP1_stride_M1] = (unsigned char)(_t_>>8); };
 		dst += MP1_sizeof;
 	} while (++src < end);
 }
@@ -1447,10 +1447,10 @@ off_2L_tof(unsigned char *dst, Elf32_Off *src, size_t cnt)
 
 	do {
 		{ register Elf32_Off _t_ = *src;
-		(dst)[O_L0] = (unsigned char)_t_,
-		(dst)[O_L1] = (unsigned char)(_t_>>8),
-		(dst)[O_L2] = (unsigned char)(_t_>>16),
-		(dst)[O_L3] = (unsigned char)(_t_>>24); };
+			(dst)[O_L0] = (unsigned char)_t_,
+			(dst)[O_L1] = (unsigned char)(_t_>>8),
+			(dst)[O_L2] = (unsigned char)(_t_>>16),
+			(dst)[O_L3] = (unsigned char)(_t_>>24); };
 		dst += O_sizeof;
 	} while (++src < end);
 }
@@ -1462,10 +1462,10 @@ off_2M_tof(unsigned char *dst, Elf32_Off *src, size_t cnt)
 
 	do {
 		{ register Elf32_Off _t_ = *src;
-		(dst)[O_M0] = (unsigned char)_t_,
-		(dst)[O_M1] = (unsigned char)(_t_>>8),
-		(dst)[O_M2] = (unsigned char)(_t_>>16),
-		(dst)[O_M3] = (unsigned char)(_t_>>24); };
+			(dst)[O_M0] = (unsigned char)_t_,
+			(dst)[O_M1] = (unsigned char)(_t_>>8),
+			(dst)[O_M2] = (unsigned char)(_t_>>16),
+			(dst)[O_M3] = (unsigned char)(_t_>>24); };
 		dst += O_sizeof;
 	} while (++src < end);
 }
@@ -1494,20 +1494,20 @@ note_2L11_tof(unsigned char *dst, Elf32_Nhdr *src, size_t cnt)
 		 * Copy contents of Elf32_Nhdr
 		 */
 		{ register Elf32_Word _t_ = src->n_namesz;
-		(dst)[N1_namesz_L0] = (unsigned char)_t_,
-		(dst)[N1_namesz_L1] = (unsigned char)(_t_>>8),
-		(dst)[N1_namesz_L2] = (unsigned char)(_t_>>16),
-		(dst)[N1_namesz_L3] = (unsigned char)(_t_>>24); };
+			(dst)[N1_namesz_L0] = (unsigned char)_t_,
+			(dst)[N1_namesz_L1] = (unsigned char)(_t_>>8),
+			(dst)[N1_namesz_L2] = (unsigned char)(_t_>>16),
+			(dst)[N1_namesz_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->n_descsz;
-		(dst)[N1_descsz_L0] = (unsigned char)_t_,
-		(dst)[N1_descsz_L1] = (unsigned char)(_t_>>8),
-		(dst)[N1_descsz_L2] = (unsigned char)(_t_>>16),
-		(dst)[N1_descsz_L3] = (unsigned char)(_t_>>24); };
+			(dst)[N1_descsz_L0] = (unsigned char)_t_,
+			(dst)[N1_descsz_L1] = (unsigned char)(_t_>>8),
+			(dst)[N1_descsz_L2] = (unsigned char)(_t_>>16),
+			(dst)[N1_descsz_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->n_type;
-		(dst)[N1_type_L0] = (unsigned char)_t_,
-		(dst)[N1_type_L1] = (unsigned char)(_t_>>8),
-		(dst)[N1_type_L2] = (unsigned char)(_t_>>16),
-		(dst)[N1_type_L3] = (unsigned char)(_t_>>24); };
+			(dst)[N1_type_L0] = (unsigned char)_t_,
+			(dst)[N1_type_L1] = (unsigned char)(_t_>>8),
+			(dst)[N1_type_L2] = (unsigned char)(_t_>>16),
+			(dst)[N1_type_L3] = (unsigned char)(_t_>>24); };
 
 		/*
 		 * Copy contents of Name field
@@ -1548,20 +1548,20 @@ note_2M11_tof(unsigned char *dst, Elf32_Nhdr *src, size_t cnt)
 		 * Copy contents of Elf32_Nhdr
 		 */
 		{ register Elf32_Word _t_ = src->n_namesz;
-		(dst)[N1_namesz_M0] = (unsigned char)_t_,
-		(dst)[N1_namesz_M1] = (unsigned char)(_t_>>8),
-		(dst)[N1_namesz_M2] = (unsigned char)(_t_>>16),
-		(dst)[N1_namesz_M3] = (unsigned char)(_t_>>24); };
+			(dst)[N1_namesz_M0] = (unsigned char)_t_,
+			(dst)[N1_namesz_M1] = (unsigned char)(_t_>>8),
+			(dst)[N1_namesz_M2] = (unsigned char)(_t_>>16),
+			(dst)[N1_namesz_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->n_descsz;
-		(dst)[N1_descsz_M0] = (unsigned char)_t_,
-		(dst)[N1_descsz_M1] = (unsigned char)(_t_>>8),
-		(dst)[N1_descsz_M2] = (unsigned char)(_t_>>16),
-		(dst)[N1_descsz_M3] = (unsigned char)(_t_>>24); };
+			(dst)[N1_descsz_M0] = (unsigned char)_t_,
+			(dst)[N1_descsz_M1] = (unsigned char)(_t_>>8),
+			(dst)[N1_descsz_M2] = (unsigned char)(_t_>>16),
+			(dst)[N1_descsz_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->n_type;
-		(dst)[N1_type_M0] = (unsigned char)_t_,
-		(dst)[N1_type_M1] = (unsigned char)(_t_>>8),
-		(dst)[N1_type_M2] = (unsigned char)(_t_>>16),
-		(dst)[N1_type_M3] = (unsigned char)(_t_>>24); };
+			(dst)[N1_type_M0] = (unsigned char)_t_,
+			(dst)[N1_type_M1] = (unsigned char)(_t_>>8),
+			(dst)[N1_type_M2] = (unsigned char)(_t_>>16),
+			(dst)[N1_type_M3] = (unsigned char)(_t_>>24); };
 
 		/*
 		 * Copy contents of Name field
@@ -1593,45 +1593,45 @@ phdr_2L11_tof(unsigned char *dst, Elf32_Phdr *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->p_type;
-		(dst)[P1_type_L0] = (unsigned char)_t_,
-		(dst)[P1_type_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_type_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_type_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_type_L0] = (unsigned char)_t_,
+			(dst)[P1_type_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_type_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_type_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->p_offset;
-		(dst)[P1_offset_L0] = (unsigned char)_t_,
-		(dst)[P1_offset_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_offset_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_offset_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_offset_L0] = (unsigned char)_t_,
+			(dst)[P1_offset_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_offset_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_offset_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->p_vaddr;
-		(dst)[P1_vaddr_L0] = (unsigned char)_t_,
-		(dst)[P1_vaddr_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_vaddr_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_vaddr_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_vaddr_L0] = (unsigned char)_t_,
+			(dst)[P1_vaddr_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_vaddr_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_vaddr_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->p_paddr;
-		(dst)[P1_paddr_L0] = (unsigned char)_t_,
-		(dst)[P1_paddr_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_paddr_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_paddr_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_paddr_L0] = (unsigned char)_t_,
+			(dst)[P1_paddr_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_paddr_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_paddr_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_filesz;
-		(dst)[P1_filesz_L0] = (unsigned char)_t_,
-		(dst)[P1_filesz_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_filesz_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_filesz_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_filesz_L0] = (unsigned char)_t_,
+			(dst)[P1_filesz_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_filesz_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_filesz_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_memsz;
-		(dst)[P1_memsz_L0] = (unsigned char)_t_,
-		(dst)[P1_memsz_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_memsz_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_memsz_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_memsz_L0] = (unsigned char)_t_,
+			(dst)[P1_memsz_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_memsz_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_memsz_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_flags;
-		(dst)[P1_flags_L0] = (unsigned char)_t_,
-		(dst)[P1_flags_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_flags_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_flags_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_flags_L0] = (unsigned char)_t_,
+			(dst)[P1_flags_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_flags_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_flags_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_align;
-		(dst)[P1_align_L0] = (unsigned char)_t_,
-		(dst)[P1_align_L1] = (unsigned char)(_t_>>8),
-		(dst)[P1_align_L2] = (unsigned char)(_t_>>16),
-		(dst)[P1_align_L3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_align_L0] = (unsigned char)_t_,
+			(dst)[P1_align_L1] = (unsigned char)(_t_>>8),
+			(dst)[P1_align_L2] = (unsigned char)(_t_>>16),
+			(dst)[P1_align_L3] = (unsigned char)(_t_>>24); };
 		dst += P1_sizeof;
 	} while (++src < end);
 }
@@ -1643,45 +1643,45 @@ phdr_2M11_tof(unsigned char *dst, Elf32_Phdr *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->p_type;
-		(dst)[P1_type_M0] = (unsigned char)_t_,
-		(dst)[P1_type_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_type_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_type_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_type_M0] = (unsigned char)_t_,
+			(dst)[P1_type_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_type_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_type_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->p_offset;
-		(dst)[P1_offset_M0] = (unsigned char)_t_,
-		(dst)[P1_offset_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_offset_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_offset_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_offset_M0] = (unsigned char)_t_,
+			(dst)[P1_offset_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_offset_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_offset_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->p_vaddr;
-		(dst)[P1_vaddr_M0] = (unsigned char)_t_,
-		(dst)[P1_vaddr_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_vaddr_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_vaddr_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_vaddr_M0] = (unsigned char)_t_,
+			(dst)[P1_vaddr_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_vaddr_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_vaddr_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->p_paddr;
-		(dst)[P1_paddr_M0] = (unsigned char)_t_,
-		(dst)[P1_paddr_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_paddr_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_paddr_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_paddr_M0] = (unsigned char)_t_,
+			(dst)[P1_paddr_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_paddr_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_paddr_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_filesz;
-		(dst)[P1_filesz_M0] = (unsigned char)_t_,
-		(dst)[P1_filesz_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_filesz_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_filesz_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_filesz_M0] = (unsigned char)_t_,
+			(dst)[P1_filesz_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_filesz_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_filesz_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_memsz;
-		(dst)[P1_memsz_M0] = (unsigned char)_t_,
-		(dst)[P1_memsz_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_memsz_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_memsz_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_memsz_M0] = (unsigned char)_t_,
+			(dst)[P1_memsz_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_memsz_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_memsz_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_flags;
-		(dst)[P1_flags_M0] = (unsigned char)_t_,
-		(dst)[P1_flags_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_flags_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_flags_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_flags_M0] = (unsigned char)_t_,
+			(dst)[P1_flags_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_flags_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_flags_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->p_align;
-		(dst)[P1_align_M0] = (unsigned char)_t_,
-		(dst)[P1_align_M1] = (unsigned char)(_t_>>8),
-		(dst)[P1_align_M2] = (unsigned char)(_t_>>16),
-		(dst)[P1_align_M3] = (unsigned char)(_t_>>24); };
+			(dst)[P1_align_M0] = (unsigned char)_t_,
+			(dst)[P1_align_M1] = (unsigned char)(_t_>>8),
+			(dst)[P1_align_M2] = (unsigned char)(_t_>>16),
+			(dst)[P1_align_M3] = (unsigned char)(_t_>>24); };
 		dst += P1_sizeof;
 	} while (++src < end);
 }
@@ -1697,15 +1697,15 @@ rel_2L11_tof(unsigned char *dst, Elf32_Rel *src, size_t cnt)
 
 	do {
 		{ register Elf32_Addr _t_ = src->r_offset;
-		(dst)[R1_offset_L0] = (unsigned char)_t_,
-		(dst)[R1_offset_L1] = (unsigned char)(_t_>>8),
-		(dst)[R1_offset_L2] = (unsigned char)(_t_>>16),
-		(dst)[R1_offset_L3] = (unsigned char)(_t_>>24); };
+			(dst)[R1_offset_L0] = (unsigned char)_t_,
+			(dst)[R1_offset_L1] = (unsigned char)(_t_>>8),
+			(dst)[R1_offset_L2] = (unsigned char)(_t_>>16),
+			(dst)[R1_offset_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->r_info;
-		(dst)[R1_info_L0] = (unsigned char)_t_,
-		(dst)[R1_info_L1] = (unsigned char)(_t_>>8),
-		(dst)[R1_info_L2] = (unsigned char)(_t_>>16),
-		(dst)[R1_info_L3] = (unsigned char)(_t_>>24); };
+			(dst)[R1_info_L0] = (unsigned char)_t_,
+			(dst)[R1_info_L1] = (unsigned char)(_t_>>8),
+			(dst)[R1_info_L2] = (unsigned char)(_t_>>16),
+			(dst)[R1_info_L3] = (unsigned char)(_t_>>24); };
 		dst += R1_sizeof;
 	} while (++src < end);
 }
@@ -1717,15 +1717,15 @@ rel_2M11_tof(unsigned char *dst, Elf32_Rel *src, size_t cnt)
 
 	do {
 		{ register Elf32_Addr _t_ = src->r_offset;
-		(dst)[R1_offset_M0] = (unsigned char)_t_,
-		(dst)[R1_offset_M1] = (unsigned char)(_t_>>8),
-		(dst)[R1_offset_M2] = (unsigned char)(_t_>>16),
-		(dst)[R1_offset_M3] = (unsigned char)(_t_>>24); };
+			(dst)[R1_offset_M0] = (unsigned char)_t_,
+			(dst)[R1_offset_M1] = (unsigned char)(_t_>>8),
+			(dst)[R1_offset_M2] = (unsigned char)(_t_>>16),
+			(dst)[R1_offset_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->r_info;
-		(dst)[R1_info_M0] = (unsigned char)_t_,
-		(dst)[R1_info_M1] = (unsigned char)(_t_>>8),
-		(dst)[R1_info_M2] = (unsigned char)(_t_>>16),
-		(dst)[R1_info_M3] = (unsigned char)(_t_>>24); };
+			(dst)[R1_info_M0] = (unsigned char)_t_,
+			(dst)[R1_info_M1] = (unsigned char)(_t_>>8),
+			(dst)[R1_info_M2] = (unsigned char)(_t_>>16),
+			(dst)[R1_info_M3] = (unsigned char)(_t_>>24); };
 		dst += R1_sizeof;
 	} while (++src < end);
 }
@@ -1741,22 +1741,22 @@ rela_2L11_tof(unsigned char *dst, Elf32_Rela *src, size_t cnt)
 
 	do {
 		{ register Elf32_Addr _t_ = src->r_offset;
-		(dst)[RA1_offset_L0] = (unsigned char)_t_,
-		(dst)[RA1_offset_L1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_offset_L2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_offset_L3] = (unsigned char)(_t_>>24); };
+			(dst)[RA1_offset_L0] = (unsigned char)_t_,
+			(dst)[RA1_offset_L1] = (unsigned char)(_t_>>8),
+			(dst)[RA1_offset_L2] = (unsigned char)(_t_>>16),
+			(dst)[RA1_offset_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->r_info;
-		(dst)[RA1_info_L0] = (unsigned char)_t_,
-		(dst)[RA1_info_L1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_info_L2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_info_L3] = (unsigned char)(_t_>>24); };
+			(dst)[RA1_info_L0] = (unsigned char)_t_,
+			(dst)[RA1_info_L1] = (unsigned char)(_t_>>8),
+			(dst)[RA1_info_L2] = (unsigned char)(_t_>>16),
+			(dst)[RA1_info_L3] = (unsigned char)(_t_>>24); };
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1) {	/* 2s comp */
 			{ register Elf32_Word _t_ = src->r_addend;
-		(dst)[RA1_addend_L0] = (unsigned char)_t_,
-		(dst)[RA1_addend_L1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_addend_L2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_addend_L3] = (unsigned char)(_t_>>24); };
+				(dst)[RA1_addend_L0] = (unsigned char)_t_,
+				(dst)[RA1_addend_L1] = (unsigned char)(_t_>>8),
+				(dst)[RA1_addend_L2] = (unsigned char)(_t_>>16),
+				(dst)[RA1_addend_L3] = (unsigned char)(_t_>>24); };
 		} else {
 			Elf32_Word	w;
 
@@ -1766,10 +1766,10 @@ rela_2L11_tof(unsigned char *dst, Elf32_Rela *src, size_t cnt)
 			} else
 				w = src->r_addend;
 			{ register Elf32_Word _t_ = w;
-		(dst)[RA1_addend_L0] = (unsigned char)_t_,
-		(dst)[RA1_addend_L1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_addend_L2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_addend_L3] = (unsigned char)(_t_>>24); };
+				(dst)[RA1_addend_L0] = (unsigned char)_t_,
+				(dst)[RA1_addend_L1] = (unsigned char)(_t_>>8),
+				(dst)[RA1_addend_L2] = (unsigned char)(_t_>>16),
+				(dst)[RA1_addend_L3] = (unsigned char)(_t_>>24); };
 		}
 		dst += RA1_sizeof;
 	} while (++src < end);
@@ -1782,22 +1782,22 @@ rela_2M11_tof(unsigned char *dst, Elf32_Rela *src, size_t cnt)
 
 	do {
 		{ register Elf32_Addr _t_ = src->r_offset;
-		(dst)[RA1_offset_M0] = (unsigned char)_t_,
-		(dst)[RA1_offset_M1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_offset_M2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_offset_M3] = (unsigned char)(_t_>>24); };
+			(dst)[RA1_offset_M0] = (unsigned char)_t_,
+			(dst)[RA1_offset_M1] = (unsigned char)(_t_>>8),
+			(dst)[RA1_offset_M2] = (unsigned char)(_t_>>16),
+			(dst)[RA1_offset_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->r_info;
-		(dst)[RA1_info_M0] = (unsigned char)_t_,
-		(dst)[RA1_info_M1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_info_M2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_info_M3] = (unsigned char)(_t_>>24); };
+			(dst)[RA1_info_M0] = (unsigned char)_t_,
+			(dst)[RA1_info_M1] = (unsigned char)(_t_>>8),
+			(dst)[RA1_info_M2] = (unsigned char)(_t_>>16),
+			(dst)[RA1_info_M3] = (unsigned char)(_t_>>24); };
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1) {	/* 2s comp */
 			{ register Elf32_Word _t_ = src->r_addend;
-		(dst)[RA1_addend_M0] = (unsigned char)_t_,
-		(dst)[RA1_addend_M1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_addend_M2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_addend_M3] = (unsigned char)(_t_>>24); };
+				(dst)[RA1_addend_M0] = (unsigned char)_t_,
+				(dst)[RA1_addend_M1] = (unsigned char)(_t_>>8),
+				(dst)[RA1_addend_M2] = (unsigned char)(_t_>>16),
+				(dst)[RA1_addend_M3] = (unsigned char)(_t_>>24); };
 		} else {
 			Elf32_Word	w;
 
@@ -1807,10 +1807,10 @@ rela_2M11_tof(unsigned char *dst, Elf32_Rela *src, size_t cnt)
 			} else
 				w = src->r_addend;
 			{ register Elf32_Word _t_ = w;
-		(dst)[RA1_addend_M0] = (unsigned char)_t_,
-		(dst)[RA1_addend_M1] = (unsigned char)(_t_>>8),
-		(dst)[RA1_addend_M2] = (unsigned char)(_t_>>16),
-		(dst)[RA1_addend_M3] = (unsigned char)(_t_>>24); };
+				(dst)[RA1_addend_M0] = (unsigned char)_t_,
+				(dst)[RA1_addend_M1] = (unsigned char)(_t_>>8),
+				(dst)[RA1_addend_M2] = (unsigned char)(_t_>>16),
+				(dst)[RA1_addend_M3] = (unsigned char)(_t_>>24); };
 		}
 		dst += RA1_sizeof;
 	} while (++src < end);
@@ -1827,55 +1827,55 @@ shdr_2L11_tof(unsigned char *dst, Elf32_Shdr *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->sh_name;
-		(dst)[SH1_name_L0] = (unsigned char)_t_,
-		(dst)[SH1_name_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_name_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_name_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_name_L0] = (unsigned char)_t_,
+			(dst)[SH1_name_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_name_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_name_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_type;
-		(dst)[SH1_type_L0] = (unsigned char)_t_,
-		(dst)[SH1_type_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_type_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_type_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_type_L0] = (unsigned char)_t_,
+			(dst)[SH1_type_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_type_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_type_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_flags;
-		(dst)[SH1_flags_L0] = (unsigned char)_t_,
-		(dst)[SH1_flags_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_flags_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_flags_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_flags_L0] = (unsigned char)_t_,
+			(dst)[SH1_flags_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_flags_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_flags_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->sh_addr;
-		(dst)[SH1_addr_L0] = (unsigned char)_t_,
-		(dst)[SH1_addr_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_addr_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_addr_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_addr_L0] = (unsigned char)_t_,
+			(dst)[SH1_addr_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_addr_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_addr_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->sh_offset;
-		(dst)[SH1_offset_L0] = (unsigned char)_t_,
-		(dst)[SH1_offset_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_offset_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_offset_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_offset_L0] = (unsigned char)_t_,
+			(dst)[SH1_offset_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_offset_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_offset_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_size;
-		(dst)[SH1_size_L0] = (unsigned char)_t_,
-		(dst)[SH1_size_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_size_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_size_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_size_L0] = (unsigned char)_t_,
+			(dst)[SH1_size_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_size_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_size_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_link;
-		(dst)[SH1_link_L0] = (unsigned char)_t_,
-		(dst)[SH1_link_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_link_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_link_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_link_L0] = (unsigned char)_t_,
+			(dst)[SH1_link_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_link_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_link_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_info;
-		(dst)[SH1_info_L0] = (unsigned char)_t_,
-		(dst)[SH1_info_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_info_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_info_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_info_L0] = (unsigned char)_t_,
+			(dst)[SH1_info_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_info_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_info_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_addralign;
-		(dst)[SH1_addralign_L0] = (unsigned char)_t_,
-		(dst)[SH1_addralign_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_addralign_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_addralign_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_addralign_L0] = (unsigned char)_t_,
+			(dst)[SH1_addralign_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_addralign_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_addralign_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_entsize;
-		(dst)[SH1_entsize_L0] = (unsigned char)_t_,
-		(dst)[SH1_entsize_L1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_entsize_L2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_entsize_L3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_entsize_L0] = (unsigned char)_t_,
+			(dst)[SH1_entsize_L1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_entsize_L2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_entsize_L3] = (unsigned char)(_t_>>24); };
 		dst += SH1_sizeof;
 	} while (++src < end);
 }
@@ -1887,55 +1887,55 @@ shdr_2M11_tof(unsigned char *dst, Elf32_Shdr *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->sh_name;
-		(dst)[SH1_name_M0] = (unsigned char)_t_,
-		(dst)[SH1_name_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_name_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_name_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_name_M0] = (unsigned char)_t_,
+			(dst)[SH1_name_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_name_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_name_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_type;
-		(dst)[SH1_type_M0] = (unsigned char)_t_,
-		(dst)[SH1_type_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_type_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_type_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_type_M0] = (unsigned char)_t_,
+			(dst)[SH1_type_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_type_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_type_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_flags;
-		(dst)[SH1_flags_M0] = (unsigned char)_t_,
-		(dst)[SH1_flags_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_flags_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_flags_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_flags_M0] = (unsigned char)_t_,
+			(dst)[SH1_flags_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_flags_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_flags_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->sh_addr;
-		(dst)[SH1_addr_M0] = (unsigned char)_t_,
-		(dst)[SH1_addr_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_addr_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_addr_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_addr_M0] = (unsigned char)_t_,
+			(dst)[SH1_addr_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_addr_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_addr_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Off _t_ = src->sh_offset;
-		(dst)[SH1_offset_M0] = (unsigned char)_t_,
-		(dst)[SH1_offset_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_offset_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_offset_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_offset_M0] = (unsigned char)_t_,
+			(dst)[SH1_offset_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_offset_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_offset_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_size;
-		(dst)[SH1_size_M0] = (unsigned char)_t_,
-		(dst)[SH1_size_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_size_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_size_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_size_M0] = (unsigned char)_t_,
+			(dst)[SH1_size_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_size_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_size_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_link;
-		(dst)[SH1_link_M0] = (unsigned char)_t_,
-		(dst)[SH1_link_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_link_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_link_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_link_M0] = (unsigned char)_t_,
+			(dst)[SH1_link_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_link_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_link_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_info;
-		(dst)[SH1_info_M0] = (unsigned char)_t_,
-		(dst)[SH1_info_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_info_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_info_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_info_M0] = (unsigned char)_t_,
+			(dst)[SH1_info_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_info_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_info_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_addralign;
-		(dst)[SH1_addralign_M0] = (unsigned char)_t_,
-		(dst)[SH1_addralign_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_addralign_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_addralign_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_addralign_M0] = (unsigned char)_t_,
+			(dst)[SH1_addralign_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_addralign_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_addralign_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->sh_entsize;
-		(dst)[SH1_entsize_M0] = (unsigned char)_t_,
-		(dst)[SH1_entsize_M1] = (unsigned char)(_t_>>8),
-		(dst)[SH1_entsize_M2] = (unsigned char)(_t_>>16),
-		(dst)[SH1_entsize_M3] = (unsigned char)(_t_>>24); };
+			(dst)[SH1_entsize_M0] = (unsigned char)_t_,
+			(dst)[SH1_entsize_M1] = (unsigned char)(_t_>>8),
+			(dst)[SH1_entsize_M2] = (unsigned char)(_t_>>16),
+			(dst)[SH1_entsize_M3] = (unsigned char)(_t_>>24); };
 		dst += SH1_sizeof;
 	} while (++src < end);
 }
@@ -1953,10 +1953,10 @@ sword_2L_tof(unsigned char *dst, Elf32_Sword *src, size_t cnt)
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1) {	/* 2s comp */
 			{ register Elf32_Word _t_ = *src;
-		(dst)[W_L0] = (unsigned char)_t_,
-		(dst)[W_L1] = (unsigned char)(_t_>>8),
-		(dst)[W_L2] = (unsigned char)(_t_>>16),
-		(dst)[W_L3] = (unsigned char)(_t_>>24); };
+				(dst)[W_L0] = (unsigned char)_t_,
+				(dst)[W_L1] = (unsigned char)(_t_>>8),
+				(dst)[W_L2] = (unsigned char)(_t_>>16),
+				(dst)[W_L3] = (unsigned char)(_t_>>24); };
 		} else {
 			Elf32_Word	w;
 
@@ -1966,10 +1966,10 @@ sword_2L_tof(unsigned char *dst, Elf32_Sword *src, size_t cnt)
 			} else
 				w = *src;
 			{ register Elf32_Word _t_ = w;
-		(dst)[W_L0] = (unsigned char)_t_,
-		(dst)[W_L1] = (unsigned char)(_t_>>8),
-		(dst)[W_L2] = (unsigned char)(_t_>>16),
-		(dst)[W_L3] = (unsigned char)(_t_>>24); };
+				(dst)[W_L0] = (unsigned char)_t_,
+				(dst)[W_L1] = (unsigned char)(_t_>>8),
+				(dst)[W_L2] = (unsigned char)(_t_>>16),
+				(dst)[W_L3] = (unsigned char)(_t_>>24); };
 		}
 		dst += W_sizeof;
 	} while (++src < end);
@@ -1984,10 +1984,10 @@ sword_2M_tof(unsigned char *dst, Elf32_Sword *src, size_t cnt)
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1) {	/* 2s comp */
 			{ register Elf32_Word _t_ = *src;
-		(dst)[W_M0] = (unsigned char)_t_,
-		(dst)[W_M1] = (unsigned char)(_t_>>8),
-		(dst)[W_M2] = (unsigned char)(_t_>>16),
-		(dst)[W_M3] = (unsigned char)(_t_>>24); };
+				(dst)[W_M0] = (unsigned char)_t_,
+				(dst)[W_M1] = (unsigned char)(_t_>>8),
+				(dst)[W_M2] = (unsigned char)(_t_>>16),
+				(dst)[W_M3] = (unsigned char)(_t_>>24); };
 		} else {
 			Elf32_Word	w;
 
@@ -1997,10 +1997,10 @@ sword_2M_tof(unsigned char *dst, Elf32_Sword *src, size_t cnt)
 			} else
 				w = *src;
 			{ register Elf32_Word _t_ = w;
-		(dst)[W_M0] = (unsigned char)_t_,
-		(dst)[W_M1] = (unsigned char)(_t_>>8),
-		(dst)[W_M2] = (unsigned char)(_t_>>16),
-		(dst)[W_M3] = (unsigned char)(_t_>>24); };
+				(dst)[W_M0] = (unsigned char)_t_,
+				(dst)[W_M1] = (unsigned char)(_t_>>8),
+				(dst)[W_M2] = (unsigned char)(_t_>>16),
+				(dst)[W_M3] = (unsigned char)(_t_>>24); };
 		}
 		dst += W_sizeof;
 	} while (++src < end);
@@ -2017,15 +2017,15 @@ cap_2L11_tof(unsigned char *dst, Elf32_Cap *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->c_tag;
-		(dst)[C1_tag_L0] = (unsigned char)_t_,
-		(dst)[C1_tag_L1] = (unsigned char)(_t_>>8),
-		(dst)[C1_tag_L2] = (unsigned char)(_t_>>16),
-		(dst)[C1_tag_L3] = (unsigned char)(_t_>>24); };
+			(dst)[C1_tag_L0] = (unsigned char)_t_,
+			(dst)[C1_tag_L1] = (unsigned char)(_t_>>8),
+			(dst)[C1_tag_L2] = (unsigned char)(_t_>>16),
+			(dst)[C1_tag_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->c_un.c_val;
-		(dst)[C1_val_L0] = (unsigned char)_t_,
-		(dst)[C1_val_L1] = (unsigned char)(_t_>>8),
-		(dst)[C1_val_L2] = (unsigned char)(_t_>>16),
-		(dst)[C1_val_L3] = (unsigned char)(_t_>>24); };
+			(dst)[C1_val_L0] = (unsigned char)_t_,
+			(dst)[C1_val_L1] = (unsigned char)(_t_>>8),
+			(dst)[C1_val_L2] = (unsigned char)(_t_>>16),
+			(dst)[C1_val_L3] = (unsigned char)(_t_>>24); };
 		dst += C1_sizeof;
 	} while (++src < end);
 }
@@ -2037,15 +2037,15 @@ cap_2M11_tof(unsigned char *dst, Elf32_Cap *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->c_tag;
-		(dst)[C1_tag_M0] = (unsigned char)_t_,
-		(dst)[C1_tag_M1] = (unsigned char)(_t_>>8),
-		(dst)[C1_tag_M2] = (unsigned char)(_t_>>16),
-		(dst)[C1_tag_M3] = (unsigned char)(_t_>>24); };
+			(dst)[C1_tag_M0] = (unsigned char)_t_,
+			(dst)[C1_tag_M1] = (unsigned char)(_t_>>8),
+			(dst)[C1_tag_M2] = (unsigned char)(_t_>>16),
+			(dst)[C1_tag_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->c_un.c_val;
-		(dst)[C1_val_M0] = (unsigned char)_t_,
-		(dst)[C1_val_M1] = (unsigned char)(_t_>>8),
-		(dst)[C1_val_M2] = (unsigned char)(_t_>>16),
-		(dst)[C1_val_M3] = (unsigned char)(_t_>>24); };
+			(dst)[C1_val_M0] = (unsigned char)_t_,
+			(dst)[C1_val_M1] = (unsigned char)(_t_>>8),
+			(dst)[C1_val_M2] = (unsigned char)(_t_>>16),
+			(dst)[C1_val_M3] = (unsigned char)(_t_>>24); };
 		dst += C1_sizeof;
 	} while (++src < end);
 }
@@ -2061,11 +2061,11 @@ syminfo_2L11_tof(unsigned char *dst, Elf32_Syminfo *src, size_t cnt)
 
 	do {
 		{ register Elf32_Half _t_ = src->si_boundto;
-		(dst)[SI1_boundto_L0] = (unsigned char)_t_,
-		(dst)[SI1_boundto_L1] = (unsigned char)(_t_>>8); };
+			(dst)[SI1_boundto_L0] = (unsigned char)_t_,
+			(dst)[SI1_boundto_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->si_flags;
-		(dst)[SI1_flags_L0] = (unsigned char)_t_,
-		(dst)[SI1_flags_L1] = (unsigned char)(_t_>>8); };
+			(dst)[SI1_flags_L0] = (unsigned char)_t_,
+			(dst)[SI1_flags_L1] = (unsigned char)(_t_>>8); };
 		dst += SI1_sizeof;
 	} while (++src < end);
 }
@@ -2077,11 +2077,11 @@ syminfo_2M11_tof(unsigned char *dst, Elf32_Syminfo *src, size_t cnt)
 
 	do {
 		{ register Elf32_Half _t_ = src->si_boundto;
-		(dst)[SI1_boundto_M0] = (unsigned char)_t_,
-		(dst)[SI1_boundto_M1] = (unsigned char)(_t_>>8); };
+			(dst)[SI1_boundto_M0] = (unsigned char)_t_,
+			(dst)[SI1_boundto_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->si_flags;
-		(dst)[SI1_flags_M0] = (unsigned char)_t_,
-		(dst)[SI1_flags_M1] = (unsigned char)(_t_>>8); };
+			(dst)[SI1_flags_M0] = (unsigned char)_t_,
+			(dst)[SI1_flags_M1] = (unsigned char)(_t_>>8); };
 		dst += SI1_sizeof;
 	} while (++src < end);
 }
@@ -2097,25 +2097,25 @@ sym_2L11_tof(unsigned char *dst, Elf32_Sym *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->st_name;
-		(dst)[ST1_name_L0] = (unsigned char)_t_,
-		(dst)[ST1_name_L1] = (unsigned char)(_t_>>8),
-		(dst)[ST1_name_L2] = (unsigned char)(_t_>>16),
-		(dst)[ST1_name_L3] = (unsigned char)(_t_>>24); };
+			(dst)[ST1_name_L0] = (unsigned char)_t_,
+			(dst)[ST1_name_L1] = (unsigned char)(_t_>>8),
+			(dst)[ST1_name_L2] = (unsigned char)(_t_>>16),
+			(dst)[ST1_name_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->st_value;
-		(dst)[ST1_value_L0] = (unsigned char)_t_,
-		(dst)[ST1_value_L1] = (unsigned char)(_t_>>8),
-		(dst)[ST1_value_L2] = (unsigned char)(_t_>>16),
-		(dst)[ST1_value_L3] = (unsigned char)(_t_>>24); };
+			(dst)[ST1_value_L0] = (unsigned char)_t_,
+			(dst)[ST1_value_L1] = (unsigned char)(_t_>>8),
+			(dst)[ST1_value_L2] = (unsigned char)(_t_>>16),
+			(dst)[ST1_value_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->st_size;
-		(dst)[ST1_size_L0] = (unsigned char)_t_,
-		(dst)[ST1_size_L1] = (unsigned char)(_t_>>8),
-		(dst)[ST1_size_L2] = (unsigned char)(_t_>>16),
-		(dst)[ST1_size_L3] = (unsigned char)(_t_>>24); };
+			(dst)[ST1_size_L0] = (unsigned char)_t_,
+			(dst)[ST1_size_L1] = (unsigned char)(_t_>>8),
+			(dst)[ST1_size_L2] = (unsigned char)(_t_>>16),
+			(dst)[ST1_size_L3] = (unsigned char)(_t_>>24); };
 		(dst)[ST1_info_L] = (unsigned char)(src->st_info);
 		(dst)[ST1_other_L] = (unsigned char)(src->st_other);
 		{ register Elf32_Half _t_ = src->st_shndx;
-		(dst)[ST1_shndx_L0] = (unsigned char)_t_,
-		(dst)[ST1_shndx_L1] = (unsigned char)(_t_>>8); };
+			(dst)[ST1_shndx_L0] = (unsigned char)_t_,
+			(dst)[ST1_shndx_L1] = (unsigned char)(_t_>>8); };
 		dst += ST1_sizeof;
 	} while (++src < end);
 }
@@ -2127,25 +2127,25 @@ sym_2M11_tof(unsigned char *dst, Elf32_Sym *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = src->st_name;
-		(dst)[ST1_name_M0] = (unsigned char)_t_,
-		(dst)[ST1_name_M1] = (unsigned char)(_t_>>8),
-		(dst)[ST1_name_M2] = (unsigned char)(_t_>>16),
-		(dst)[ST1_name_M3] = (unsigned char)(_t_>>24); };
+			(dst)[ST1_name_M0] = (unsigned char)_t_,
+			(dst)[ST1_name_M1] = (unsigned char)(_t_>>8),
+			(dst)[ST1_name_M2] = (unsigned char)(_t_>>16),
+			(dst)[ST1_name_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Addr _t_ = src->st_value;
-		(dst)[ST1_value_M0] = (unsigned char)_t_,
-		(dst)[ST1_value_M1] = (unsigned char)(_t_>>8),
-		(dst)[ST1_value_M2] = (unsigned char)(_t_>>16),
-		(dst)[ST1_value_M3] = (unsigned char)(_t_>>24); };
+			(dst)[ST1_value_M0] = (unsigned char)_t_,
+			(dst)[ST1_value_M1] = (unsigned char)(_t_>>8),
+			(dst)[ST1_value_M2] = (unsigned char)(_t_>>16),
+			(dst)[ST1_value_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->st_size;
-		(dst)[ST1_size_M0] = (unsigned char)_t_,
-		(dst)[ST1_size_M1] = (unsigned char)(_t_>>8),
-		(dst)[ST1_size_M2] = (unsigned char)(_t_>>16),
-		(dst)[ST1_size_M3] = (unsigned char)(_t_>>24); };
+			(dst)[ST1_size_M0] = (unsigned char)_t_,
+			(dst)[ST1_size_M1] = (unsigned char)(_t_>>8),
+			(dst)[ST1_size_M2] = (unsigned char)(_t_>>16),
+			(dst)[ST1_size_M3] = (unsigned char)(_t_>>24); };
 		(dst)[ST1_info_M] = (unsigned char)(src->st_info);
 		(dst)[ST1_other_M] = (unsigned char)(src->st_other);
 		{ register Elf32_Half _t_ = src->st_shndx;
-		(dst)[ST1_shndx_M0] = (unsigned char)_t_,
-		(dst)[ST1_shndx_M1] = (unsigned char)(_t_>>8); };
+			(dst)[ST1_shndx_M0] = (unsigned char)_t_,
+			(dst)[ST1_shndx_M1] = (unsigned char)(_t_>>8); };
 		dst += ST1_sizeof;
 	} while (++src < end);
 }
@@ -2161,10 +2161,10 @@ word_2L_tof(unsigned char *dst, Elf32_Word *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = *src;
-		(dst)[W_L0] = (unsigned char)_t_,
-		(dst)[W_L1] = (unsigned char)(_t_>>8),
-		(dst)[W_L2] = (unsigned char)(_t_>>16),
-		(dst)[W_L3] = (unsigned char)(_t_>>24); };
+			(dst)[W_L0] = (unsigned char)_t_,
+			(dst)[W_L1] = (unsigned char)(_t_>>8),
+			(dst)[W_L2] = (unsigned char)(_t_>>16),
+			(dst)[W_L3] = (unsigned char)(_t_>>24); };
 		dst += W_sizeof;
 	} while (++src < end);
 }
@@ -2176,10 +2176,10 @@ word_2M_tof(unsigned char *dst, Elf32_Word *src, size_t cnt)
 
 	do {
 		{ register Elf32_Word _t_ = *src;
-		(dst)[W_M0] = (unsigned char)_t_,
-		(dst)[W_M1] = (unsigned char)(_t_>>8),
-		(dst)[W_M2] = (unsigned char)(_t_>>16),
-		(dst)[W_M3] = (unsigned char)(_t_>>24); };
+			(dst)[W_M0] = (unsigned char)_t_,
+			(dst)[W_M1] = (unsigned char)(_t_>>8),
+			(dst)[W_M2] = (unsigned char)(_t_>>16),
+			(dst)[W_M3] = (unsigned char)(_t_>>24); };
 		dst += W_sizeof;
 	} while (++src < end);
 }
@@ -2203,7 +2203,7 @@ verdef_2L11_tof(unsigned char *dst, Elf32_Verdef *src, size_t cnt)
 
 		/* LINTED */
 		next_verdef = (Elf32_Verdef *)(src->vd_next ?
-		    (char *)src + src->vd_next : (char *)end);
+									   (char *)src + src->vd_next : (char *)end);
 		dst_next = dst + src->vd_next;
 
 		/* LINTED */
@@ -2224,19 +2224,19 @@ verdef_2L11_tof(unsigned char *dst, Elf32_Verdef *src, size_t cnt)
 			 */
 			/* LINTED */
 			vaux_next = (Elf32_Verdaux *)((char *)vaux +
-			    vaux->vda_next);
+										  vaux->vda_next);
 			vaux_dst_next = vaux_dst + vaux->vda_next;
 
 			{ register Elf32_Addr _t_ = vaux->vda_name;
-		(vaux_dst)[VDA1_name_L0] = (unsigned char)_t_,
-		(vaux_dst)[VDA1_name_L1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VDA1_name_L2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VDA1_name_L3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VDA1_name_L0] = (unsigned char)_t_,
+				(vaux_dst)[VDA1_name_L1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VDA1_name_L2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VDA1_name_L3] = (unsigned char)(_t_>>24); };
 			{ register Elf32_Word _t_ = vaux->vda_next;
-		(vaux_dst)[VDA1_next_L0] = (unsigned char)_t_,
-		(vaux_dst)[VDA1_next_L1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VDA1_next_L2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VDA1_next_L3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VDA1_next_L0] = (unsigned char)_t_,
+				(vaux_dst)[VDA1_next_L1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VDA1_next_L2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VDA1_next_L3] = (unsigned char)(_t_>>24); };
 			vaux_dst = vaux_dst_next;
 			vaux = vaux_next;
 		}
@@ -2245,32 +2245,32 @@ verdef_2L11_tof(unsigned char *dst, Elf32_Verdef *src, size_t cnt)
 		 * Convert Elf32_Verdef structure.
 		 */
 		{ register Elf32_Half _t_ = src->vd_version;
-		(dst)[VD1_version_L0] = (unsigned char)_t_,
-		(dst)[VD1_version_L1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_version_L0] = (unsigned char)_t_,
+			(dst)[VD1_version_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vd_flags;
-		(dst)[VD1_flags_L0] = (unsigned char)_t_,
-		(dst)[VD1_flags_L1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_flags_L0] = (unsigned char)_t_,
+			(dst)[VD1_flags_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vd_ndx;
-		(dst)[VD1_ndx_L0] = (unsigned char)_t_,
-		(dst)[VD1_ndx_L1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_ndx_L0] = (unsigned char)_t_,
+			(dst)[VD1_ndx_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vd_cnt;
-		(dst)[VD1_cnt_L0] = (unsigned char)_t_,
-		(dst)[VD1_cnt_L1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_cnt_L0] = (unsigned char)_t_,
+			(dst)[VD1_cnt_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Word _t_ = src->vd_hash;
-		(dst)[VD1_hash_L0] = (unsigned char)_t_,
-		(dst)[VD1_hash_L1] = (unsigned char)(_t_>>8),
-		(dst)[VD1_hash_L2] = (unsigned char)(_t_>>16),
-		(dst)[VD1_hash_L3] = (unsigned char)(_t_>>24); };
+			(dst)[VD1_hash_L0] = (unsigned char)_t_,
+			(dst)[VD1_hash_L1] = (unsigned char)(_t_>>8),
+			(dst)[VD1_hash_L2] = (unsigned char)(_t_>>16),
+			(dst)[VD1_hash_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vd_aux;
-		(dst)[VD1_aux_L0] = (unsigned char)_t_,
-		(dst)[VD1_aux_L1] = (unsigned char)(_t_>>8),
-		(dst)[VD1_aux_L2] = (unsigned char)(_t_>>16),
-		(dst)[VD1_aux_L3] = (unsigned char)(_t_>>24); };
+			(dst)[VD1_aux_L0] = (unsigned char)_t_,
+			(dst)[VD1_aux_L1] = (unsigned char)(_t_>>8),
+			(dst)[VD1_aux_L2] = (unsigned char)(_t_>>16),
+			(dst)[VD1_aux_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vd_next;
-		(dst)[VD1_next_L0] = (unsigned char)_t_,
-		(dst)[VD1_next_L1] = (unsigned char)(_t_>>8),
-		(dst)[VD1_next_L2] = (unsigned char)(_t_>>16),
-		(dst)[VD1_next_L3] = (unsigned char)(_t_>>24); };
+			(dst)[VD1_next_L0] = (unsigned char)_t_,
+			(dst)[VD1_next_L1] = (unsigned char)(_t_>>8),
+			(dst)[VD1_next_L2] = (unsigned char)(_t_>>16),
+			(dst)[VD1_next_L3] = (unsigned char)(_t_>>24); };
 		src = next_verdef;
 		dst = dst_next;
 	} while (src < end);
@@ -2291,7 +2291,7 @@ verdef_2M11_tof(unsigned char *dst, Elf32_Verdef *src, size_t cnt)
 
 		/* LINTED */
 		next_verdef = (Elf32_Verdef *)(src->vd_next ?
-		    (char *)src + src->vd_next : (char *)end);
+									   (char *)src + src->vd_next : (char *)end);
 		dst_next = dst + src->vd_next;
 
 		/* LINTED */
@@ -2312,19 +2312,19 @@ verdef_2M11_tof(unsigned char *dst, Elf32_Verdef *src, size_t cnt)
 			 */
 			/* LINTED */
 			vaux_next = (Elf32_Verdaux *)((char *)vaux +
-			    vaux->vda_next);
+										  vaux->vda_next);
 			vaux_dst_next = vaux_dst + vaux->vda_next;
 
 			{ register Elf32_Addr _t_ = vaux->vda_name;
-		(vaux_dst)[VDA1_name_M0] = (unsigned char)_t_,
-		(vaux_dst)[VDA1_name_M1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VDA1_name_M2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VDA1_name_M3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VDA1_name_M0] = (unsigned char)_t_,
+				(vaux_dst)[VDA1_name_M1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VDA1_name_M2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VDA1_name_M3] = (unsigned char)(_t_>>24); };
 			{ register Elf32_Word _t_ = vaux->vda_next;
-		(vaux_dst)[VDA1_next_M0] = (unsigned char)_t_,
-		(vaux_dst)[VDA1_next_M1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VDA1_next_M2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VDA1_next_M3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VDA1_next_M0] = (unsigned char)_t_,
+				(vaux_dst)[VDA1_next_M1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VDA1_next_M2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VDA1_next_M3] = (unsigned char)(_t_>>24); };
 			vaux_dst = vaux_dst_next;
 			vaux = vaux_next;
 		}
@@ -2333,32 +2333,32 @@ verdef_2M11_tof(unsigned char *dst, Elf32_Verdef *src, size_t cnt)
 		 * Convert Elf32_Verdef structure.
 		 */
 		{ register Elf32_Half _t_ = src->vd_version;
-		(dst)[VD1_version_M0] = (unsigned char)_t_,
-		(dst)[VD1_version_M1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_version_M0] = (unsigned char)_t_,
+			(dst)[VD1_version_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vd_flags;
-		(dst)[VD1_flags_M0] = (unsigned char)_t_,
-		(dst)[VD1_flags_M1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_flags_M0] = (unsigned char)_t_,
+			(dst)[VD1_flags_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vd_ndx;
-		(dst)[VD1_ndx_M0] = (unsigned char)_t_,
-		(dst)[VD1_ndx_M1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_ndx_M0] = (unsigned char)_t_,
+			(dst)[VD1_ndx_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vd_cnt;
-		(dst)[VD1_cnt_M0] = (unsigned char)_t_,
-		(dst)[VD1_cnt_M1] = (unsigned char)(_t_>>8); };
+			(dst)[VD1_cnt_M0] = (unsigned char)_t_,
+			(dst)[VD1_cnt_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Word _t_ = src->vd_hash;
-		(dst)[VD1_hash_M0] = (unsigned char)_t_,
-		(dst)[VD1_hash_M1] = (unsigned char)(_t_>>8),
-		(dst)[VD1_hash_M2] = (unsigned char)(_t_>>16),
-		(dst)[VD1_hash_M3] = (unsigned char)(_t_>>24); };
+			(dst)[VD1_hash_M0] = (unsigned char)_t_,
+			(dst)[VD1_hash_M1] = (unsigned char)(_t_>>8),
+			(dst)[VD1_hash_M2] = (unsigned char)(_t_>>16),
+			(dst)[VD1_hash_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vd_aux;
-		(dst)[VD1_aux_M0] = (unsigned char)_t_,
-		(dst)[VD1_aux_M1] = (unsigned char)(_t_>>8),
-		(dst)[VD1_aux_M2] = (unsigned char)(_t_>>16),
-		(dst)[VD1_aux_M3] = (unsigned char)(_t_>>24); };
+			(dst)[VD1_aux_M0] = (unsigned char)_t_,
+			(dst)[VD1_aux_M1] = (unsigned char)(_t_>>8),
+			(dst)[VD1_aux_M2] = (unsigned char)(_t_>>16),
+			(dst)[VD1_aux_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vd_next;
-		(dst)[VD1_next_M0] = (unsigned char)_t_,
-		(dst)[VD1_next_M1] = (unsigned char)(_t_>>8),
-		(dst)[VD1_next_M2] = (unsigned char)(_t_>>16),
-		(dst)[VD1_next_M3] = (unsigned char)(_t_>>24); };
+			(dst)[VD1_next_M0] = (unsigned char)_t_,
+			(dst)[VD1_next_M1] = (unsigned char)(_t_>>8),
+			(dst)[VD1_next_M2] = (unsigned char)(_t_>>16),
+			(dst)[VD1_next_M3] = (unsigned char)(_t_>>24); };
 		src = next_verdef;
 		dst = dst_next;
 	} while (src < end);
@@ -2382,7 +2382,7 @@ verneed_2L11_tof(unsigned char *dst, Elf32_Verneed *src, size_t cnt)
 
 		/* LINTED */
 		next_verneed = (Elf32_Verneed *)(src->vn_next ?
-		    (char *)src + src->vn_next : (char *)end);
+										 (char *)src + src->vn_next : (char *)end);
 		dst_next = dst + src->vn_next;
 
 		/* LINTED */
@@ -2403,30 +2403,30 @@ verneed_2L11_tof(unsigned char *dst, Elf32_Verneed *src, size_t cnt)
 			 */
 			/* LINTED */
 			vaux_next = (Elf32_Vernaux *)((char *)vaux +
-			    vaux->vna_next);
+										  vaux->vna_next);
 			vaux_dst_next = vaux_dst + vaux->vna_next;
 
 			{ register Elf32_Word _t_ = vaux->vna_hash;
-		(vaux_dst)[VNA1_hash_L0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_hash_L1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VNA1_hash_L2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VNA1_hash_L3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VNA1_hash_L0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_hash_L1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VNA1_hash_L2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VNA1_hash_L3] = (unsigned char)(_t_>>24); };
 			{ register Elf32_Half _t_ = vaux->vna_flags;
-		(vaux_dst)[VNA1_flags_L0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_flags_L1] = (unsigned char)(_t_>>8); };
+				(vaux_dst)[VNA1_flags_L0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_flags_L1] = (unsigned char)(_t_>>8); };
 			{ register Elf32_Half _t_ = vaux->vna_other;
-		(vaux_dst)[VNA1_other_L0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_other_L1] = (unsigned char)(_t_>>8); };
+				(vaux_dst)[VNA1_other_L0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_other_L1] = (unsigned char)(_t_>>8); };
 			{ register Elf32_Addr _t_ = vaux->vna_name;
-		(vaux_dst)[VNA1_name_L0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_name_L1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VNA1_name_L2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VNA1_name_L3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VNA1_name_L0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_name_L1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VNA1_name_L2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VNA1_name_L3] = (unsigned char)(_t_>>24); };
 			{ register Elf32_Word _t_ = vaux->vna_next;
-		(vaux_dst)[VNA1_next_L0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_next_L1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VNA1_next_L2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VNA1_next_L3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VNA1_next_L0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_next_L1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VNA1_next_L2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VNA1_next_L3] = (unsigned char)(_t_>>24); };
 			vaux_dst = vaux_dst_next;
 			vaux = vaux_next;
 		}
@@ -2434,26 +2434,26 @@ verneed_2L11_tof(unsigned char *dst, Elf32_Verneed *src, size_t cnt)
 		 * Convert Elf32_Verneed structure.
 		 */
 		{ register Elf32_Half _t_ = src->vn_version;
-		(dst)[VN1_version_L0] = (unsigned char)_t_,
-		(dst)[VN1_version_L1] = (unsigned char)(_t_>>8); };
+			(dst)[VN1_version_L0] = (unsigned char)_t_,
+			(dst)[VN1_version_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vn_cnt;
-		(dst)[VN1_cnt_L0] = (unsigned char)_t_,
-		(dst)[VN1_cnt_L1] = (unsigned char)(_t_>>8); };
+			(dst)[VN1_cnt_L0] = (unsigned char)_t_,
+			(dst)[VN1_cnt_L1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Addr _t_ = src->vn_file;
-		(dst)[VN1_file_L0] = (unsigned char)_t_,
-		(dst)[VN1_file_L1] = (unsigned char)(_t_>>8),
-		(dst)[VN1_file_L2] = (unsigned char)(_t_>>16),
-		(dst)[VN1_file_L3] = (unsigned char)(_t_>>24); };
+			(dst)[VN1_file_L0] = (unsigned char)_t_,
+			(dst)[VN1_file_L1] = (unsigned char)(_t_>>8),
+			(dst)[VN1_file_L2] = (unsigned char)(_t_>>16),
+			(dst)[VN1_file_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vn_aux;
-		(dst)[VN1_aux_L0] = (unsigned char)_t_,
-		(dst)[VN1_aux_L1] = (unsigned char)(_t_>>8),
-		(dst)[VN1_aux_L2] = (unsigned char)(_t_>>16),
-		(dst)[VN1_aux_L3] = (unsigned char)(_t_>>24); };
+			(dst)[VN1_aux_L0] = (unsigned char)_t_,
+			(dst)[VN1_aux_L1] = (unsigned char)(_t_>>8),
+			(dst)[VN1_aux_L2] = (unsigned char)(_t_>>16),
+			(dst)[VN1_aux_L3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vn_next;
-		(dst)[VN1_next_L0] = (unsigned char)_t_,
-		(dst)[VN1_next_L1] = (unsigned char)(_t_>>8),
-		(dst)[VN1_next_L2] = (unsigned char)(_t_>>16),
-		(dst)[VN1_next_L3] = (unsigned char)(_t_>>24); };
+			(dst)[VN1_next_L0] = (unsigned char)_t_,
+			(dst)[VN1_next_L1] = (unsigned char)(_t_>>8),
+			(dst)[VN1_next_L2] = (unsigned char)(_t_>>16),
+			(dst)[VN1_next_L3] = (unsigned char)(_t_>>24); };
 		src = next_verneed;
 		dst = dst_next;
 	} while (src < end);
@@ -2474,7 +2474,7 @@ verneed_2M11_tof(unsigned char *dst, Elf32_Verneed *src, size_t cnt)
 
 		/* LINTED */
 		next_verneed = (Elf32_Verneed *)(src->vn_next ?
-		    (char *)src + src->vn_next : (char *)end);
+										 (char *)src + src->vn_next : (char *)end);
 		dst_next = dst + src->vn_next;
 
 		/* LINTED */
@@ -2495,30 +2495,30 @@ verneed_2M11_tof(unsigned char *dst, Elf32_Verneed *src, size_t cnt)
 			 */
 			/* LINTED */
 			vaux_next = (Elf32_Vernaux *)((char *)vaux +
-			    vaux->vna_next);
+										  vaux->vna_next);
 			vaux_dst_next = vaux_dst + vaux->vna_next;
 
 			{ register Elf32_Word _t_ = vaux->vna_hash;
-		(vaux_dst)[VNA1_hash_M0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_hash_M1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VNA1_hash_M2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VNA1_hash_M3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VNA1_hash_M0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_hash_M1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VNA1_hash_M2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VNA1_hash_M3] = (unsigned char)(_t_>>24); };
 			{ register Elf32_Half _t_ = vaux->vna_flags;
-		(vaux_dst)[VNA1_flags_M0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_flags_M1] = (unsigned char)(_t_>>8); };
+				(vaux_dst)[VNA1_flags_M0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_flags_M1] = (unsigned char)(_t_>>8); };
 			{ register Elf32_Half _t_ = vaux->vna_other;
-		(vaux_dst)[VNA1_other_M0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_other_M1] = (unsigned char)(_t_>>8); };
+				(vaux_dst)[VNA1_other_M0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_other_M1] = (unsigned char)(_t_>>8); };
 			{ register Elf32_Addr _t_ = vaux->vna_name;
-		(vaux_dst)[VNA1_name_M0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_name_M1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VNA1_name_M2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VNA1_name_M3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VNA1_name_M0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_name_M1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VNA1_name_M2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VNA1_name_M3] = (unsigned char)(_t_>>24); };
 			{ register Elf32_Word _t_ = vaux->vna_next;
-		(vaux_dst)[VNA1_next_M0] = (unsigned char)_t_,
-		(vaux_dst)[VNA1_next_M1] = (unsigned char)(_t_>>8),
-		(vaux_dst)[VNA1_next_M2] = (unsigned char)(_t_>>16),
-		(vaux_dst)[VNA1_next_M3] = (unsigned char)(_t_>>24); };
+				(vaux_dst)[VNA1_next_M0] = (unsigned char)_t_,
+				(vaux_dst)[VNA1_next_M1] = (unsigned char)(_t_>>8),
+				(vaux_dst)[VNA1_next_M2] = (unsigned char)(_t_>>16),
+				(vaux_dst)[VNA1_next_M3] = (unsigned char)(_t_>>24); };
 			vaux_dst = vaux_dst_next;
 			vaux = vaux_next;
 		}
@@ -2526,26 +2526,26 @@ verneed_2M11_tof(unsigned char *dst, Elf32_Verneed *src, size_t cnt)
 		 * Convert Elf32_Verneed structure.
 		 */
 		{ register Elf32_Half _t_ = src->vn_version;
-		(dst)[VN1_version_M0] = (unsigned char)_t_,
-		(dst)[VN1_version_M1] = (unsigned char)(_t_>>8); };
+			(dst)[VN1_version_M0] = (unsigned char)_t_,
+			(dst)[VN1_version_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Half _t_ = src->vn_cnt;
-		(dst)[VN1_cnt_M0] = (unsigned char)_t_,
-		(dst)[VN1_cnt_M1] = (unsigned char)(_t_>>8); };
+			(dst)[VN1_cnt_M0] = (unsigned char)_t_,
+			(dst)[VN1_cnt_M1] = (unsigned char)(_t_>>8); };
 		{ register Elf32_Addr _t_ = src->vn_file;
-		(dst)[VN1_file_M0] = (unsigned char)_t_,
-		(dst)[VN1_file_M1] = (unsigned char)(_t_>>8),
-		(dst)[VN1_file_M2] = (unsigned char)(_t_>>16),
-		(dst)[VN1_file_M3] = (unsigned char)(_t_>>24); };
+			(dst)[VN1_file_M0] = (unsigned char)_t_,
+			(dst)[VN1_file_M1] = (unsigned char)(_t_>>8),
+			(dst)[VN1_file_M2] = (unsigned char)(_t_>>16),
+			(dst)[VN1_file_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vn_aux;
-		(dst)[VN1_aux_M0] = (unsigned char)_t_,
-		(dst)[VN1_aux_M1] = (unsigned char)(_t_>>8),
-		(dst)[VN1_aux_M2] = (unsigned char)(_t_>>16),
-		(dst)[VN1_aux_M3] = (unsigned char)(_t_>>24); };
+			(dst)[VN1_aux_M0] = (unsigned char)_t_,
+			(dst)[VN1_aux_M1] = (unsigned char)(_t_>>8),
+			(dst)[VN1_aux_M2] = (unsigned char)(_t_>>16),
+			(dst)[VN1_aux_M3] = (unsigned char)(_t_>>24); };
 		{ register Elf32_Word _t_ = src->vn_next;
-		(dst)[VN1_next_M0] = (unsigned char)_t_,
-		(dst)[VN1_next_M1] = (unsigned char)(_t_>>8),
-		(dst)[VN1_next_M2] = (unsigned char)(_t_>>16),
-		(dst)[VN1_next_M3] = (unsigned char)(_t_>>24); };
+			(dst)[VN1_next_M0] = (unsigned char)_t_,
+			(dst)[VN1_next_M1] = (unsigned char)(_t_>>8),
+			(dst)[VN1_next_M2] = (unsigned char)(_t_>>16),
+			(dst)[VN1_next_M3] = (unsigned char)(_t_>>24); };
 		src = next_verneed;
 		dst = dst_next;
 	} while (src < end);
@@ -2575,9 +2575,9 @@ addr_2L_tom(Elf32_Addr *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= A_sizeof;
 		*dst = (((((((Elf32_Addr)(src)[A_L3]<<8)
-		+(src)[A_L2])<<8)
-		+(src)[A_L1])<<8)
-		+(src)[A_L0]);
+					+(src)[A_L2])<<8)
+				  +(src)[A_L1])<<8)
+				+(src)[A_L0]);
 	}
 }
 
@@ -2591,9 +2591,9 @@ addr_2M_tom(Elf32_Addr *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= A_sizeof;
 		*dst = (((((((Elf32_Addr)(src)[A_M3]<<8)
-		+(src)[A_M2])<<8)
-		+(src)[A_M1])<<8)
-		+(src)[A_M0]);
+					+(src)[A_M2])<<8)
+				  +(src)[A_M1])<<8)
+				+(src)[A_M0]);
 	}
 }
 
@@ -2608,13 +2608,13 @@ dyn_2L11_tom(Elf32_Dyn *dst, unsigned char *src, size_t cnt)
 
 	do {
 		dst->d_tag = (((((((Elf32_Word)(src)[D1_tag_L3]<<8)
-		+(src)[D1_tag_L2])<<8)
-		+(src)[D1_tag_L1])<<8)
-		+(src)[D1_tag_L0]);
+						  +(src)[D1_tag_L2])<<8)
+						+(src)[D1_tag_L1])<<8)
+					  +(src)[D1_tag_L0]);
 		dst->d_un.d_val = (((((((Elf32_Word)(src)[D1_val_L3]<<8)
-		+(src)[D1_val_L2])<<8)
-		+(src)[D1_val_L1])<<8)
-		+(src)[D1_val_L0]);
+							   +(src)[D1_val_L2])<<8)
+							 +(src)[D1_val_L1])<<8)
+						   +(src)[D1_val_L0]);
 		src += D1_sizeof;
 	} while (++dst < end);
 }
@@ -2626,13 +2626,13 @@ dyn_2M11_tom(Elf32_Dyn *dst, unsigned char *src, size_t cnt)
 
 	do {
 		dst->d_tag = (((((((Elf32_Word)(src)[D1_tag_M3]<<8)
-		+(src)[D1_tag_M2])<<8)
-		+(src)[D1_tag_M1])<<8)
-		+(src)[D1_tag_M0]);
+						  +(src)[D1_tag_M2])<<8)
+						+(src)[D1_tag_M1])<<8)
+					  +(src)[D1_tag_M0]);
 		dst->d_un.d_val = (((((((Elf32_Word)(src)[D1_val_M3]<<8)
-		+(src)[D1_val_M2])<<8)
-		+(src)[D1_val_M1])<<8)
-		+(src)[D1_val_M0]);
+							   +(src)[D1_val_M2])<<8)
+							 +(src)[D1_val_M1])<<8)
+						   +(src)[D1_val_M0]);
 		src += D1_sizeof;
 	} while (++dst < end);
 }
@@ -2657,25 +2657,25 @@ ehdr_2L11_tom(Elf32_Ehdr *dst, unsigned char *src, size_t cnt)
 		dst->e_phentsize = (((Elf32_Half)(src)[E1_phentsize_L1]<<8)+(src)[E1_phentsize_L0]);
 		dst->e_ehsize = (((Elf32_Half)(src)[E1_ehsize_L1]<<8)+(src)[E1_ehsize_L0]);
 		dst->e_flags = (((((((Elf32_Word)(src)[E1_flags_L3]<<8)
-		+(src)[E1_flags_L2])<<8)
-		+(src)[E1_flags_L1])<<8)
-		+(src)[E1_flags_L0]);
+							+(src)[E1_flags_L2])<<8)
+						  +(src)[E1_flags_L1])<<8)
+						+(src)[E1_flags_L0]);
 		dst->e_shoff = (((((((Elf32_Off)(src)[E1_shoff_L3]<<8)
-		+(src)[E1_shoff_L2])<<8)
-		+(src)[E1_shoff_L1])<<8)
-		+(src)[E1_shoff_L0]);
+							+(src)[E1_shoff_L2])<<8)
+						  +(src)[E1_shoff_L1])<<8)
+						+(src)[E1_shoff_L0]);
 		dst->e_phoff = (((((((Elf32_Off)(src)[E1_phoff_L3]<<8)
-		+(src)[E1_phoff_L2])<<8)
-		+(src)[E1_phoff_L1])<<8)
-		+(src)[E1_phoff_L0]);
+							+(src)[E1_phoff_L2])<<8)
+						  +(src)[E1_phoff_L1])<<8)
+						+(src)[E1_phoff_L0]);
 		dst->e_entry = (((((((Elf32_Addr)(src)[E1_entry_L3]<<8)
-		+(src)[E1_entry_L2])<<8)
-		+(src)[E1_entry_L1])<<8)
-		+(src)[E1_entry_L0]);
+							+(src)[E1_entry_L2])<<8)
+						  +(src)[E1_entry_L1])<<8)
+						+(src)[E1_entry_L0]);
 		dst->e_version = (((((((Elf32_Word)(src)[E1_version_L3]<<8)
-		+(src)[E1_version_L2])<<8)
-		+(src)[E1_version_L1])<<8)
-		+(src)[E1_version_L0]);
+							  +(src)[E1_version_L2])<<8)
+							+(src)[E1_version_L1])<<8)
+						  +(src)[E1_version_L0]);
 		dst->e_machine = (((Elf32_Half)(src)[E1_machine_L1]<<8)+(src)[E1_machine_L0]);
 		dst->e_type = (((Elf32_Half)(src)[E1_type_L1]<<8)+(src)[E1_type_L0]);
 		if (dst->e_ident != &src[E1_ident])
@@ -2699,25 +2699,25 @@ ehdr_2M11_tom(Elf32_Ehdr *dst, unsigned char *src, size_t cnt)
 		dst->e_phentsize = (((Elf32_Half)(src)[E1_phentsize_M1]<<8)+(src)[E1_phentsize_M0]);
 		dst->e_ehsize = (((Elf32_Half)(src)[E1_ehsize_M1]<<8)+(src)[E1_ehsize_M0]);
 		dst->e_flags = (((((((Elf32_Word)(src)[E1_flags_M3]<<8)
-		+(src)[E1_flags_M2])<<8)
-		+(src)[E1_flags_M1])<<8)
-		+(src)[E1_flags_M0]);
+							+(src)[E1_flags_M2])<<8)
+						  +(src)[E1_flags_M1])<<8)
+						+(src)[E1_flags_M0]);
 		dst->e_shoff = (((((((Elf32_Off)(src)[E1_shoff_M3]<<8)
-		+(src)[E1_shoff_M2])<<8)
-		+(src)[E1_shoff_M1])<<8)
-		+(src)[E1_shoff_M0]);
+							+(src)[E1_shoff_M2])<<8)
+						  +(src)[E1_shoff_M1])<<8)
+						+(src)[E1_shoff_M0]);
 		dst->e_phoff = (((((((Elf32_Off)(src)[E1_phoff_M3]<<8)
-		+(src)[E1_phoff_M2])<<8)
-		+(src)[E1_phoff_M1])<<8)
-		+(src)[E1_phoff_M0]);
+							+(src)[E1_phoff_M2])<<8)
+						  +(src)[E1_phoff_M1])<<8)
+						+(src)[E1_phoff_M0]);
 		dst->e_entry = (((((((Elf32_Addr)(src)[E1_entry_M3]<<8)
-		+(src)[E1_entry_M2])<<8)
-		+(src)[E1_entry_M1])<<8)
-		+(src)[E1_entry_M0]);
+							+(src)[E1_entry_M2])<<8)
+						  +(src)[E1_entry_M1])<<8)
+						+(src)[E1_entry_M0]);
 		dst->e_version = (((((((Elf32_Word)(src)[E1_version_M3]<<8)
-		+(src)[E1_version_M2])<<8)
-		+(src)[E1_version_M1])<<8)
-		+(src)[E1_version_M0]);
+							  +(src)[E1_version_M2])<<8)
+							+(src)[E1_version_M1])<<8)
+						  +(src)[E1_version_M0]);
 		dst->e_machine = (((Elf32_Half)(src)[E1_machine_M1]<<8)+(src)[E1_machine_M0]);
 		dst->e_type = (((Elf32_Half)(src)[E1_type_M1]<<8)+(src)[E1_type_M0]);
 		if (dst->e_ident != &src[E1_ident])
@@ -2766,21 +2766,21 @@ move_2L11_tom(Elf32_Move *dst, unsigned char *src, size_t cnt)
 
 	do {
 		dst->m_value = (((((((((((Elf32_Lword)(src)[M1_value_L7]<<8)
-		+(src)[M1_value_L6]<<8)
-		+(src)[M1_value_L5]<<8)
-		+(src)[M1_value_L4]<<8)
-		+(src)[M1_value_L3]<<8)
-		+(src)[M1_value_L2])<<8)
-		+(src)[M1_value_L1])<<8)
-		+(src)[M1_value_L0]);
+								+(src)[M1_value_L6]<<8)
+							   +(src)[M1_value_L5]<<8)
+							  +(src)[M1_value_L4]<<8)
+							 +(src)[M1_value_L3]<<8)
+							+(src)[M1_value_L2])<<8)
+						  +(src)[M1_value_L1])<<8)
+						+(src)[M1_value_L0]);
 		dst->m_info = (((((((Elf32_Word)(src)[M1_info_L3]<<8)
-		+(src)[M1_info_L2])<<8)
-		+(src)[M1_info_L1])<<8)
-		+(src)[M1_info_L0]);
+						   +(src)[M1_info_L2])<<8)
+						 +(src)[M1_info_L1])<<8)
+					   +(src)[M1_info_L0]);
 		dst->m_poffset = (((((((Elf32_Word)(src)[M1_poffset_L3]<<8)
-		+(src)[M1_poffset_L2])<<8)
-		+(src)[M1_poffset_L1])<<8)
-		+(src)[M1_poffset_L0]);
+							  +(src)[M1_poffset_L2])<<8)
+							+(src)[M1_poffset_L1])<<8)
+						  +(src)[M1_poffset_L0]);
 		dst->m_repeat = (((Elf32_Half)(src)[M1_repeat_L1]<<8)+(src)[M1_repeat_L0]);
 		dst->m_stride = (((Elf32_Half)(src)[M1_stride_L1]<<8)+(src)[M1_stride_L0]);
 		src += M1_sizeof;
@@ -2794,21 +2794,21 @@ move_2M11_tom(Elf32_Move *dst, unsigned char *src, size_t cnt)
 
 	do {
 		dst->m_value = (((((((((((Elf32_Lword)(src)[M1_value_M7]<<8)
-		+(src)[M1_value_M6]<<8)
-		+(src)[M1_value_M5]<<8)
-		+(src)[M1_value_M4]<<8)
-		+(src)[M1_value_M3]<<8)
-		+(src)[M1_value_M2])<<8)
-		+(src)[M1_value_M1])<<8)
-		+(src)[M1_value_M0]);
+								+(src)[M1_value_M6]<<8)
+							   +(src)[M1_value_M5]<<8)
+							  +(src)[M1_value_M4]<<8)
+							 +(src)[M1_value_M3]<<8)
+							+(src)[M1_value_M2])<<8)
+						  +(src)[M1_value_M1])<<8)
+						+(src)[M1_value_M0]);
 		dst->m_info = (((((((Elf32_Word)(src)[M1_info_M3]<<8)
-		+(src)[M1_info_M2])<<8)
-		+(src)[M1_info_M1])<<8)
-		+(src)[M1_info_M0]);
+						   +(src)[M1_info_M2])<<8)
+						 +(src)[M1_info_M1])<<8)
+					   +(src)[M1_info_M0]);
 		dst->m_poffset = (((((((Elf32_Word)(src)[M1_poffset_M3]<<8)
-		+(src)[M1_poffset_M2])<<8)
-		+(src)[M1_poffset_M1])<<8)
-		+(src)[M1_poffset_M0]);
+							  +(src)[M1_poffset_M2])<<8)
+							+(src)[M1_poffset_M1])<<8)
+						  +(src)[M1_poffset_M0]);
 		dst->m_repeat = (((Elf32_Half)(src)[M1_repeat_M1]<<8)+(src)[M1_repeat_M0]);
 		dst->m_stride = (((Elf32_Half)(src)[M1_stride_M1]<<8)+(src)[M1_stride_M0]);
 		src += M1_sizeof;
@@ -2827,21 +2827,21 @@ movep_2L11_tom(Elf32_Move *dst, unsigned char *src, size_t cnt)
 	do
 	{
 		dst->m_value = (((((((((((Elf32_Lword)(src)[MP1_value_L7]<<8)
-		+(src)[MP1_value_L6]<<8)
-		+(src)[MP1_value_L5]<<8)
-		+(src)[MP1_value_L4]<<8)
-		+(src)[MP1_value_L3]<<8)
-		+(src)[MP1_value_L2])<<8)
-		+(src)[MP1_value_L1])<<8)
-		+(src)[MP1_value_L0]);
+								+(src)[MP1_value_L6]<<8)
+							   +(src)[MP1_value_L5]<<8)
+							  +(src)[MP1_value_L4]<<8)
+							 +(src)[MP1_value_L3]<<8)
+							+(src)[MP1_value_L2])<<8)
+						  +(src)[MP1_value_L1])<<8)
+						+(src)[MP1_value_L0]);
 		dst->m_info = (((((((Elf32_Word)(src)[MP1_info_L3]<<8)
-		+(src)[MP1_info_L2])<<8)
-		+(src)[MP1_info_L1])<<8)
-		+(src)[MP1_info_L0]);
+						   +(src)[MP1_info_L2])<<8)
+						 +(src)[MP1_info_L1])<<8)
+					   +(src)[MP1_info_L0]);
 		dst->m_poffset = (((((((Elf32_Word)(src)[MP1_poffset_L3]<<8)
-		+(src)[MP1_poffset_L2])<<8)
-		+(src)[MP1_poffset_L1])<<8)
-		+(src)[MP1_poffset_L0]);
+							  +(src)[MP1_poffset_L2])<<8)
+							+(src)[MP1_poffset_L1])<<8)
+						  +(src)[MP1_poffset_L0]);
 		dst->m_repeat = (((Elf32_Half)(src)[MP1_repeat_L1]<<8)+(src)[MP1_repeat_L0]);
 		dst->m_stride = (((Elf32_Half)(src)[MP1_stride_L1]<<8)+(src)[MP1_stride_L0]);
 		src += MP1_sizeof;
@@ -2856,21 +2856,21 @@ movep_2M11_tom(Elf32_Move *dst, unsigned char *src, size_t cnt)
 	do
 	{
 		dst->m_value = (((((((((((Elf32_Lword)(src)[MP1_value_M7]<<8)
-		+(src)[MP1_value_M6]<<8)
-		+(src)[MP1_value_M5]<<8)
-		+(src)[MP1_value_M4]<<8)
-		+(src)[MP1_value_M3]<<8)
-		+(src)[MP1_value_M2])<<8)
-		+(src)[MP1_value_M1])<<8)
-		+(src)[MP1_value_M0]);
+								+(src)[MP1_value_M6]<<8)
+							   +(src)[MP1_value_M5]<<8)
+							  +(src)[MP1_value_M4]<<8)
+							 +(src)[MP1_value_M3]<<8)
+							+(src)[MP1_value_M2])<<8)
+						  +(src)[MP1_value_M1])<<8)
+						+(src)[MP1_value_M0]);
 		dst->m_info = (((((((Elf32_Word)(src)[MP1_info_M3]<<8)
-		+(src)[MP1_info_M2])<<8)
-		+(src)[MP1_info_M1])<<8)
-		+(src)[MP1_info_M0]);
+						   +(src)[MP1_info_M2])<<8)
+						 +(src)[MP1_info_M1])<<8)
+					   +(src)[MP1_info_M0]);
 		dst->m_poffset = (((((((Elf32_Word)(src)[MP1_poffset_M3]<<8)
-		+(src)[MP1_poffset_M2])<<8)
-		+(src)[MP1_poffset_M1])<<8)
-		+(src)[MP1_poffset_M0]);
+							  +(src)[MP1_poffset_M2])<<8)
+							+(src)[MP1_poffset_M1])<<8)
+						  +(src)[MP1_poffset_M0]);
 		dst->m_repeat = (((Elf32_Half)(src)[MP1_repeat_M1]<<8)+(src)[MP1_repeat_M0]);
 		dst->m_stride = (((Elf32_Half)(src)[MP1_stride_M1]<<8)+(src)[MP1_stride_M0]);
 		src += MP1_sizeof;
@@ -2894,17 +2894,17 @@ note_2L11_tom(Elf32_Nhdr *dst, unsigned char *src, size_t cnt)
 		Elf32_Word	field_sz;
 
 		dst->n_namesz = (((((((Elf32_Word)(src)[N1_namesz_L3]<<8)
-		+(src)[N1_namesz_L2])<<8)
-		+(src)[N1_namesz_L1])<<8)
-		+(src)[N1_namesz_L0]);
+							 +(src)[N1_namesz_L2])<<8)
+						   +(src)[N1_namesz_L1])<<8)
+						 +(src)[N1_namesz_L0]);
 		dst->n_descsz = (((((((Elf32_Word)(src)[N1_descsz_L3]<<8)
-		+(src)[N1_descsz_L2])<<8)
-		+(src)[N1_descsz_L1])<<8)
-		+(src)[N1_descsz_L0]);
+							 +(src)[N1_descsz_L2])<<8)
+						   +(src)[N1_descsz_L1])<<8)
+						 +(src)[N1_descsz_L0]);
 		dst->n_type = (((((((Elf32_Word)(src)[N1_type_L3]<<8)
-		+(src)[N1_type_L2])<<8)
-		+(src)[N1_type_L1])<<8)
-		+(src)[N1_type_L0]);
+						   +(src)[N1_type_L2])<<8)
+						 +(src)[N1_type_L1])<<8)
+					   +(src)[N1_type_L0]);
 		nhdr = dst;
 		/* LINTED */
 		dst = (Elf32_Nhdr *)((char *)dst + sizeof (Elf32_Nhdr));
@@ -2936,17 +2936,17 @@ note_2M11_tom(Elf32_Nhdr *dst, unsigned char *src, size_t cnt)
 		Elf32_Word	field_sz;
 
 		dst->n_namesz = (((((((Elf32_Word)(src)[N1_namesz_M3]<<8)
-		+(src)[N1_namesz_M2])<<8)
-		+(src)[N1_namesz_M1])<<8)
-		+(src)[N1_namesz_M0]);
+							 +(src)[N1_namesz_M2])<<8)
+						   +(src)[N1_namesz_M1])<<8)
+						 +(src)[N1_namesz_M0]);
 		dst->n_descsz = (((((((Elf32_Word)(src)[N1_descsz_M3]<<8)
-		+(src)[N1_descsz_M2])<<8)
-		+(src)[N1_descsz_M1])<<8)
-		+(src)[N1_descsz_M0]);
+							 +(src)[N1_descsz_M2])<<8)
+						   +(src)[N1_descsz_M1])<<8)
+						 +(src)[N1_descsz_M0]);
 		dst->n_type = (((((((Elf32_Word)(src)[N1_type_M3]<<8)
-		+(src)[N1_type_M2])<<8)
-		+(src)[N1_type_M1])<<8)
-		+(src)[N1_type_M0]);
+						   +(src)[N1_type_M2])<<8)
+						 +(src)[N1_type_M1])<<8)
+					   +(src)[N1_type_M0]);
 		nhdr = dst;
 		/* LINTED */
 		dst = (Elf32_Nhdr *)((char *)dst + sizeof (Elf32_Nhdr));
@@ -2979,9 +2979,9 @@ off_2L_tom(Elf32_Off *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= O_sizeof;
 		*dst = (((((((Elf32_Off)(src)[O_L3]<<8)
-		+(src)[O_L2])<<8)
-		+(src)[O_L1])<<8)
-		+(src)[O_L0]);
+					+(src)[O_L2])<<8)
+				  +(src)[O_L1])<<8)
+				+(src)[O_L0]);
 	}
 }
 
@@ -2995,9 +2995,9 @@ off_2M_tom(Elf32_Off *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= O_sizeof;
 		*dst = (((((((Elf32_Off)(src)[O_M3]<<8)
-		+(src)[O_M2])<<8)
-		+(src)[O_M1])<<8)
-		+(src)[O_M0]);
+					+(src)[O_M2])<<8)
+				  +(src)[O_M1])<<8)
+				+(src)[O_M0]);
 	}
 }
 
@@ -3015,37 +3015,37 @@ phdr_2L11_tom(Elf32_Phdr *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= P1_sizeof;
 		dst->p_align = (((((((Elf32_Word)(src)[P1_align_L3]<<8)
-		+(src)[P1_align_L2])<<8)
-		+(src)[P1_align_L1])<<8)
-		+(src)[P1_align_L0]);
+							+(src)[P1_align_L2])<<8)
+						  +(src)[P1_align_L1])<<8)
+						+(src)[P1_align_L0]);
 		dst->p_flags = (((((((Elf32_Word)(src)[P1_flags_L3]<<8)
-		+(src)[P1_flags_L2])<<8)
-		+(src)[P1_flags_L1])<<8)
-		+(src)[P1_flags_L0]);
+							+(src)[P1_flags_L2])<<8)
+						  +(src)[P1_flags_L1])<<8)
+						+(src)[P1_flags_L0]);
 		dst->p_memsz = (((((((Elf32_Word)(src)[P1_memsz_L3]<<8)
-		+(src)[P1_memsz_L2])<<8)
-		+(src)[P1_memsz_L1])<<8)
-		+(src)[P1_memsz_L0]);
+							+(src)[P1_memsz_L2])<<8)
+						  +(src)[P1_memsz_L1])<<8)
+						+(src)[P1_memsz_L0]);
 		dst->p_filesz = (((((((Elf32_Word)(src)[P1_filesz_L3]<<8)
-		+(src)[P1_filesz_L2])<<8)
-		+(src)[P1_filesz_L1])<<8)
-		+(src)[P1_filesz_L0]);
+							 +(src)[P1_filesz_L2])<<8)
+						   +(src)[P1_filesz_L1])<<8)
+						 +(src)[P1_filesz_L0]);
 		dst->p_paddr = (((((((Elf32_Addr)(src)[P1_paddr_L3]<<8)
-		+(src)[P1_paddr_L2])<<8)
-		+(src)[P1_paddr_L1])<<8)
-		+(src)[P1_paddr_L0]);
+							+(src)[P1_paddr_L2])<<8)
+						  +(src)[P1_paddr_L1])<<8)
+						+(src)[P1_paddr_L0]);
 		dst->p_vaddr = (((((((Elf32_Addr)(src)[P1_vaddr_L3]<<8)
-		+(src)[P1_vaddr_L2])<<8)
-		+(src)[P1_vaddr_L1])<<8)
-		+(src)[P1_vaddr_L0]);
+							+(src)[P1_vaddr_L2])<<8)
+						  +(src)[P1_vaddr_L1])<<8)
+						+(src)[P1_vaddr_L0]);
 		dst->p_offset = (((((((Elf32_Off)(src)[P1_offset_L3]<<8)
-		+(src)[P1_offset_L2])<<8)
-		+(src)[P1_offset_L1])<<8)
-		+(src)[P1_offset_L0]);
+							 +(src)[P1_offset_L2])<<8)
+						   +(src)[P1_offset_L1])<<8)
+						 +(src)[P1_offset_L0]);
 		dst->p_type = (((((((Elf32_Word)(src)[P1_type_L3]<<8)
-		+(src)[P1_type_L2])<<8)
-		+(src)[P1_type_L1])<<8)
-		+(src)[P1_type_L0]);
+						   +(src)[P1_type_L2])<<8)
+						 +(src)[P1_type_L1])<<8)
+					   +(src)[P1_type_L0]);
 	}
 }
 
@@ -3059,37 +3059,37 @@ phdr_2M11_tom(Elf32_Phdr *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= P1_sizeof;
 		dst->p_align = (((((((Elf32_Word)(src)[P1_align_M3]<<8)
-		+(src)[P1_align_M2])<<8)
-		+(src)[P1_align_M1])<<8)
-		+(src)[P1_align_M0]);
+							+(src)[P1_align_M2])<<8)
+						  +(src)[P1_align_M1])<<8)
+						+(src)[P1_align_M0]);
 		dst->p_flags = (((((((Elf32_Word)(src)[P1_flags_M3]<<8)
-		+(src)[P1_flags_M2])<<8)
-		+(src)[P1_flags_M1])<<8)
-		+(src)[P1_flags_M0]);
+							+(src)[P1_flags_M2])<<8)
+						  +(src)[P1_flags_M1])<<8)
+						+(src)[P1_flags_M0]);
 		dst->p_memsz = (((((((Elf32_Word)(src)[P1_memsz_M3]<<8)
-		+(src)[P1_memsz_M2])<<8)
-		+(src)[P1_memsz_M1])<<8)
-		+(src)[P1_memsz_M0]);
+							+(src)[P1_memsz_M2])<<8)
+						  +(src)[P1_memsz_M1])<<8)
+						+(src)[P1_memsz_M0]);
 		dst->p_filesz = (((((((Elf32_Word)(src)[P1_filesz_M3]<<8)
-		+(src)[P1_filesz_M2])<<8)
-		+(src)[P1_filesz_M1])<<8)
-		+(src)[P1_filesz_M0]);
+							 +(src)[P1_filesz_M2])<<8)
+						   +(src)[P1_filesz_M1])<<8)
+						 +(src)[P1_filesz_M0]);
 		dst->p_paddr = (((((((Elf32_Addr)(src)[P1_paddr_M3]<<8)
-		+(src)[P1_paddr_M2])<<8)
-		+(src)[P1_paddr_M1])<<8)
-		+(src)[P1_paddr_M0]);
+							+(src)[P1_paddr_M2])<<8)
+						  +(src)[P1_paddr_M1])<<8)
+						+(src)[P1_paddr_M0]);
 		dst->p_vaddr = (((((((Elf32_Addr)(src)[P1_vaddr_M3]<<8)
-		+(src)[P1_vaddr_M2])<<8)
-		+(src)[P1_vaddr_M1])<<8)
-		+(src)[P1_vaddr_M0]);
+							+(src)[P1_vaddr_M2])<<8)
+						  +(src)[P1_vaddr_M1])<<8)
+						+(src)[P1_vaddr_M0]);
 		dst->p_offset = (((((((Elf32_Off)(src)[P1_offset_M3]<<8)
-		+(src)[P1_offset_M2])<<8)
-		+(src)[P1_offset_M1])<<8)
-		+(src)[P1_offset_M0]);
+							 +(src)[P1_offset_M2])<<8)
+						   +(src)[P1_offset_M1])<<8)
+						 +(src)[P1_offset_M0]);
 		dst->p_type = (((((((Elf32_Word)(src)[P1_type_M3]<<8)
-		+(src)[P1_type_M2])<<8)
-		+(src)[P1_type_M1])<<8)
-		+(src)[P1_type_M0]);
+						   +(src)[P1_type_M2])<<8)
+						 +(src)[P1_type_M1])<<8)
+					   +(src)[P1_type_M0]);
 	}
 }
 
@@ -3107,13 +3107,13 @@ rel_2L11_tom(Elf32_Rel *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= R1_sizeof;
 		dst->r_info = (((((((Elf32_Word)(src)[R1_info_L3]<<8)
-		+(src)[R1_info_L2])<<8)
-		+(src)[R1_info_L1])<<8)
-		+(src)[R1_info_L0]);
+						   +(src)[R1_info_L2])<<8)
+						 +(src)[R1_info_L1])<<8)
+					   +(src)[R1_info_L0]);
 		dst->r_offset = (((((((Elf32_Addr)(src)[R1_offset_L3]<<8)
-		+(src)[R1_offset_L2])<<8)
-		+(src)[R1_offset_L1])<<8)
-		+(src)[R1_offset_L0]);
+							 +(src)[R1_offset_L2])<<8)
+						   +(src)[R1_offset_L1])<<8)
+						 +(src)[R1_offset_L0]);
 	}
 }
 
@@ -3127,13 +3127,13 @@ rel_2M11_tom(Elf32_Rel *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= R1_sizeof;
 		dst->r_info = (((((((Elf32_Word)(src)[R1_info_M3]<<8)
-		+(src)[R1_info_M2])<<8)
-		+(src)[R1_info_M1])<<8)
-		+(src)[R1_info_M0]);
+						   +(src)[R1_info_M2])<<8)
+						 +(src)[R1_info_M1])<<8)
+					   +(src)[R1_info_M0]);
 		dst->r_offset = (((((((Elf32_Addr)(src)[R1_offset_M3]<<8)
-		+(src)[R1_offset_M2])<<8)
-		+(src)[R1_offset_M1])<<8)
-		+(src)[R1_offset_M0]);
+							 +(src)[R1_offset_M2])<<8)
+						   +(src)[R1_offset_M1])<<8)
+						 +(src)[R1_offset_M0]);
 	}
 }
 
@@ -3152,11 +3152,11 @@ rela_2L11_tom(Elf32_Rela *dst, unsigned char *src, size_t cnt)
 		src -= RA1_sizeof;
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1 &&	/* 2s comp */
-		    ~(~(Elf32_Word)0 >> 1) == HI32) {
+			~(~(Elf32_Word)0 >> 1) == HI32) {
 			dst->r_addend = (((((((Elf32_Word)(src)[RA1_addend_L3]<<8)
-		+(src)[RA1_addend_L2])<<8)
-		+(src)[RA1_addend_L1])<<8)
-		+(src)[RA1_addend_L0]);
+								 +(src)[RA1_addend_L2])<<8)
+							   +(src)[RA1_addend_L1])<<8)
+							 +(src)[RA1_addend_L0]);
 		} else {
 			union {
 				Elf32_Word w;
@@ -3164,9 +3164,9 @@ rela_2L11_tom(Elf32_Rela *dst, unsigned char *src, size_t cnt)
 			} u;
 
 			if ((u.w = (((((((Elf32_Word)(src)[RA1_addend_L3]<<8)
-		+(src)[RA1_addend_L2])<<8)
-		+(src)[RA1_addend_L1])<<8)
-		+(src)[RA1_addend_L0])) & HI32) {
+							+(src)[RA1_addend_L2])<<8)
+						  +(src)[RA1_addend_L1])<<8)
+						+(src)[RA1_addend_L0])) & HI32) {
 				u.w |= ~(Elf32_Word)LO31;
 				u.w = ~u.w + 1;
 				u.sw = -u.w;
@@ -3174,13 +3174,13 @@ rela_2L11_tom(Elf32_Rela *dst, unsigned char *src, size_t cnt)
 			dst->r_addend = u.sw;
 		}
 		dst->r_info = (((((((Elf32_Word)(src)[RA1_info_L3]<<8)
-		+(src)[RA1_info_L2])<<8)
-		+(src)[RA1_info_L1])<<8)
-		+(src)[RA1_info_L0]);
+						   +(src)[RA1_info_L2])<<8)
+						 +(src)[RA1_info_L1])<<8)
+					   +(src)[RA1_info_L0]);
 		dst->r_offset = (((((((Elf32_Addr)(src)[RA1_offset_L3]<<8)
-		+(src)[RA1_offset_L2])<<8)
-		+(src)[RA1_offset_L1])<<8)
-		+(src)[RA1_offset_L0]);
+							 +(src)[RA1_offset_L2])<<8)
+						   +(src)[RA1_offset_L1])<<8)
+						 +(src)[RA1_offset_L0]);
 	}
 }
 
@@ -3195,11 +3195,11 @@ rela_2M11_tom(Elf32_Rela *dst, unsigned char *src, size_t cnt)
 		src -= RA1_sizeof;
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1 &&	/* 2s comp */
-		    ~(~(Elf32_Word)0 >> 1) == HI32) {
+			~(~(Elf32_Word)0 >> 1) == HI32) {
 			dst->r_addend = (((((((Elf32_Word)(src)[RA1_addend_M3]<<8)
-		+(src)[RA1_addend_M2])<<8)
-		+(src)[RA1_addend_M1])<<8)
-		+(src)[RA1_addend_M0]);
+								 +(src)[RA1_addend_M2])<<8)
+							   +(src)[RA1_addend_M1])<<8)
+							 +(src)[RA1_addend_M0]);
 		} else {
 			union {
 				Elf32_Word w;
@@ -3207,9 +3207,9 @@ rela_2M11_tom(Elf32_Rela *dst, unsigned char *src, size_t cnt)
 			} u;
 
 			if ((u.w = (((((((Elf32_Word)(src)[RA1_addend_M3]<<8)
-		+(src)[RA1_addend_M2])<<8)
-		+(src)[RA1_addend_M1])<<8)
-		+(src)[RA1_addend_M0])) & HI32) {
+							+(src)[RA1_addend_M2])<<8)
+						  +(src)[RA1_addend_M1])<<8)
+						+(src)[RA1_addend_M0])) & HI32) {
 				u.w |= ~(Elf32_Word)LO31;
 				u.w = ~u.w + 1;
 				u.sw = -u.w;
@@ -3217,13 +3217,13 @@ rela_2M11_tom(Elf32_Rela *dst, unsigned char *src, size_t cnt)
 			dst->r_addend = u.sw;
 		}
 		dst->r_info = (((((((Elf32_Word)(src)[RA1_info_M3]<<8)
-		+(src)[RA1_info_M2])<<8)
-		+(src)[RA1_info_M1])<<8)
-		+(src)[RA1_info_M0]);
+						   +(src)[RA1_info_M2])<<8)
+						 +(src)[RA1_info_M1])<<8)
+					   +(src)[RA1_info_M0]);
 		dst->r_offset = (((((((Elf32_Addr)(src)[RA1_offset_M3]<<8)
-		+(src)[RA1_offset_M2])<<8)
-		+(src)[RA1_offset_M1])<<8)
-		+(src)[RA1_offset_M0]);
+							 +(src)[RA1_offset_M2])<<8)
+						   +(src)[RA1_offset_M1])<<8)
+						 +(src)[RA1_offset_M0]);
 	}
 }
 
@@ -3241,45 +3241,45 @@ shdr_2L11_tom(Elf32_Shdr *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= SH1_sizeof;
 		dst->sh_entsize = (((((((Elf32_Word)(src)[SH1_entsize_L3]<<8)
-		+(src)[SH1_entsize_L2])<<8)
-		+(src)[SH1_entsize_L1])<<8)
-		+(src)[SH1_entsize_L0]);
+							   +(src)[SH1_entsize_L2])<<8)
+							 +(src)[SH1_entsize_L1])<<8)
+						   +(src)[SH1_entsize_L0]);
 		dst->sh_addralign = (((((((Elf32_Word)(src)[SH1_addralign_L3]<<8)
-		+(src)[SH1_addralign_L2])<<8)
-		+(src)[SH1_addralign_L1])<<8)
-		+(src)[SH1_addralign_L0]);
+								 +(src)[SH1_addralign_L2])<<8)
+							   +(src)[SH1_addralign_L1])<<8)
+							 +(src)[SH1_addralign_L0]);
 		dst->sh_info = (((((((Elf32_Word)(src)[SH1_info_L3]<<8)
-		+(src)[SH1_info_L2])<<8)
-		+(src)[SH1_info_L1])<<8)
-		+(src)[SH1_info_L0]);
+							+(src)[SH1_info_L2])<<8)
+						  +(src)[SH1_info_L1])<<8)
+						+(src)[SH1_info_L0]);
 		dst->sh_link = (((((((Elf32_Word)(src)[SH1_link_L3]<<8)
-		+(src)[SH1_link_L2])<<8)
-		+(src)[SH1_link_L1])<<8)
-		+(src)[SH1_link_L0]);
+							+(src)[SH1_link_L2])<<8)
+						  +(src)[SH1_link_L1])<<8)
+						+(src)[SH1_link_L0]);
 		dst->sh_size = (((((((Elf32_Word)(src)[SH1_size_L3]<<8)
-		+(src)[SH1_size_L2])<<8)
-		+(src)[SH1_size_L1])<<8)
-		+(src)[SH1_size_L0]);
+							+(src)[SH1_size_L2])<<8)
+						  +(src)[SH1_size_L1])<<8)
+						+(src)[SH1_size_L0]);
 		dst->sh_offset = (((((((Elf32_Off)(src)[SH1_offset_L3]<<8)
-		+(src)[SH1_offset_L2])<<8)
-		+(src)[SH1_offset_L1])<<8)
-		+(src)[SH1_offset_L0]);
+							  +(src)[SH1_offset_L2])<<8)
+							+(src)[SH1_offset_L1])<<8)
+						  +(src)[SH1_offset_L0]);
 		dst->sh_addr = (((((((Elf32_Addr)(src)[SH1_addr_L3]<<8)
-		+(src)[SH1_addr_L2])<<8)
-		+(src)[SH1_addr_L1])<<8)
-		+(src)[SH1_addr_L0]);
+							+(src)[SH1_addr_L2])<<8)
+						  +(src)[SH1_addr_L1])<<8)
+						+(src)[SH1_addr_L0]);
 		dst->sh_flags = (((((((Elf32_Word)(src)[SH1_flags_L3]<<8)
-		+(src)[SH1_flags_L2])<<8)
-		+(src)[SH1_flags_L1])<<8)
-		+(src)[SH1_flags_L0]);
+							 +(src)[SH1_flags_L2])<<8)
+						   +(src)[SH1_flags_L1])<<8)
+						 +(src)[SH1_flags_L0]);
 		dst->sh_type = (((((((Elf32_Word)(src)[SH1_type_L3]<<8)
-		+(src)[SH1_type_L2])<<8)
-		+(src)[SH1_type_L1])<<8)
-		+(src)[SH1_type_L0]);
+							+(src)[SH1_type_L2])<<8)
+						  +(src)[SH1_type_L1])<<8)
+						+(src)[SH1_type_L0]);
 		dst->sh_name = (((((((Elf32_Word)(src)[SH1_name_L3]<<8)
-		+(src)[SH1_name_L2])<<8)
-		+(src)[SH1_name_L1])<<8)
-		+(src)[SH1_name_L0]);
+							+(src)[SH1_name_L2])<<8)
+						  +(src)[SH1_name_L1])<<8)
+						+(src)[SH1_name_L0]);
 	}
 }
 
@@ -3293,45 +3293,45 @@ shdr_2M11_tom(Elf32_Shdr *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= SH1_sizeof;
 		dst->sh_entsize = (((((((Elf32_Word)(src)[SH1_entsize_M3]<<8)
-		+(src)[SH1_entsize_M2])<<8)
-		+(src)[SH1_entsize_M1])<<8)
-		+(src)[SH1_entsize_M0]);
+							   +(src)[SH1_entsize_M2])<<8)
+							 +(src)[SH1_entsize_M1])<<8)
+						   +(src)[SH1_entsize_M0]);
 		dst->sh_addralign = (((((((Elf32_Word)(src)[SH1_addralign_M3]<<8)
-		+(src)[SH1_addralign_M2])<<8)
-		+(src)[SH1_addralign_M1])<<8)
-		+(src)[SH1_addralign_M0]);
+								 +(src)[SH1_addralign_M2])<<8)
+							   +(src)[SH1_addralign_M1])<<8)
+							 +(src)[SH1_addralign_M0]);
 		dst->sh_info = (((((((Elf32_Word)(src)[SH1_info_M3]<<8)
-		+(src)[SH1_info_M2])<<8)
-		+(src)[SH1_info_M1])<<8)
-		+(src)[SH1_info_M0]);
+							+(src)[SH1_info_M2])<<8)
+						  +(src)[SH1_info_M1])<<8)
+						+(src)[SH1_info_M0]);
 		dst->sh_link = (((((((Elf32_Word)(src)[SH1_link_M3]<<8)
-		+(src)[SH1_link_M2])<<8)
-		+(src)[SH1_link_M1])<<8)
-		+(src)[SH1_link_M0]);
+							+(src)[SH1_link_M2])<<8)
+						  +(src)[SH1_link_M1])<<8)
+						+(src)[SH1_link_M0]);
 		dst->sh_size = (((((((Elf32_Word)(src)[SH1_size_M3]<<8)
-		+(src)[SH1_size_M2])<<8)
-		+(src)[SH1_size_M1])<<8)
-		+(src)[SH1_size_M0]);
+							+(src)[SH1_size_M2])<<8)
+						  +(src)[SH1_size_M1])<<8)
+						+(src)[SH1_size_M0]);
 		dst->sh_offset = (((((((Elf32_Off)(src)[SH1_offset_M3]<<8)
-		+(src)[SH1_offset_M2])<<8)
-		+(src)[SH1_offset_M1])<<8)
-		+(src)[SH1_offset_M0]);
+							  +(src)[SH1_offset_M2])<<8)
+							+(src)[SH1_offset_M1])<<8)
+						  +(src)[SH1_offset_M0]);
 		dst->sh_addr = (((((((Elf32_Addr)(src)[SH1_addr_M3]<<8)
-		+(src)[SH1_addr_M2])<<8)
-		+(src)[SH1_addr_M1])<<8)
-		+(src)[SH1_addr_M0]);
+							+(src)[SH1_addr_M2])<<8)
+						  +(src)[SH1_addr_M1])<<8)
+						+(src)[SH1_addr_M0]);
 		dst->sh_flags = (((((((Elf32_Word)(src)[SH1_flags_M3]<<8)
-		+(src)[SH1_flags_M2])<<8)
-		+(src)[SH1_flags_M1])<<8)
-		+(src)[SH1_flags_M0]);
+							 +(src)[SH1_flags_M2])<<8)
+						   +(src)[SH1_flags_M1])<<8)
+						 +(src)[SH1_flags_M0]);
 		dst->sh_type = (((((((Elf32_Word)(src)[SH1_type_M3]<<8)
-		+(src)[SH1_type_M2])<<8)
-		+(src)[SH1_type_M1])<<8)
-		+(src)[SH1_type_M0]);
+							+(src)[SH1_type_M2])<<8)
+						  +(src)[SH1_type_M1])<<8)
+						+(src)[SH1_type_M0]);
 		dst->sh_name = (((((((Elf32_Word)(src)[SH1_name_M3]<<8)
-		+(src)[SH1_name_M2])<<8)
-		+(src)[SH1_name_M1])<<8)
-		+(src)[SH1_name_M0]);
+							+(src)[SH1_name_M2])<<8)
+						  +(src)[SH1_name_M1])<<8)
+						+(src)[SH1_name_M0]);
 	}
 }
 
@@ -3351,11 +3351,11 @@ sword_2L_tom(Elf32_Sword *dst, unsigned char *src, size_t cnt)
 		src -= W_sizeof;
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1 &&	/* 2s comp */
-		    ~(~(Elf32_Word)0 >> 1) == HI32) {
+			~(~(Elf32_Word)0 >> 1) == HI32) {
 			*dst = (((((((Elf32_Word)(src)[W_L3]<<8)
-		+(src)[W_L2])<<8)
-		+(src)[W_L1])<<8)
-		+(src)[W_L0]);
+						+(src)[W_L2])<<8)
+					  +(src)[W_L1])<<8)
+					+(src)[W_L0]);
 		} else {
 			union {
 				Elf32_Word w;
@@ -3363,9 +3363,9 @@ sword_2L_tom(Elf32_Sword *dst, unsigned char *src, size_t cnt)
 			} u;
 
 			if ((u.w = (((((((Elf32_Word)(src)[W_L3]<<8)
-		+(src)[W_L2])<<8)
-		+(src)[W_L1])<<8)
-		+(src)[W_L0])) & HI32) {
+							+(src)[W_L2])<<8)
+						  +(src)[W_L1])<<8)
+						+(src)[W_L0])) & HI32) {
 				u.w |= ~(Elf32_Word)LO31;
 				u.w = ~u.w + 1;
 				u.sw = -u.w;
@@ -3386,11 +3386,11 @@ sword_2M_tom(Elf32_Sword *dst, unsigned char *src, size_t cnt)
 		src -= W_sizeof;
 		/*CONSTANTCONDITION*/
 		if (~(Elf32_Word)0 == -(Elf32_Sword)1 &&	/* 2s comp */
-		    ~(~(Elf32_Word)0 >> 1) == HI32) {
+			~(~(Elf32_Word)0 >> 1) == HI32) {
 			*dst = (((((((Elf32_Word)(src)[W_M3]<<8)
-		+(src)[W_M2])<<8)
-		+(src)[W_M1])<<8)
-		+(src)[W_M0]);
+						+(src)[W_M2])<<8)
+					  +(src)[W_M1])<<8)
+					+(src)[W_M0]);
 		} else {
 			union {
 				Elf32_Word w;
@@ -3398,9 +3398,9 @@ sword_2M_tom(Elf32_Sword *dst, unsigned char *src, size_t cnt)
 			} u;
 
 			if ((u.w = (((((((Elf32_Word)(src)[W_M3]<<8)
-		+(src)[W_M2])<<8)
-		+(src)[W_M1])<<8)
-		+(src)[W_M0])) & HI32) {
+							+(src)[W_M2])<<8)
+						  +(src)[W_M1])<<8)
+						+(src)[W_M0])) & HI32) {
 				u.w |= ~(Elf32_Word)LO31;
 				u.w = ~u.w + 1;
 				u.sw = -u.w;
@@ -3421,13 +3421,13 @@ cap_2L11_tom(Elf32_Cap *dst, unsigned char *src, size_t cnt)
 
 	do {
 		dst->c_tag = (((((((Elf32_Word)(src)[C1_tag_L3]<<8)
-		+(src)[C1_tag_L2])<<8)
-		+(src)[C1_tag_L1])<<8)
-		+(src)[C1_tag_L0]);
+						  +(src)[C1_tag_L2])<<8)
+						+(src)[C1_tag_L1])<<8)
+					  +(src)[C1_tag_L0]);
 		dst->c_un.c_val = (((((((Elf32_Word)(src)[C1_val_L3]<<8)
-		+(src)[C1_val_L2])<<8)
-		+(src)[C1_val_L1])<<8)
-		+(src)[C1_val_L0]);
+							   +(src)[C1_val_L2])<<8)
+							 +(src)[C1_val_L1])<<8)
+						   +(src)[C1_val_L0]);
 		src += C1_sizeof;
 	} while (++dst < end);
 }
@@ -3439,13 +3439,13 @@ cap_2M11_tom(Elf32_Cap *dst, unsigned char *src, size_t cnt)
 
 	do {
 		dst->c_tag = (((((((Elf32_Word)(src)[C1_tag_M3]<<8)
-		+(src)[C1_tag_M2])<<8)
-		+(src)[C1_tag_M1])<<8)
-		+(src)[C1_tag_M0]);
+						  +(src)[C1_tag_M2])<<8)
+						+(src)[C1_tag_M1])<<8)
+					  +(src)[C1_tag_M0]);
 		dst->c_un.c_val = (((((((Elf32_Word)(src)[C1_val_M3]<<8)
-		+(src)[C1_val_M2])<<8)
-		+(src)[C1_val_M1])<<8)
-		+(src)[C1_val_M0]);
+							   +(src)[C1_val_M2])<<8)
+							 +(src)[C1_val_M1])<<8)
+						   +(src)[C1_val_M0]);
 		src += C1_sizeof;
 	} while (++dst < end);
 }
@@ -3499,17 +3499,17 @@ sym_2L11_tom(Elf32_Sym *dst, unsigned char *src, size_t cnt)
 		dst->st_other = ((unsigned char)(src)[ST1_other_L]);
 		dst->st_info = ((unsigned char)(src)[ST1_info_L]);
 		dst->st_size = (((((((Elf32_Word)(src)[ST1_size_L3]<<8)
-		+(src)[ST1_size_L2])<<8)
-		+(src)[ST1_size_L1])<<8)
-		+(src)[ST1_size_L0]);
+							+(src)[ST1_size_L2])<<8)
+						  +(src)[ST1_size_L1])<<8)
+						+(src)[ST1_size_L0]);
 		dst->st_value = (((((((Elf32_Addr)(src)[ST1_value_L3]<<8)
-		+(src)[ST1_value_L2])<<8)
-		+(src)[ST1_value_L1])<<8)
-		+(src)[ST1_value_L0]);
+							 +(src)[ST1_value_L2])<<8)
+						   +(src)[ST1_value_L1])<<8)
+						 +(src)[ST1_value_L0]);
 		dst->st_name = (((((((Elf32_Word)(src)[ST1_name_L3]<<8)
-		+(src)[ST1_name_L2])<<8)
-		+(src)[ST1_name_L1])<<8)
-		+(src)[ST1_name_L0]);
+							+(src)[ST1_name_L2])<<8)
+						  +(src)[ST1_name_L1])<<8)
+						+(src)[ST1_name_L0]);
 	}
 }
 
@@ -3526,17 +3526,17 @@ sym_2M11_tom(Elf32_Sym *dst, unsigned char *src, size_t cnt)
 		dst->st_other = ((unsigned char)(src)[ST1_other_M]);
 		dst->st_info = ((unsigned char)(src)[ST1_info_M]);
 		dst->st_size = (((((((Elf32_Word)(src)[ST1_size_M3]<<8)
-		+(src)[ST1_size_M2])<<8)
-		+(src)[ST1_size_M1])<<8)
-		+(src)[ST1_size_M0]);
+							+(src)[ST1_size_M2])<<8)
+						  +(src)[ST1_size_M1])<<8)
+						+(src)[ST1_size_M0]);
 		dst->st_value = (((((((Elf32_Addr)(src)[ST1_value_M3]<<8)
-		+(src)[ST1_value_M2])<<8)
-		+(src)[ST1_value_M1])<<8)
-		+(src)[ST1_value_M0]);
+							 +(src)[ST1_value_M2])<<8)
+						   +(src)[ST1_value_M1])<<8)
+						 +(src)[ST1_value_M0]);
 		dst->st_name = (((((((Elf32_Word)(src)[ST1_name_M3]<<8)
-		+(src)[ST1_name_M2])<<8)
-		+(src)[ST1_name_M1])<<8)
-		+(src)[ST1_name_M0]);
+							+(src)[ST1_name_M2])<<8)
+						  +(src)[ST1_name_M1])<<8)
+						+(src)[ST1_name_M0]);
 	}
 }
 
@@ -3554,9 +3554,9 @@ word_2L_tom(Elf32_Word *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= W_sizeof;
 		*dst = (((((((Elf32_Word)(src)[W_L3]<<8)
-		+(src)[W_L2])<<8)
-		+(src)[W_L1])<<8)
-		+(src)[W_L0]);
+					+(src)[W_L2])<<8)
+				  +(src)[W_L1])<<8)
+				+(src)[W_L0]);
 	}
 }
 
@@ -3570,9 +3570,9 @@ word_2M_tom(Elf32_Word *dst, unsigned char *src, size_t cnt)
 	while (dst-- > end) {
 		src -= W_sizeof;
 		*dst = (((((((Elf32_Word)(src)[W_M3]<<8)
-		+(src)[W_M2])<<8)
-		+(src)[W_M1])<<8)
-		+(src)[W_M0]);
+					+(src)[W_M2])<<8)
+				  +(src)[W_M1])<<8)
+				+(src)[W_M0]);
 	}
 }
 
@@ -3596,39 +3596,39 @@ verdef_2L11_tom(Elf32_Verdef *dst, unsigned char *src, size_t cnt)
 		dst->vd_ndx = (((Elf32_Half)(src)[VD1_ndx_L1]<<8)+(src)[VD1_ndx_L0]);
 		dst->vd_cnt = (((Elf32_Half)(src)[VD1_cnt_L1]<<8)+(src)[VD1_cnt_L0]);
 		dst->vd_hash = (((((((Elf32_Word)(src)[VD1_hash_L3]<<8)
-		+(src)[VD1_hash_L2])<<8)
-		+(src)[VD1_hash_L1])<<8)
-		+(src)[VD1_hash_L0]);
+							+(src)[VD1_hash_L2])<<8)
+						  +(src)[VD1_hash_L1])<<8)
+						+(src)[VD1_hash_L0]);
 		dst->vd_aux = (((((((Elf32_Word)(src)[VD1_aux_L3]<<8)
-		+(src)[VD1_aux_L2])<<8)
-		+(src)[VD1_aux_L1])<<8)
-		+(src)[VD1_aux_L0]);
+						   +(src)[VD1_aux_L2])<<8)
+						 +(src)[VD1_aux_L1])<<8)
+					   +(src)[VD1_aux_L0]);
 		dst->vd_next = (((((((Elf32_Word)(src)[VD1_next_L3]<<8)
-		+(src)[VD1_next_L2])<<8)
-		+(src)[VD1_next_L1])<<8)
-		+(src)[VD1_next_L0]);
+							+(src)[VD1_next_L2])<<8)
+						  +(src)[VD1_next_L1])<<8)
+						+(src)[VD1_next_L0]);
 
 		src_vaux = src + dst->vd_aux;
 		/* LINTED */
 		vaux = (Elf32_Verdaux*)((char *)dst + dst->vd_aux);
 		for (i = 0; i < dst->vd_cnt; i++) {
 			vaux->vda_name = (((((((Elf32_Addr)(src_vaux)[VDA1_name_L3]<<8)
-		+(src_vaux)[VDA1_name_L2])<<8)
-		+(src_vaux)[VDA1_name_L1])<<8)
-		+(src_vaux)[VDA1_name_L0]);
+								  +(src_vaux)[VDA1_name_L2])<<8)
+								+(src_vaux)[VDA1_name_L1])<<8)
+							  +(src_vaux)[VDA1_name_L0]);
 			vaux->vda_next = (((((((Elf32_Addr)(src_vaux)[VDA1_next_L3]<<8)
-		+(src_vaux)[VDA1_next_L2])<<8)
-		+(src_vaux)[VDA1_next_L1])<<8)
-		+(src_vaux)[VDA1_next_L0]);
+								  +(src_vaux)[VDA1_next_L2])<<8)
+								+(src_vaux)[VDA1_next_L1])<<8)
+							  +(src_vaux)[VDA1_next_L0]);
 			src_vaux += vaux->vda_next;
 			/* LINTED */
 			vaux = (Elf32_Verdaux *)((char *)vaux +
-			    vaux->vda_next);
+									 vaux->vda_next);
 		}
 		src += dst->vd_next;
 		/* LINTED */
 		dst = (Elf32_Verdef *)(dst->vd_next ?
-		    (char *)dst + dst->vd_next : (char *)end);
+							   (char *)dst + dst->vd_next : (char *)end);
 	}
 }
 
@@ -3648,39 +3648,39 @@ verdef_2M11_tom(Elf32_Verdef *dst, unsigned char *src, size_t cnt)
 		dst->vd_ndx = (((Elf32_Half)(src)[VD1_ndx_M1]<<8)+(src)[VD1_ndx_M0]);
 		dst->vd_cnt = (((Elf32_Half)(src)[VD1_cnt_M1]<<8)+(src)[VD1_cnt_M0]);
 		dst->vd_hash = (((((((Elf32_Word)(src)[VD1_hash_M3]<<8)
-		+(src)[VD1_hash_M2])<<8)
-		+(src)[VD1_hash_M1])<<8)
-		+(src)[VD1_hash_M0]);
+							+(src)[VD1_hash_M2])<<8)
+						  +(src)[VD1_hash_M1])<<8)
+						+(src)[VD1_hash_M0]);
 		dst->vd_aux = (((((((Elf32_Word)(src)[VD1_aux_M3]<<8)
-		+(src)[VD1_aux_M2])<<8)
-		+(src)[VD1_aux_M1])<<8)
-		+(src)[VD1_aux_M0]);
+						   +(src)[VD1_aux_M2])<<8)
+						 +(src)[VD1_aux_M1])<<8)
+					   +(src)[VD1_aux_M0]);
 		dst->vd_next = (((((((Elf32_Word)(src)[VD1_next_M3]<<8)
-		+(src)[VD1_next_M2])<<8)
-		+(src)[VD1_next_M1])<<8)
-		+(src)[VD1_next_M0]);
+							+(src)[VD1_next_M2])<<8)
+						  +(src)[VD1_next_M1])<<8)
+						+(src)[VD1_next_M0]);
 
 		src_vaux = src + dst->vd_aux;
 		/* LINTED */
 		vaux = (Elf32_Verdaux*)((char *)dst + dst->vd_aux);
 		for (i = 0; i < dst->vd_cnt; i++) {
 			vaux->vda_name = (((((((Elf32_Addr)(src_vaux)[VDA1_name_M3]<<8)
-		+(src_vaux)[VDA1_name_M2])<<8)
-		+(src_vaux)[VDA1_name_M1])<<8)
-		+(src_vaux)[VDA1_name_M0]);
+								  +(src_vaux)[VDA1_name_M2])<<8)
+								+(src_vaux)[VDA1_name_M1])<<8)
+							  +(src_vaux)[VDA1_name_M0]);
 			vaux->vda_next = (((((((Elf32_Addr)(src_vaux)[VDA1_next_M3]<<8)
-		+(src_vaux)[VDA1_next_M2])<<8)
-		+(src_vaux)[VDA1_next_M1])<<8)
-		+(src_vaux)[VDA1_next_M0]);
+								  +(src_vaux)[VDA1_next_M2])<<8)
+								+(src_vaux)[VDA1_next_M1])<<8)
+							  +(src_vaux)[VDA1_next_M0]);
 			src_vaux += vaux->vda_next;
 			/* LINTED */
 			vaux = (Elf32_Verdaux *)((char *)vaux +
-			    vaux->vda_next);
+									 vaux->vda_next);
 		}
 		src += dst->vd_next;
 		/* LINTED */
 		dst = (Elf32_Verdef *)(dst->vd_next ?
-		    (char *)dst + dst->vd_next : (char *)end);
+							   (char *)dst + dst->vd_next : (char *)end);
 	}
 }
 
@@ -3701,45 +3701,45 @@ verneed_2L11_tom(Elf32_Verneed *dst, unsigned char *src, size_t cnt)
 		dst->vn_version = (((Elf32_Half)(src)[VN1_version_L1]<<8)+(src)[VN1_version_L0]);
 		dst->vn_cnt = (((Elf32_Half)(src)[VN1_cnt_L1]<<8)+(src)[VN1_cnt_L0]);
 		dst->vn_file = (((((((Elf32_Addr)(src)[VN1_file_L3]<<8)
-		+(src)[VN1_file_L2])<<8)
-		+(src)[VN1_file_L1])<<8)
-		+(src)[VN1_file_L0]);
+							+(src)[VN1_file_L2])<<8)
+						  +(src)[VN1_file_L1])<<8)
+						+(src)[VN1_file_L0]);
 		dst->vn_aux = (((((((Elf32_Word)(src)[VN1_aux_L3]<<8)
-		+(src)[VN1_aux_L2])<<8)
-		+(src)[VN1_aux_L1])<<8)
-		+(src)[VN1_aux_L0]);
+						   +(src)[VN1_aux_L2])<<8)
+						 +(src)[VN1_aux_L1])<<8)
+					   +(src)[VN1_aux_L0]);
 		dst->vn_next = (((((((Elf32_Word)(src)[VN1_next_L3]<<8)
-		+(src)[VN1_next_L2])<<8)
-		+(src)[VN1_next_L1])<<8)
-		+(src)[VN1_next_L0]);
-
+							+(src)[VN1_next_L2])<<8)
+						  +(src)[VN1_next_L1])<<8)
+						+(src)[VN1_next_L0]);
+		
 		src_vaux = src + dst->vn_aux;
 		/* LINTED */
 		vaux = (Elf32_Vernaux *)((char *)dst + dst->vn_aux);
 		for (i = 0; i < dst->vn_cnt; i++) {
 			vaux->vna_hash = (((((((Elf32_Word)(src_vaux)[VNA1_hash_L3]<<8)
-		+(src_vaux)[VNA1_hash_L2])<<8)
-		+(src_vaux)[VNA1_hash_L1])<<8)
-		+(src_vaux)[VNA1_hash_L0]);
+								  +(src_vaux)[VNA1_hash_L2])<<8)
+								+(src_vaux)[VNA1_hash_L1])<<8)
+							  +(src_vaux)[VNA1_hash_L0]);
 			vaux->vna_flags = (((Elf32_Half)(src_vaux)[VNA1_flags_L1]<<8)+(src_vaux)[VNA1_flags_L0]);
 			vaux->vna_other = (((Elf32_Half)(src_vaux)[VNA1_other_L1]<<8)+(src_vaux)[VNA1_other_L0]);
 			vaux->vna_name = (((((((Elf32_Addr)(src_vaux)[VNA1_name_L3]<<8)
-		+(src_vaux)[VNA1_name_L2])<<8)
-		+(src_vaux)[VNA1_name_L1])<<8)
-		+(src_vaux)[VNA1_name_L0]);
+								  +(src_vaux)[VNA1_name_L2])<<8)
+								+(src_vaux)[VNA1_name_L1])<<8)
+							  +(src_vaux)[VNA1_name_L0]);
 			vaux->vna_next = (((((((Elf32_Word)(src_vaux)[VNA1_next_L3]<<8)
-		+(src_vaux)[VNA1_next_L2])<<8)
-		+(src_vaux)[VNA1_next_L1])<<8)
-		+(src_vaux)[VNA1_next_L0]);
+								  +(src_vaux)[VNA1_next_L2])<<8)
+								+(src_vaux)[VNA1_next_L1])<<8)
+							  +(src_vaux)[VNA1_next_L0]);
 			src_vaux += vaux->vna_next;
 			/* LINTED */
 			vaux = (Elf32_Vernaux *)((char *)vaux +
-			    vaux->vna_next);
+									 vaux->vna_next);
 		}
 		src += dst->vn_next;
 		/* LINTED */
 		dst = (Elf32_Verneed *)(dst->vn_next ?
-		    (char *)dst + dst->vn_next : (char *)end);
+								(char *)dst + dst->vn_next : (char *)end);
 	}
 }
 
@@ -3748,7 +3748,7 @@ verneed_2M11_tom(Elf32_Verneed *dst, unsigned char *src, size_t cnt)
 {
 	/* LINTED */
 	Elf32_Verneed	*end = (Elf32_Verneed *)((char *)dst + cnt);
-
+	
 	while (dst < end) {
 		Elf32_Vernaux *	vaux;
 		unsigned char *	src_vaux;
@@ -3756,44 +3756,44 @@ verneed_2M11_tom(Elf32_Verneed *dst, unsigned char *src, size_t cnt)
 		dst->vn_version = (((Elf32_Half)(src)[VN1_version_M1]<<8)+(src)[VN1_version_M0]);
 		dst->vn_cnt = (((Elf32_Half)(src)[VN1_cnt_M1]<<8)+(src)[VN1_cnt_M0]);
 		dst->vn_file = (((((((Elf32_Addr)(src)[VN1_file_M3]<<8)
-		+(src)[VN1_file_M2])<<8)
-		+(src)[VN1_file_M1])<<8)
-		+(src)[VN1_file_M0]);
+							+(src)[VN1_file_M2])<<8)
+						  +(src)[VN1_file_M1])<<8)
+						+(src)[VN1_file_M0]);
 		dst->vn_aux = (((((((Elf32_Word)(src)[VN1_aux_M3]<<8)
-		+(src)[VN1_aux_M2])<<8)
-		+(src)[VN1_aux_M1])<<8)
-		+(src)[VN1_aux_M0]);
+						   +(src)[VN1_aux_M2])<<8)
+						 +(src)[VN1_aux_M1])<<8)
+					   +(src)[VN1_aux_M0]);
 		dst->vn_next = (((((((Elf32_Word)(src)[VN1_next_M3]<<8)
-		+(src)[VN1_next_M2])<<8)
-		+(src)[VN1_next_M1])<<8)
-		+(src)[VN1_next_M0]);
-
+							+(src)[VN1_next_M2])<<8)
+						  +(src)[VN1_next_M1])<<8)
+						+(src)[VN1_next_M0]);
+		
 		src_vaux = src + dst->vn_aux;
 		/* LINTED */
 		vaux = (Elf32_Vernaux *)((char *)dst + dst->vn_aux);
 		for (i = 0; i < dst->vn_cnt; i++) {
 			vaux->vna_hash = (((((((Elf32_Word)(src_vaux)[VNA1_hash_M3]<<8)
-		+(src_vaux)[VNA1_hash_M2])<<8)
-		+(src_vaux)[VNA1_hash_M1])<<8)
-		+(src_vaux)[VNA1_hash_M0]);
+								  +(src_vaux)[VNA1_hash_M2])<<8)
+								+(src_vaux)[VNA1_hash_M1])<<8)
+							  +(src_vaux)[VNA1_hash_M0]);
 			vaux->vna_flags = (((Elf32_Half)(src_vaux)[VNA1_flags_M1]<<8)+(src_vaux)[VNA1_flags_M0]);
 			vaux->vna_other = (((Elf32_Half)(src_vaux)[VNA1_other_M1]<<8)+(src_vaux)[VNA1_other_M0]);
 			vaux->vna_name = (((((((Elf32_Addr)(src_vaux)[VNA1_name_M3]<<8)
-		+(src_vaux)[VNA1_name_M2])<<8)
-		+(src_vaux)[VNA1_name_M1])<<8)
-		+(src_vaux)[VNA1_name_M0]);
+								  +(src_vaux)[VNA1_name_M2])<<8)
+								+(src_vaux)[VNA1_name_M1])<<8)
+							  +(src_vaux)[VNA1_name_M0]);
 			vaux->vna_next = (((((((Elf32_Word)(src_vaux)[VNA1_next_M3]<<8)
-		+(src_vaux)[VNA1_next_M2])<<8)
-		+(src_vaux)[VNA1_next_M1])<<8)
-		+(src_vaux)[VNA1_next_M0]);
+								  +(src_vaux)[VNA1_next_M2])<<8)
+								+(src_vaux)[VNA1_next_M1])<<8)
+							  +(src_vaux)[VNA1_next_M0]);
 			src_vaux += vaux->vna_next;
 			/* LINTED */
 			vaux = (Elf32_Vernaux *)((char *)vaux +
-			    vaux->vna_next);
+									 vaux->vna_next);
 		}
 		src += dst->vn_next;
 		/* LINTED */
 		dst = (Elf32_Verneed *)(dst->vn_next ?
-		    (char *)dst + dst->vn_next : (char *)end);
+								(char *)dst + dst->vn_next : (char *)end);
 	}
 }
