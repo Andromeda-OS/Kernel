@@ -2,7 +2,7 @@
  * Copyright (c) 2012 Apple Computer, Inc. All rights reserved.
  *
  * @APPLE_OSREFERENCE_LICENSE_HEADER_START@
- * 
+ *
  * This file contains Original Code and/or Modifications of Original Code
  * as defined in and that are subject to the Apple Public Source License
  * Version 2.0 (the 'License'). You may not use this file except in
@@ -11,10 +11,10 @@
  * unlawful or unlicensed copies of an Apple operating system, or to
  * circumvent, violate, or enable the circumvention or violation of, any
  * terms of an Apple operating system software license agreement.
- * 
+ *
  * Please obtain a copy of the License at
  * http://www.opensource.apple.com/apsl/ and read it before using this file.
- * 
+ *
  * The Original Code and all software distributed under the License are
  * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
  * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
@@ -22,7 +22,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
  * Please see the License for the specific language governing rights and
  * limitations under the License.
- * 
+ *
  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
  */
 
@@ -36,10 +36,10 @@ void SHA256_Init(SHA256_CTX *ctx)
 	const struct ccdigest_info *di;
 	di=g_crypto_funcs->ccsha256_di;
 
-        /* Make sure the context size for the digest info fits in the one we have */
-        if(ccdigest_di_size(di)>sizeof(SHA256_CTX))
-                panic("%s: inconsistent size for SHA256 context", __FUNCTION__);
- 
+	/* Make sure the context size for the digest info fits in the one we have */
+	if(ccdigest_di_size(di)>sizeof(SHA256_CTX))
+		panic("%s: inconsistent size for SHA256 context", __FUNCTION__);
+
 	g_crypto_funcs->ccdigest_init_fn(di, ctx->ctx);
 }
 
@@ -64,10 +64,10 @@ void SHA384_Init(SHA384_CTX *ctx)
 	const struct ccdigest_info *di;
 	di=g_crypto_funcs->ccsha384_di;
 
-        /* Make sure the context size for the digest info fits in the one we have */
-        if(ccdigest_di_size(di)>sizeof(SHA384_CTX))
-                panic("%s: inconsistent size for SHA384 context", __FUNCTION__);
- 
+	/* Make sure the context size for the digest info fits in the one we have */
+	if(ccdigest_di_size(di)>sizeof(SHA384_CTX))
+		panic("%s: inconsistent size for SHA384 context", __FUNCTION__);
+
 	g_crypto_funcs->ccdigest_init_fn(di, ctx->ctx);
 }
 
@@ -93,10 +93,10 @@ void SHA512_Init(SHA512_CTX *ctx)
 	const struct ccdigest_info *di;
 	di=g_crypto_funcs->ccsha512_di;
 
-        /* Make sure the context size for the digest info fits in the one we have */
-        if(ccdigest_di_size(di)>sizeof(SHA512_CTX))
-                panic("%s: inconsistent size for SHA512 context", __FUNCTION__);
- 
+	/* Make sure the context size for the digest info fits in the one we have */
+	if(ccdigest_di_size(di)>sizeof(SHA512_CTX))
+		panic("%s: inconsistent size for SHA512 context", __FUNCTION__);
+
 	g_crypto_funcs->ccdigest_init_fn(di, ctx->ctx);
 }
 

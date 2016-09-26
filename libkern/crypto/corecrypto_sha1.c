@@ -27,20 +27,20 @@ static void DiToSHA1(const struct ccdigest_info *di, struct ccdigest_ctx *di_ctx
 static void SHA1ToDi(const struct ccdigest_info *di, SHA1_CTX *sha1_ctx, struct ccdigest_ctx *di_ctx)
 {
 	uint64_t count = getCount(sha1_ctx);
-	
+
 	ccdigest_num(di, di_ctx)=count%di->block_size;
 	ccdigest_nbits(di, di_ctx)=(count-ccdigest_num(di, di_ctx))*8;
 	memcpy(ccdigest_data(di, di_ctx), sha1_ctx->m.b8, di->block_size);
-	memcpy(ccdigest_state_ccn(di, di_ctx), sha1_ctx->h.b8, di->state_size);	
+	memcpy(ccdigest_state_ccn(di, di_ctx), sha1_ctx->h.b8, di->state_size);
 }
 
 void SHA1Init(SHA1_CTX *ctx)
 {
 	const struct ccdigest_info *di=g_crypto_funcs->ccsha1_di;
 	ccdigest_di_decl(di, di_ctx);
-	
+
 	g_crypto_funcs->ccdigest_init_fn(di, di_ctx);
-	
+
 	DiToSHA1(di, di_ctx, ctx);
 }
 
@@ -48,9 +48,9 @@ void SHA1Update(SHA1_CTX *ctx, const void *data, size_t len)
 {
 	const struct ccdigest_info *di=g_crypto_funcs->ccsha1_di;
 	ccdigest_di_decl(di, di_ctx);
-	
+
 	SHA1ToDi(di, ctx, di_ctx);
-	g_crypto_funcs->ccdigest_update_fn(di, di_ctx, len, data);	
+	g_crypto_funcs->ccdigest_update_fn(di, di_ctx, len, data);
 	DiToSHA1(di, di_ctx, ctx);
 }
 
@@ -58,7 +58,7 @@ void SHA1Final(void *digest, SHA1_CTX *ctx)
 {
 	const struct ccdigest_info *di=g_crypto_funcs->ccsha1_di;
 	ccdigest_di_decl(di, di_ctx);
-	
+
 	SHA1ToDi(di, ctx, di_ctx);
 	ccdigest_final(di, di_ctx, digest);
 }
@@ -71,7 +71,7 @@ void SHA1UpdateUsePhysicalAddress(SHA1_CTX *ctx, const void *data, size_t len)
 }
 #endif
 
-/* This is not publicised in header, but exported in libkern.exports */ 
+/* This is not publicised in header, but exported in libkern.exports */
 void SHA1Final_r(SHA1_CTX *context, void *digest);
 void SHA1Final_r(SHA1_CTX *context, void *digest)
 {
