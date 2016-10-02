@@ -39,17 +39,18 @@ extern "C"
 
 #define AES_BLOCK_SIZE  16  /* the AES block size in bytes          */
 
-//Unholy HACK: this works because we know the size of the context for every
-//possible corecrypto implementation is less than this.
-#define AES_CBC_CTX_MAX_SIZE (ccn_sizeof_size(sizeof(void *)) + ccn_sizeof_size(AES_BLOCK_SIZE) + ccn_sizeof_size(64*4))
 
-typedef struct{
-	cccbc_ctx_decl(AES_CBC_CTX_MAX_SIZE, ctx);
-} aes_decrypt_ctx;
+typedef struct mbedtls_aes_context
+{
+	int nr;                     /*!<  number of rounds  */
+	uint32_t *rk;               /*!<  AES round keys    */
+	uint32_t buf[68];           /*!<  unaligned data    */
+}
+mbedtls_aes_context;
 
-typedef struct{
-	cccbc_ctx_decl(AES_CBC_CTX_MAX_SIZE, ctx);
-} aes_encrypt_ctx;
+
+typedef mbedtls_aes_context aes_decrypt_ctx;
+typedef mbedtls_aes_context aes_encrypt_ctx;
 
 typedef struct
 {

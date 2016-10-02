@@ -30,7 +30,7 @@
 #define _CRYPTO_REGISTER_CRYPTO_H_
 
 #ifdef  __cplusplus
-extern "C" {
+//extern "C" {
 #endif
 
 #include <corecrypto/ccdigest.h>
@@ -136,6 +136,17 @@ typedef struct crypto_functions {
 } *crypto_functions_t;
 
 int register_crypto_functions(const crypto_functions_t funcs);
+
+typedef struct mbedtls_aes_context mbedtls_aes_context;
+typedef struct mbedtls_functions {
+	void (*aes_init)(mbedtls_aes_context *ctx);
+	void (*aes_free)(mbedtls_aes_context *ctx);
+	int (*aes_setkey_enc)(mbedtls_aes_context *ctx, const unsigned char *key, unsigned int keybits);
+	int (*aes_setkey_dec)(mbedtls_aes_context *ctx, const unsigned char *key, unsigned int keybits);
+	int (*aes_crypt_cbc)(mbedtls_aes_context *ctx, int mode, size_t length, unsigned char iv[16], const unsigned char *input, unsigned char *output);
+} *mbedtls_functions_t;
+
+int register_mbedtls_callbacks(const mbedtls_functions_t funcs);
 
 #ifdef  __cplusplus
 }

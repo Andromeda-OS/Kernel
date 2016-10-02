@@ -42,4 +42,10 @@ int register_crypto_functions(const crypto_functions_t funcs)
 	return 0;
 }
 
+mbedtls_functions_t g_mbedtls = NULL;
 
+int register_mbedtls_callbacks(const mbedtls_functions_t funcs) {
+	if (g_mbedtls) return -1;
+	g_mbedtls = funcs;
+	return 0;
+}
