@@ -212,6 +212,23 @@
 		1F3C51631DBED0F4001A75DA /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		1F3C51641DBED18C001A75DA /* sha1edp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1edp.h; sourceTree = "<group>"; };
 		1F3C51651DBED18C001A75DA /* sha1edp.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = sha1edp.s; sourceTree = "<group>"; };
+		1F3C51671DBED2A8001A75DA /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
+		1F3C51681DBED2A8001A75DA /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
+		1F3C51691DBED2A8001A75DA /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
+		1F3C516A1DBED2A8001A75DA /* Assert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Assert.c; sourceTree = "<group>"; };
+		1F3C517A1DBED2EA001A75DA /* aes_crypt_hw.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = aes_crypt_hw.s; sourceTree = "<group>"; };
+		1F3C517B1DBED2EA001A75DA /* aes_key_hw.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = aes_key_hw.s; sourceTree = "<group>"; };
+		1F3C517C1DBED2EA001A75DA /* aes_modes_asm.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = aes_modes_asm.s; sourceTree = "<group>"; };
+		1F3C517D1DBED2EA001A75DA /* aes_modes_hw.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = aes_modes_hw.s; sourceTree = "<group>"; };
+		1F3C517E1DBED2EA001A75DA /* AES.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = AES.s; sourceTree = "<group>"; };
+		1F3C517F1DBED2EA001A75DA /* aesxts_asm.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = aesxts_asm.s; sourceTree = "<group>"; };
+		1F3C51801DBED2EA001A75DA /* aesxts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aesxts.c; sourceTree = "<group>"; };
+		1F3C51811DBED2EA001A75DA /* aesxts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesxts.h; sourceTree = "<group>"; };
+		1F3C51821DBED2EA001A75DA /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Context.h; sourceTree = "<group>"; };
+		1F3C51831DBED2EA001A75DA /* Data.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = Data.s; sourceTree = "<group>"; };
+		1F3C51841DBED2EA001A75DA /* EncryptDecrypt.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = EncryptDecrypt.s; sourceTree = "<group>"; };
+		1F3C51851DBED2EA001A75DA /* ExpandKeyForDecryption.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = ExpandKeyForDecryption.s; sourceTree = "<group>"; };
+		1F3C51861DBED2EA001A75DA /* ExpandKeyForEncryption.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = ExpandKeyForEncryption.s; sourceTree = "<group>"; };
 		1F3EB9551C6C4D5E003D7461 /* audit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audit.h; sourceTree = "<group>"; };
 		1F3EB9561C6C4D5E003D7461 /* audit_domain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audit_domain.h; sourceTree = "<group>"; };
 		1F3EB9571C6C4D5E003D7461 /* audit_errno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audit_errno.h; sourceTree = "<group>"; };
@@ -1938,7 +1955,6 @@
 		1F3EC06A1C6C4D61003D7461 /* Makefile.x86_64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.x86_64; sourceTree = "<group>"; };
 		1F3EC06B1C6C4D61003D7461 /* MASTER */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASTER; sourceTree = "<group>"; };
 		1F3EC06C1C6C4D61003D7461 /* MASTER.x86_64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASTER.x86_64; sourceTree = "<group>"; };
-		1F3EC06E1C6C4D61003D7461 /* corecrypto_aes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_aes.c; sourceTree = "<group>"; };
 		1F3EC06F1C6C4D61003D7461 /* corecrypto_aesxts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_aesxts.c; sourceTree = "<group>"; };
 		1F3EC0701C6C4D61003D7461 /* corecrypto_des.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_des.c; sourceTree = "<group>"; };
 		1F3EC0731C6C4D61003D7461 /* corecrypto_sha2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_sha2.c; sourceTree = "<group>"; };
@@ -3618,6 +3634,30 @@
 				1F3A879E18592B2F007D12D6 /* libz.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F3C51661DBED27F001A75DA /* aes */ = {
+			isa = PBXGroup;
+			children = (
+				1F3C517A1DBED2EA001A75DA /* aes_crypt_hw.s */,
+				1F3C517B1DBED2EA001A75DA /* aes_key_hw.s */,
+				1F3C517C1DBED2EA001A75DA /* aes_modes_asm.s */,
+				1F3C517D1DBED2EA001A75DA /* aes_modes_hw.s */,
+				1F3C517E1DBED2EA001A75DA /* AES.s */,
+				1F3C517F1DBED2EA001A75DA /* aesxts_asm.s */,
+				1F3C51801DBED2EA001A75DA /* aesxts.c */,
+				1F3C51811DBED2EA001A75DA /* aesxts.h */,
+				1F3C51821DBED2EA001A75DA /* Context.h */,
+				1F3C51831DBED2EA001A75DA /* Data.s */,
+				1F3C51841DBED2EA001A75DA /* EncryptDecrypt.s */,
+				1F3C51851DBED2EA001A75DA /* ExpandKeyForDecryption.s */,
+				1F3C51861DBED2EA001A75DA /* ExpandKeyForEncryption.s */,
+				1F3C51671DBED2A8001A75DA /* aescrypt.c */,
+				1F3C51681DBED2A8001A75DA /* aeskey.c */,
+				1F3C51691DBED2A8001A75DA /* aestab.c */,
+				1F3C516A1DBED2A8001A75DA /* Assert.c */,
+			);
+			path = aes;
 			sourceTree = "<group>";
 		};
 		1F3EB9531C6C4D5E003D7461 /* bsd */ = {
@@ -6095,11 +6135,11 @@
 		1F3EC06D1C6C4D61003D7461 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
+				1F3C51661DBED27F001A75DA /* aes */,
 				1F3C51641DBED18C001A75DA /* sha1edp.h */,
 				1F3C51651DBED18C001A75DA /* sha1edp.s */,
 				1F3C51621DBED0F4001A75DA /* md5.c */,
 				1F3C51631DBED0F4001A75DA /* sha1.c */,
-				1F3EC06E1C6C4D61003D7461 /* corecrypto_aes.c */,
 				1F3EC06F1C6C4D61003D7461 /* corecrypto_aesxts.c */,
 				1F3EC0701C6C4D61003D7461 /* corecrypto_des.c */,
 				1F3EC0731C6C4D61003D7461 /* corecrypto_sha2.c */,
