@@ -46,8 +46,25 @@ xts_start(uint32_t cipher __unused, // ignored - we're doing this for xts-aes on
 		  uint32_t options __unused,    // ignored
 		  symmetric_xts *xts)
 {
-	panic("XTS-AES support not implemented");
-	__builtin_unreachable();
+	const struct ccmode_xts *enc, *dec;
+
+	if(!g_crypto_funcs)
+		panic("%s: corecrypto not registered!\n", __FUNCTION__);
+
+	enc = g_crypto_funcs->ccaes_xts_encrypt;
+	dec = g_crypto_funcs->ccaes_xts_decrypt;
+
+	if(!enc && !dec)
+		panic("%s: xts mode not registered? enc=%p, dec=%p\n", __FUNCTION__, enc, dec);
+
+	/* Make sure the context size for the mode fits in the one we have */
+	if((enc->size>sizeof(xts->enc)) || (dec->size>sizeof(xts->dec)))
+		panic("%s: inconsistent size for AES-XTS context", __FUNCTION__);
+
+	enc->init(enc, xts->enc, keylen, key1, key2);
+	dec->init(dec, xts->dec, keylen, key1, key2);
+
+	return 0; //never fails
 }
 
 int xts_encrypt(const uint8_t *pt, unsigned long ptlen,
@@ -55,8 +72,15 @@ int xts_encrypt(const uint8_t *pt, unsigned long ptlen,
 				const uint8_t *iv, // this can be considered the sector IV for this use
 				symmetric_xts *xts)
 {
-	panic("XTS-AES support not implemented");
-	__builtin_unreachable();
+	const struct ccmode_xts *xtsenc = g_crypto_funcs->ccaes_xts_encrypt;
+	ccxts_tweak_decl(xtsenc->tweak_size, tweak);
+
+	if(ptlen%16) panic("xts encrypt not a multiple of block size\n");
+
+	xtsenc->set_tweak(xts->enc, tweak, iv);
+	xtsenc->xts(xts->enc, tweak, ptlen/16, pt, ct);
+
+	return 0; //never fails
 }
 
 int xts_decrypt(const uint8_t *ct, unsigned long ptlen,
@@ -64,12 +88,19 @@ int xts_decrypt(const uint8_t *ct, unsigned long ptlen,
 				const uint8_t *iv, // this can be considered the sector IV for this use
 				symmetric_xts *xts)
 {
-	panic("XTS-AES support not implemented");
-	__builtin_unreachable();
+	const struct ccmode_xts *xtsdec = g_crypto_funcs->ccaes_xts_decrypt;
+	ccxts_tweak_decl(xtsdec->tweak_size, tweak);
+
+	if(ptlen%16) panic("xts decrypt not a multiple of block size\n");
+
+	xtsdec->set_tweak(xts->dec, tweak, iv);
+	xtsdec->xts(xts->dec, tweak, ptlen/16, ct, pt);
+
+	return 0; //never fails
 }
 
 void xts_done(symmetric_xts *xts __unused)
 {
-	panic("XTS-AES support not implemented");
-	__builtin_unreachable();
+	cc_clear(sizeof(xts->enc), xts->enc);
+	cc_clear(sizeof(xts->dec), xts->dec);
 }
