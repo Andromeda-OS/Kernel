@@ -208,6 +208,10 @@
 		1F37E27E18592E42001B9501 /* ctfmerge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ctfmerge; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3A87491859298E007D12D6 /* ctfconvert */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ctfconvert; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3A879E18592B2F007D12D6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		1F3C51621DBED0F4001A75DA /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		1F3C51631DBED0F4001A75DA /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		1F3C51641DBED18C001A75DA /* sha1edp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1edp.h; sourceTree = "<group>"; };
+		1F3C51651DBED18C001A75DA /* sha1edp.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = sha1edp.s; sourceTree = "<group>"; };
 		1F3EB9551C6C4D5E003D7461 /* audit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audit.h; sourceTree = "<group>"; };
 		1F3EB9561C6C4D5E003D7461 /* audit_domain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audit_domain.h; sourceTree = "<group>"; };
 		1F3EB9571C6C4D5E003D7461 /* audit_errno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audit_errno.h; sourceTree = "<group>"; };
@@ -1937,8 +1941,6 @@
 		1F3EC06E1C6C4D61003D7461 /* corecrypto_aes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_aes.c; sourceTree = "<group>"; };
 		1F3EC06F1C6C4D61003D7461 /* corecrypto_aesxts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_aesxts.c; sourceTree = "<group>"; };
 		1F3EC0701C6C4D61003D7461 /* corecrypto_des.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_des.c; sourceTree = "<group>"; };
-		1F3EC0711C6C4D61003D7461 /* corecrypto_md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_md5.c; sourceTree = "<group>"; };
-		1F3EC0721C6C4D61003D7461 /* corecrypto_sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_sha1.c; sourceTree = "<group>"; };
 		1F3EC0731C6C4D61003D7461 /* corecrypto_sha2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_sha2.c; sourceTree = "<group>"; };
 		1F3EC0741C6C4D61003D7461 /* register_crypto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = register_crypto.c; sourceTree = "<group>"; };
 		1F3EC0761C6C4D61003D7461 /* OSAtomicOperations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OSAtomicOperations.c; sourceTree = "<group>"; };
@@ -6093,11 +6095,13 @@
 		1F3EC06D1C6C4D61003D7461 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
+				1F3C51641DBED18C001A75DA /* sha1edp.h */,
+				1F3C51651DBED18C001A75DA /* sha1edp.s */,
+				1F3C51621DBED0F4001A75DA /* md5.c */,
+				1F3C51631DBED0F4001A75DA /* sha1.c */,
 				1F3EC06E1C6C4D61003D7461 /* corecrypto_aes.c */,
 				1F3EC06F1C6C4D61003D7461 /* corecrypto_aesxts.c */,
 				1F3EC0701C6C4D61003D7461 /* corecrypto_des.c */,
-				1F3EC0711C6C4D61003D7461 /* corecrypto_md5.c */,
-				1F3EC0721C6C4D61003D7461 /* corecrypto_sha1.c */,
 				1F3EC0731C6C4D61003D7461 /* corecrypto_sha2.c */,
 				1F3EC0741C6C4D61003D7461 /* register_crypto.c */,
 			);
