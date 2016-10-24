@@ -238,7 +238,6 @@ _pthread_kext_register
 _q_to_b
 _register_crypto_functions
 _register_decmpfs_decompressor
-_register_mbedtls_callbacks
 _rootdev
 _rootvp
 _sbappendaddr
