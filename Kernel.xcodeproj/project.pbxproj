@@ -3554,6 +3554,7 @@
 		1F3EC71B1C6C4D63003D7461 /* remote_build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = remote_build.sh; sourceTree = "<group>"; };
 		1F3EC71C1C6C4D63003D7461 /* symbolify.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = symbolify.py; sourceTree = "<group>"; };
 		1F3EC71D1C6C4D63003D7461 /* xcrun_cache.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = xcrun_cache.sh; sourceTree = "<group>"; };
+		1F9B8CD81DBEE48000F2DB46 /* gcm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gcm.c; sourceTree = "<group>"; };
 		1FAD56711859255500EDAF39 /* libelf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libelf.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -3639,6 +3640,7 @@
 		1F3C51661DBED27F001A75DA /* aes */ = {
 			isa = PBXGroup;
 			children = (
+				1F9B8CD81DBEE48000F2DB46 /* gcm.c */,
 				1F3C517A1DBED2EA001A75DA /* aes_crypt_hw.s */,
 				1F3C517B1DBED2EA001A75DA /* aes_key_hw.s */,
 				1F3C517C1DBED2EA001A75DA /* aes_modes_asm.s */,

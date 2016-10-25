@@ -32,11 +32,34 @@
  This file contains the definitions required to use AES in C. See aesopt.h
  for optimisation details.
 */
+/**
+ * \file gcm.h
+ *
+ * \brief Galois/Counter mode for 128-bit block ciphers
+ *
+ *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+ *  SPDX-License-Identifier: Apache-2.0
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+ *  not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  This file contains code based on mbed TLS (https://tls.mbed.org)
+ */
+
 
 #ifndef _AES_H
 #define _AES_H
 
-#include <corecrypto/ccmode.h>
+#include <stdint.h>
 
 #if defined(__cplusplus)
 extern "C"
@@ -212,6 +235,24 @@ aes_rval aes_decrypt_cbc(const unsigned char *in_blk, const unsigned char *in_iv
 
 #endif
 
+typedef struct {
+	union {
+		aes_encrypt_ctx enc_ctx;
+		aes_decrypt_ctx dec_ctx;
+	};
+
+	uint64_t HL[16];            /*!< Precalculated HTable */
+	uint64_t HH[16];            /*!< Precalculated HTable */
+	uint64_t len;               /*!< Total data length */
+	uint64_t add_len;           /*!< Total add length */
+	unsigned char base_ectr[16];/*!< First ECTR for tag */
+	unsigned char y[16];        /*!< Y working value */
+	unsigned char buf[16];      /*!< buf working value */
+	int mode;                   /*!< Encrypt or Decrypt */
+}
+mbedtls_gcm_context;
+typedef mbedtls_gcm_context ccgcm_ctx; // For source compatibility
+
 aes_rval aes_encrypt_key_gcm(const unsigned char *key, int key_len, ccgcm_ctx *ctx);
 aes_rval aes_encrypt_set_iv_gcm(const unsigned char *in_iv, unsigned int len, ccgcm_ctx *ctx);
 aes_rval aes_encrypt_aad_gcm(const unsigned char *aad, unsigned int aad_bytes, ccgcm_ctx *ctx);
@@ -225,6 +266,8 @@ aes_rval aes_decrypt_aad_gcm(const unsigned char *aad, unsigned int aad_bytes, c
 aes_rval aes_decrypt_gcm(const unsigned char *in_blk, unsigned int num_bytes, unsigned char *out_blk, ccgcm_ctx *ctx);
 aes_rval aes_decrypt_finalize_gcm(unsigned char *tag, unsigned int tag_bytes, ccgcm_ctx *ctx);
 unsigned aes_decrypt_get_ctx_size_gcm(void);
+
+#define CCAES_BLOCK_SIZE AES_BLOCK_SIZE // For source compatibility
 
 #if defined(__cplusplus)
 }
