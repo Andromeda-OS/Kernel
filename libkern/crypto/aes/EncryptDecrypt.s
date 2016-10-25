@@ -294,7 +294,7 @@ Name:
 #define	ExpandedKeyEnd	Arch(5*16(r4), r11)
 
 	// Get and check "key length".
-	movzx	ContextKeyLength(ExpandedKey), r0
+	movl	ContextKeyLength(ExpandedKey), r0d
 	cmp		$160, r0
 	je		2f
 	cmp		$192, r0

@@ -333,7 +333,7 @@ EKeyHas4Words:
 
 	add		$4*4, E
 
-	movzx	(E), t0d				// Get cached round constant.
+	movl	(E), t0d				// Get cached round constant.
 	xor		t0d, e0					// XOR with word from four words back.
 
 	// Chain to successive words.
@@ -500,7 +500,7 @@ EKeyHas6Words:
 2:
 	add		$1, R				// Advance pointer.
 	movd	ve5, dr				// Put previous word into dissection register.
-	movzx	(R), t0				// Get round constant.
+	mov	(R), t0					// Get round constant.
 	movd	t0d, vt1
 	pxor	vt1, ve0			// XOR with word from six words back.
 
@@ -713,7 +713,7 @@ EKeyHas8Words:
 2:
 	add		$1, R				// Advance pointer.
 	movd	ve3, dr				// Put previous word into dissection register.
-	movzx	(R), t0d			// Get round constant.
+	movl	(R), t0d			// Get round constant.
 	movd	t0d, vt1
 	movd	0*4(E, offset), ve0	// Get word from eight words back.
 	pxor	vt1, ve0

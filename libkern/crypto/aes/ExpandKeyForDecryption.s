@@ -433,7 +433,7 @@ DKeyHas4Words:
 */
 	add		$1, R					// Advance pointer.
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	mov	(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -470,7 +470,7 @@ DKeyHas4Words:
 1:
 	add		$1, R					// Advance pointer.
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movl	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -523,7 +523,7 @@ DKeyHas4Words:
 // Here is the final iteration, which does not perform InvMixColumn.
 
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	1(R), t0d				// Get round constant.
+	mov	1(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -696,7 +696,7 @@ DKeyHas6Words:
 */
 	add		$1, R					// Advance pointer.
 	movd	ve5, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	mov	(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -743,7 +743,7 @@ DKeyHas6Words:
 1:
 	add		$1, R					// Advance pointer.
 	movd	ve5, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movl	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -792,7 +792,7 @@ DKeyHas6Words:
 // Here is the final iteration, which does not perform InvMixColumn.
 
 	movd	ve5, dr					// Put previous word into work register.
-	movzx	1(R), t0d				// Get round constant.
+	movl	1(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -972,7 +972,7 @@ DKeyHas8Words:
 */
 	add		$1, R					// Advance pointer.
 	movd	ve3, dr					// Put previous word into work register.
-	movzx	(R), t0d				// Get round constant.
+	movl	(R), t0d				// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -1053,7 +1053,7 @@ DKeyHas8Words:
 1:
 	add		$1, R						// Advance pointer.
 	movd	ve3, dr						// Put previous word into work register.
-	movzx	(R), t0d					// Get round constant.
+	movl	(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
@@ -1137,7 +1137,7 @@ DKeyHas8Words:
 	jl		1b
 
 	movd	ve3, dr						// Put previous word into work register.
-	movzx	1(R), t0d					// Get round constant.
+	movl	1(R), t0d					// Get round constant.
 	movd	t0d, vt0
 
 	SubWordRotWord
