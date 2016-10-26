@@ -317,11 +317,153 @@ unsigned aes_encrypt_get_ctx_size_gcm(void) {
 
 // MARK: -
 
-aes_rval aes_decrypt_key_gcm(const unsigned char *key, int key_len, ccgcm_ctx *ctx);
-aes_rval aes_decrypt_set_iv_gcm(const unsigned char *in_iv, unsigned int len, ccgcm_ctx *ctx);
-aes_rval aes_decrypt_aad_gcm(const unsigned char *aad, unsigned int aad_bytes, ccgcm_ctx *ctx);
-aes_rval aes_decrypt_gcm(const unsigned char *in_blk, unsigned int num_bytes, unsigned char *out_blk, ccgcm_ctx *ctx);
-aes_rval aes_decrypt_finalize_gcm(unsigned char *tag, unsigned int tag_bytes, ccgcm_ctx *ctx);
+aes_rval aes_decrypt_key_gcm(const unsigned char *key, int key_len, ccgcm_ctx *ctx) {
+	aes_decrypt_key(key, key_len, &ctx->dec_ctx);
+	gcm_gen_table(ctx);
+	return 0;
+}
+
+aes_rval aes_decrypt_set_iv_gcm(const unsigned char *in_iv, unsigned int len, ccgcm_ctx *ctx) {
+	unsigned char work_buf[16];
+	unsigned int i;
+	const unsigned char *p;
+	size_t use_len;
+
+	if (((uint64_t)len) >> 61 != 0) {
+		return aes_error;
+	}
+
+	memset(ctx->y, 0, sizeof(ctx->y));
+	memset(ctx->buf, 0, sizeof(ctx->buf));
+
+	ctx->len = 0;
+	ctx->mode = MODE_DECRYPT;
+	ctx->add_len = 0;
+
+	if (len == 12) {
+		memcpy(ctx->y, in_iv, len);
+		ctx->y[15] = 1;
+	} else {
+		memset(work_buf, 0, 16);
+		PUT_UINT32_BE(len * 8, work_buf, 12);
+
+		p = in_iv;
+		while (len > 0) {
+			use_len = (len < 16) ? len : 16;
+			for (i = 0; i < use_len; i++) ctx->y[i] ^= p[i];
+			gcm_mult(ctx, ctx->y, ctx->y);
+			len -= use_len;
+			p += use_len;
+		}
+
+
+		for( i = 0; i < 16; i++ ) ctx->y[i] ^= work_buf[i];
+		gcm_mult( ctx, ctx->y, ctx->y );
+	}
+
+	if (aes_decrypt_key(ctx->y, 16, &ctx->dec_ctx) == aes_error) return aes_error;
+	return aes_good;
+}
+
+aes_rval aes_decrypt_aad_gcm(const unsigned char *aad, unsigned int aad_bytes, ccgcm_ctx *ctx) {
+	const unsigned char *p;
+	unsigned int use_len;
+
+	ctx->add_len = aad_bytes;
+	p = aad;
+
+	while (aad_bytes > 0) {
+		use_len = (aad_bytes < 16) ? aad_bytes : 16;
+		for (int i = 0; i < use_len; i++) ctx->buf[i] ^= p[i];
+
+		gcm_mult(ctx, ctx->buf, ctx->buf);
+		aad_bytes -= use_len;
+		p += use_len;
+	}
+
+	return aes_good;
+}
+
+aes_rval aes_decrypt_gcm(const unsigned char *input, unsigned int length, unsigned char *output, ccgcm_ctx *ctx) {
+	unsigned char ectr[16];
+	unsigned int i;
+	const unsigned char *p;
+	unsigned char *out_p = output;
+	size_t use_len;
+
+	if( output > input && (size_t) ( output - input ) < length )
+		return aes_error;
+
+	/* Total length is restricted to 2^39 - 256 bits, ie 2^36 - 2^5 bytes
+	 * Also check for possible overflow */
+	if( ctx->len + length < ctx->len ||
+	   (uint64_t) ctx->len + length > 0xFFFFFFFE0ull )
+	{
+		return aes_error;
+	}
+
+	ctx->len += length;
+
+	p = input;
+	while( length > 0 )
+	{
+		use_len = ( length < 16 ) ? length : 16;
+
+		for( i = 16; i > 12; i-- )
+			if( ++ctx->y[i - 1] != 0 )
+				break;
+
+		if (aes_decrypt(ctx->y, ectr, &ctx->dec_ctx) == aes_error)
+			return aes_error;
+
+		for( i = 0; i < use_len; i++ )
+		{
+			out_p[i] = ectr[i] ^ p[i];
+			ctx->buf[i] ^= out_p[i];
+		}
+
+		gcm_mult( ctx, ctx->buf, ctx->buf );
+
+		length -= use_len;
+		p += use_len;
+		out_p += use_len;
+	}
+
+	return aes_good;
+}
+
+aes_rval aes_decrypt_finalize_gcm(unsigned char *tag, unsigned int tag_bytes, ccgcm_ctx *ctx) {
+	unsigned char work_buf[16];
+	size_t i;
+	uint64_t orig_len = ctx->len * 8;
+	uint64_t orig_add_len = ctx->add_len * 8;
+
+	if( tag_bytes > 16 || tag_bytes < 4 )
+		return aes_error;
+
+	if( tag_bytes != 0 )
+		memcpy( tag, ctx->base_ectr, tag_bytes );
+
+	if( orig_len || orig_add_len )
+	{
+		memset( work_buf, 0x00, 16 );
+
+		PUT_UINT32_BE( ( orig_add_len >> 32 ), work_buf, 0  );
+		PUT_UINT32_BE( ( orig_add_len       ), work_buf, 4  );
+		PUT_UINT32_BE( ( orig_len     >> 32 ), work_buf, 8  );
+		PUT_UINT32_BE( ( orig_len           ), work_buf, 12 );
+
+		for( i = 0; i < 16; i++ )
+			ctx->buf[i] ^= work_buf[i];
+
+		gcm_mult( ctx, ctx->buf, ctx->buf );
+
+		for( i = 0; i < tag_bytes; i++ )
+			tag[i] ^= ctx->buf[i];
+	}
+
+	return aes_good;
+}
 
 unsigned aes_decrypt_get_ctx_size_gcm(void) {
 	return sizeof(ccgcm_ctx);
