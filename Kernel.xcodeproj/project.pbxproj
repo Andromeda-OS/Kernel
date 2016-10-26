@@ -1955,10 +1955,6 @@
 		1F3EC06A1C6C4D61003D7461 /* Makefile.x86_64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.x86_64; sourceTree = "<group>"; };
 		1F3EC06B1C6C4D61003D7461 /* MASTER */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASTER; sourceTree = "<group>"; };
 		1F3EC06C1C6C4D61003D7461 /* MASTER.x86_64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASTER.x86_64; sourceTree = "<group>"; };
-		1F3EC06F1C6C4D61003D7461 /* corecrypto_aesxts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_aesxts.c; sourceTree = "<group>"; };
-		1F3EC0701C6C4D61003D7461 /* corecrypto_des.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_des.c; sourceTree = "<group>"; };
-		1F3EC0731C6C4D61003D7461 /* corecrypto_sha2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecrypto_sha2.c; sourceTree = "<group>"; };
-		1F3EC0741C6C4D61003D7461 /* register_crypto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = register_crypto.c; sourceTree = "<group>"; };
 		1F3EC0761C6C4D61003D7461 /* OSAtomicOperations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OSAtomicOperations.c; sourceTree = "<group>"; };
 		1F3EC0771C6C4D61003D7461 /* OSDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OSDebug.cpp; sourceTree = "<group>"; };
 		1F3EC0781C6C4D61003D7461 /* kernel_mach_header.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kernel_mach_header.c; sourceTree = "<group>"; };
@@ -6142,10 +6138,6 @@
 				1F3C51651DBED18C001A75DA /* sha1edp.s */,
 				1F3C51621DBED0F4001A75DA /* md5.c */,
 				1F3C51631DBED0F4001A75DA /* sha1.c */,
-				1F3EC06F1C6C4D61003D7461 /* corecrypto_aesxts.c */,
-				1F3EC0701C6C4D61003D7461 /* corecrypto_des.c */,
-				1F3EC0731C6C4D61003D7461 /* corecrypto_sha2.c */,
-				1F3EC0741C6C4D61003D7461 /* register_crypto.c */,
 			);
 			path = crypto;
 			sourceTree = "<group>";
