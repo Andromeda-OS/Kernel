@@ -77,6 +77,9 @@ libkern/crypto/aes/aes_crypt_hw.s		optional crypto
 libkern/crypto/aes/aesxts_asm.s			optional crypto
 libkern/crypto/aes/aesxts.c				optional crypto
 libkern/crypto/aes/gcm.c				optional crypto
+libkern/crypto/sha2/sha2.c				optional crypto_sha2
+libkern/crypto/sha2/sha256.s			optional crypto_sha2
+libkern/crypto/sha2/sha256nossse3.s		optional crypto_sha2
 
 libkern/stack_protector.c       standard
 
