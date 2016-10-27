@@ -3555,6 +3555,7 @@
 		1F64C2061DC0374A00A80D0C /* sha256.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = sha256.s; sourceTree = "<group>"; };
 		1F64C2071DC0374A00A80D0C /* sha256nossse3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = sha256nossse3.s; sourceTree = "<group>"; };
 		1F9B8CD81DBEE48000F2DB46 /* gcm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gcm.c; sourceTree = "<group>"; };
+		1F9E9C421DC196B500ADC3FF /* des.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = des.c; sourceTree = "<group>"; };
 		1FAD56711859255500EDAF39 /* libelf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libelf.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -6137,6 +6138,7 @@
 		1F3EC06D1C6C4D61003D7461 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
+				1F64C2111DC0398800A80D0C /* des */,
 				1F64C2031DC0372B00A80D0C /* sha2 */,
 				1F3C51661DBED27F001A75DA /* aes */,
 				1F3C51641DBED18C001A75DA /* sha1edp.h */,
@@ -8610,6 +8612,14 @@
 				1F64C2071DC0374A00A80D0C /* sha256nossse3.s */,
 			);
 			path = sha2;
+			sourceTree = "<group>";
+		};
+		1F64C2111DC0398800A80D0C /* des */ = {
+			isa = PBXGroup;
+			children = (
+				1F9E9C421DC196B500ADC3FF /* des.c */,
+			);
+			path = des;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

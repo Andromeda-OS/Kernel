@@ -25,6 +25,28 @@
  *
  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
  */
+/**
+ * \file des.h
+ *
+ * \brief DES block cipher
+ *
+ *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+ *  SPDX-License-Identifier: Apache-2.0
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+ *  not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  This file contains code based on mbed TLS (https://tls.mbed.org)
+ */
 
 #ifndef _CRYPTO_DES_H
 #define _CRYPTO_DES_H
@@ -33,40 +55,32 @@
 extern "C" {
 #endif
 
-#include <corecrypto/ccmode.h>
-#include <corecrypto/ccdes.h>
-#include <corecrypto/ccn.h>
+#include <stdint.h>
 
 /* must be 32bit quantity */
 #define DES_LONG u_int32_t
 
 typedef unsigned char des_cblock[8];
 
-/* Unholy hack: this is currently the size for the only implementation of DES in corecrypto */
-#define DES_ECB_CTX_MAX_SIZE (64*4)
-#define DES_CBC_CTX_MAX_SIZE (ccn_sizeof_size(sizeof(struct ccmode_ecb)) + ccn_sizeof_size(CCDES_BLOCK_SIZE) + ccn_sizeof_size(DES_ECB_CTX_MAX_SIZE))
-#define DES3_ECB_CTX_MAX_SIZE (64*4*3)
-#define DES3_CBC_CTX_MAX_SIZE (ccn_sizeof_size(sizeof(struct ccmode_ecb)) + ccn_sizeof_size(CCDES_BLOCK_SIZE) + ccn_sizeof_size(DES3_ECB_CTX_MAX_SIZE))
-
 
 typedef struct{
-	ccecb_ctx_decl(DES_ECB_CTX_MAX_SIZE, enc);
-	ccecb_ctx_decl(DES_ECB_CTX_MAX_SIZE, dec);
+	uint32_t enc[32];
+	uint32_t dec[32];
 } des_ecb_key_schedule;
 
 typedef struct{
-	cccbc_ctx_decl(DES_CBC_CTX_MAX_SIZE, enc);
-	cccbc_ctx_decl(DES_CBC_CTX_MAX_SIZE, dec);
+	uint32_t enc[32];
+	uint32_t dec[32];
 } des_cbc_key_schedule;
 
 typedef struct{
-	ccecb_ctx_decl(DES3_ECB_CTX_MAX_SIZE, enc);
-	ccecb_ctx_decl(DES3_ECB_CTX_MAX_SIZE, dec);
+	uint32_t enc[96];
+	uint32_t dec[96];
 } des3_ecb_key_schedule;
 
 typedef struct{
-	cccbc_ctx_decl(DES3_CBC_CTX_MAX_SIZE, enc);
-	cccbc_ctx_decl(DES3_CBC_CTX_MAX_SIZE, dec);
+	uint32_t enc[96];
+	uint32_t dec[96];
 } des3_cbc_key_schedule;
 
 /* Only here for backward compatibility with smb kext */
