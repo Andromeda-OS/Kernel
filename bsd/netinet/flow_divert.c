@@ -62,7 +62,6 @@
 #endif	/* INET6 */
 #include <dev/random/randomdev.h>
 #include <libkern/crypto/sha1.h>
-#include <libkern/crypto/crypto_internal.h>
 
 #define FLOW_DIVERT_CONNECT_STARTED		0x00000001
 #define FLOW_DIVERT_READ_CLOSED			0x00000002
@@ -495,24 +494,85 @@ flow_divert_packet_get_tlv(mbuf_t packet, int offset, uint8_t type, size_t buff_
 	return 0;
 }
 
+// This function also taken from mbedTLS.
+// See flow_divert_packet_compute_hmac() function for attribution details.
+static void __mbedtls_zero(void *addr, size_t len) {
+	volatile unsigned char *ptr = addr;
+	while (len--) *ptr++ = 0;
+}
+
 static int
 flow_divert_packet_compute_hmac(mbuf_t packet, struct flow_divert_group *group, uint8_t *hmac)
 {
 	mbuf_t	curr_mbuf	= packet;
 
-	if (g_crypto_funcs == NULL || group->token_key == NULL) {
+	if (group->token_key == NULL) {
 		return ENOPROTOOPT;
 	}
 
-	cchmac_di_decl(g_crypto_funcs->ccsha1_di, hmac_ctx);
-	g_crypto_funcs->cchmac_init_fn(g_crypto_funcs->ccsha1_di, hmac_ctx, group->token_key_size, group->token_key);
+	// This implementation taken from mbedTLS md.c.
+	/*
+	 *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+	 *  SPDX-License-Identifier: Apache-2.0
+	 *
+	 *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+	 *  not use this file except in compliance with the License.
+	 *  You may obtain a copy of the License at
+	 *
+	 *  http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 *  Unless required by applicable law or agreed to in writing, software
+	 *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+	 *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 *  See the License for the specific language governing permissions and
+	 *  limitations under the License.
+	 */
+
+	int keylen = group->token_key_size;
+	unsigned char key[SHA1_RESULTLEN];
+	memcpy(key, group->token_key, SHA1_RESULTLEN * sizeof(unsigned char));
+
+	SHA1_CTX sha_ctx;
+	unsigned char sum[SHA1_RESULTLEN];
+
+	if (group->token_key_size > SHA1_RESULTLEN) {
+		SHA1Init(&sha_ctx);
+		SHA1Update(&sha_ctx, group->token_key, group->token_key_size);
+		SHA1Final(sum, &sha_ctx);
+
+		keylen = SHA1_RESULTLEN;
+		memcpy(key, sum, sizeof(sum));
+	}
+
+	unsigned char hmac_buffer[SHA1_RESULTLEN * 2];
+	unsigned char *ipad = (unsigned char *)hmac_buffer;
+	unsigned char *opad = (unsigned char *)ipad + SHA1_RESULTLEN;
+	memset(ipad, 0x36, SHA1_RESULTLEN);
+	memset(opad, 0x5C, SHA1_RESULTLEN);
+
+	__mbedtls_zero(sum, sizeof(sum));
+
+	for (int i = 0; i < keylen; i++) {
+		ipad[i] = (unsigned char)(ipad[i] ^ key[i]);
+		opad[i] = (unsigned char)(opad[i] ^ key[i]);
+	}
+
+	SHA1Init(&sha_ctx);
+	SHA1Update(&sha_ctx, ipad, SHA1_RESULTLEN);
 
 	while (curr_mbuf != NULL) {
-		g_crypto_funcs->cchmac_update_fn(g_crypto_funcs->ccsha1_di, hmac_ctx, mbuf_len(curr_mbuf), mbuf_data(curr_mbuf));
+		SHA1Update(&sha_ctx, mbuf_data(curr_mbuf), mbuf_len(curr_mbuf));
 		curr_mbuf = mbuf_next(curr_mbuf);
 	}
 
-	g_crypto_funcs->cchmac_final_fn(g_crypto_funcs->ccsha1_di, hmac_ctx, hmac);
+	unsigned char tmp[SHA1_RESULTLEN];
+	SHA1Final(tmp, &sha_ctx);
+	SHA1Init(&sha_ctx);
+	SHA1Update(&sha_ctx, opad, SHA1_RESULTLEN);
+	SHA1Update(&sha_ctx, tmp, SHA1_RESULTLEN);
+	SHA1Final(hmac, &sha_ctx);
+
+	// End of code from mbedTLS.
 
 	return 0;
 }
