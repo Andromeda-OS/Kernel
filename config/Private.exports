@@ -236,7 +236,6 @@ _pru_sockaddr_notsupp
 _pru_sopoll_notsupp
 _pthread_kext_register
 _q_to_b
-_register_crypto_functions
 _register_decmpfs_decompressor
 _rootdev
 _rootvp
