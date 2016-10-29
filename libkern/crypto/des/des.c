@@ -27,8 +27,6 @@
 
 #define assert(cond) ((cond) ? (void)0 : panic("Assertion failure: %s", #cond))
 
-// MARK: -
-
 /*
  * 32-bit integer manipulation macros (big endian)
  */
