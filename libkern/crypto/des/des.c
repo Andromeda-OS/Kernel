@@ -339,8 +339,8 @@ static void _des_ecb_key_sched(des_cblock *key, uint32_t SK[32]) {
 	int i;
 	uint32_t X, Y, T;
 
-	GET_UINT32_BE( X, key, 0 );
-	GET_UINT32_BE( Y, key, 4 );
+	GET_UINT32_BE( X, *key, 0 );
+	GET_UINT32_BE( Y, *key, 4 );
 
 	/*
 	 * Permuted Choice 1
@@ -513,9 +513,115 @@ void des_cbc_cksum(des_cblock *in, des_cblock *out, int len, des_cbc_key_schedul
 
 // MARK: -
 
-int des3_ecb_key_sched(des_cblock *key, des3_ecb_key_schedule *ks);
-void des3_ecb_encrypt(des_cblock *block, des_cblock *, des3_ecb_key_schedule *ks, int encrypt);
-int des3_cbc_key_sched(des_cblock *key, des3_cbc_key_schedule *ks);
-void des3_cbc_encrypt(des_cblock *in, des_cblock *out, int32_t len, des3_cbc_key_schedule *ks, des_cblock *iv, des_cblock *retiv, int encrypt);
+int des3_ecb_key_sched(des_cblock *key, des3_ecb_key_schedule *ks) {
+	_des_ecb_key_sched(key, ks->enc);
+	_des_ecb_key_sched(key + 1, ks->dec + 32);
 
-#error This file is not fully implemented.
+	for (int i = 0; i < 32; i += 2) {
+		ks->dec[i     ] = ks->enc[30 - i];
+		ks->dec[i +  1] = ks->enc[31 - i];
+
+		ks->enc[i + 32] = ks->dec[62 - i];
+		ks->enc[i + 33] = ks->dec[63 - i];
+
+		ks->enc[i + 64] = ks->enc[i    ];
+		ks->enc[i + 65] = ks->enc[i + 1];
+
+		ks->dec[i + 64] = ks->dec[i    ];
+		ks->dec[i + 65] = ks->dec[i + 1];
+	}
+
+	return 0;
+}
+
+void des3_ecb_encrypt(des_cblock *input, des_cblock *output, des3_ecb_key_schedule *ks, int encrypt) {
+	int i;
+	uint32_t X, Y, T, *SK;
+
+	if (encrypt == DES_ENCRYPT) {
+		SK = ks->enc;
+	} else if (encrypt == DES_DECRYPT) {
+		SK = ks->dec;
+	} else {
+		panic("Unepected des3_ecb_encrypt() mode %d", encrypt);
+	}
+
+	GET_UINT32_BE( X, *input, 0 );
+	GET_UINT32_BE( Y, *input, 4 );
+
+	DES_IP( X, Y );
+
+	for( i = 0; i < 8; i++ )
+	{
+		DES_ROUND( Y, X );
+		DES_ROUND( X, Y );
+	}
+
+	for( i = 0; i < 8; i++ )
+	{
+		DES_ROUND( X, Y );
+		DES_ROUND( Y, X );
+	}
+
+	for( i = 0; i < 8; i++ )
+	{
+		DES_ROUND( Y, X );
+		DES_ROUND( X, Y );
+	}
+
+	DES_FP( Y, X );
+
+	PUT_UINT32_BE( Y, *output, 0 );
+	PUT_UINT32_BE( X, *output, 4 );
+}
+
+int des3_cbc_key_sched(des_cblock *key, des3_cbc_key_schedule *ks) {
+	static int warned;
+	if (warned++ == 0) {
+		extern void kprintf(const char *, ...);
+		kprintf("Unholy HACK: Assuming that des3_cbc_key_sched() is identical to des3_ecb_key_sched()!\n");
+	}
+
+	return des3_ecb_key_sched(key, (des3_ecb_key_schedule *)ks);
+}
+
+void des3_cbc_encrypt(des_cblock *in, des_cblock *out, int32_t len, des3_cbc_key_schedule *ks, des_cblock *iv, des_cblock *retiv, int encrypt) {
+	int i;
+
+	assert(len % 8 == 0);
+
+	if (encrypt == DES_ENCRYPT) {
+		des_cblock work_input, work_output, work_iv;
+		memcpy(work_iv, *iv, sizeof(work_iv));
+
+		while (len > 0) {
+			memcpy(work_input, *in, sizeof(work_input));
+			for (i = 0; i < 8; i++) work_input[i] = (unsigned char)(work_input[i] ^ work_iv[i]);
+
+			des3_ecb_encrypt(&work_input, &work_output, ks, DES_ENCRYPT);
+			memcpy(*out, work_output, sizeof(work_output));
+			memcpy(work_iv, work_output, sizeof(work_iv));
+
+			in++; out++;
+			len -= 8;
+		}
+
+		memcpy(*retiv, work_iv, sizeof(work_iv));
+	} else if (encrypt == DES_DECRYPT) {
+		des_cblock work_input, work_output, work_iv;
+		memcpy(work_iv, *iv, sizeof(work_iv));
+
+		while (len > 0) {
+			memcpy(work_input, *in, sizeof(work_input));
+			des3_ecb_encrypt(&work_input, &work_output, ks, DES_DECRYPT);
+			for (i = 0; i < 8; i++) work_output[i] = (unsigned char)(work_output[i] ^ work_iv[i]);
+
+			memcpy(*out, work_output, sizeof(work_output));
+			memcpy(work_iv, work_output, sizeof(work_iv));
+			in++; out++;
+			len -= 8;
+		}
+
+		memcpy(*retiv, work_iv, sizeof(work_iv));
+	}
+}

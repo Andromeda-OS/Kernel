@@ -77,11 +77,7 @@ typedef struct{
 	uint32_t enc[96];
 	uint32_t dec[96];
 } des3_ecb_key_schedule;
-
-typedef struct{
-	uint32_t enc[96];
-	uint32_t dec[96];
-} des3_cbc_key_schedule;
+typedef des3_ecb_key_schedule des3_cbc_key_schedule;
 
 /* Only here for backward compatibility with smb kext */
 typedef des_ecb_key_schedule des_key_schedule[1];
