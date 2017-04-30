@@ -8699,7 +8699,7 @@
 		1F050FDC18591DB2008F6CAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Andromeda Project";
 			};
 			buildConfigurationList = 1F050FDF18591DB2008F6CAE /* Build configuration list for PBXProject "Kernel" */;
